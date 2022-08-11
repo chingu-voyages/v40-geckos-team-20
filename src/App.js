@@ -8,6 +8,7 @@ function App() {
       {/* Search Bar */}
       {/* Cockail List */}
       {/* Cocktail Details Preview*/}
+      {/* Some new bug fix! */}
     </div>
   );
 }
