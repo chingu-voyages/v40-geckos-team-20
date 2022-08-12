@@ -1,10 +1,11 @@
-import './App.css';
+import "./App.css";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <h1>EZ Cocktails</h1>
-      {/* Header */}
+      <SearchBar />
       {/* Search Bar */}
       {/* Cockail List */}
       {/* Cocktail Details Preview*/}
