@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 const Wrapper = styled.ul`
   color: pink;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   display: grid;
   gap: 40px;
   list-style-type: none;
@@ -11,7 +12,7 @@ const Wrapper = styled.ul`
 `;
 
 const Cocktail = styled.li`
-
+ 
 `;
 
 const CocktailImage = styled.img`
@@ -45,18 +46,6 @@ const CocktailList = () => {
     </Cocktail>
     <Cocktail>
       <CocktailImage src="https://s3-alpha-sig.figma.com/img/0a1b/6f5f/dbeb93f39aa243ad0855ed3bc9833fb9?Expires=1661126400&Signature=f5rnZk-mSYyxaIME-wbB7JXRzyg6x1VSezCFcKOr6Zfav-JLtTF~s2~n~Vyh7hEY4L-R51XVIYQWzqMYpZeV0p~Bh0PZIYz1DlwzsmFk6ui5m6wdXpunY~zdieyhTLLfscdd4xzlnhqutJak5BdkluRJs1p5z8U~7QYmUKk9Gamck3dZHtwBskKg8zpIcGNbQvii47xxrpPuamyONQ3H5Ukhb0YCc7a3peUEyLIkT329QW0HNdJv58s0joGN7I4LEwxZFQNNFRZ6NKLSwBKupffCjqbe1Mo-rsEfEICezzTghU6Ff25L4wxoerLKDplpj5hJfxgAcXQjgXeoaQkQyQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="vodka" />
-    </Cocktail>
-    <Cocktail>
-      <CocktailImage src="https://s3-alpha-sig.figma.com/img/c777/e5b5/2e474059fe3922ddc038e6d7e649ff4a?Expires=1661126400&Signature=f4sEXTcbRDXs6km0aWRhlcFt9Bfv3Ifl0IJ9AZ6-OqQkubTz11ymeUGXff6EeM1wz4M-prPjSiwX6F6W6~QivF8DDGmTtgjkEvxHLifePrYTV8vDVj8~QLPEaEOAtXfSYDS4Zr5p5wadNNp2x6cwn2-RtGmWFLORDqbkogJ4EzYOc-NCZu31~I5nPNNM4b1mTbGSfl5xtFkPvFfW8qWx4NfANqPWMO~0sl48Sp9fp5GHZwCKXRtptRIa~YEa1qhCERDt88CmFWVbARWQDxv1SMk5OUV7ONLhGqwarrDPpSGv5A6EcJCRfp~Kis0VadrjIeyPpfBusgoig~hV3fagFA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
-    </Cocktail>
-    <Cocktail>
-      <CocktailImage src="https://s3-alpha-sig.figma.com/img/c777/e5b5/2e474059fe3922ddc038e6d7e649ff4a?Expires=1661126400&Signature=f4sEXTcbRDXs6km0aWRhlcFt9Bfv3Ifl0IJ9AZ6-OqQkubTz11ymeUGXff6EeM1wz4M-prPjSiwX6F6W6~QivF8DDGmTtgjkEvxHLifePrYTV8vDVj8~QLPEaEOAtXfSYDS4Zr5p5wadNNp2x6cwn2-RtGmWFLORDqbkogJ4EzYOc-NCZu31~I5nPNNM4b1mTbGSfl5xtFkPvFfW8qWx4NfANqPWMO~0sl48Sp9fp5GHZwCKXRtptRIa~YEa1qhCERDt88CmFWVbARWQDxv1SMk5OUV7ONLhGqwarrDPpSGv5A6EcJCRfp~Kis0VadrjIeyPpfBusgoig~hV3fagFA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
-    </Cocktail>
-    <Cocktail>
-      <CocktailImage src="https://s3-alpha-sig.figma.com/img/c777/e5b5/2e474059fe3922ddc038e6d7e649ff4a?Expires=1661126400&Signature=f4sEXTcbRDXs6km0aWRhlcFt9Bfv3Ifl0IJ9AZ6-OqQkubTz11ymeUGXff6EeM1wz4M-prPjSiwX6F6W6~QivF8DDGmTtgjkEvxHLifePrYTV8vDVj8~QLPEaEOAtXfSYDS4Zr5p5wadNNp2x6cwn2-RtGmWFLORDqbkogJ4EzYOc-NCZu31~I5nPNNM4b1mTbGSfl5xtFkPvFfW8qWx4NfANqPWMO~0sl48Sp9fp5GHZwCKXRtptRIa~YEa1qhCERDt88CmFWVbARWQDxv1SMk5OUV7ONLhGqwarrDPpSGv5A6EcJCRfp~Kis0VadrjIeyPpfBusgoig~hV3fagFA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
-    </Cocktail>
-    <Cocktail>
-      <CocktailImage src="https://s3-alpha-sig.figma.com/img/c777/e5b5/2e474059fe3922ddc038e6d7e649ff4a?Expires=1661126400&Signature=f4sEXTcbRDXs6km0aWRhlcFt9Bfv3Ifl0IJ9AZ6-OqQkubTz11ymeUGXff6EeM1wz4M-prPjSiwX6F6W6~QivF8DDGmTtgjkEvxHLifePrYTV8vDVj8~QLPEaEOAtXfSYDS4Zr5p5wadNNp2x6cwn2-RtGmWFLORDqbkogJ4EzYOc-NCZu31~I5nPNNM4b1mTbGSfl5xtFkPvFfW8qWx4NfANqPWMO~0sl48Sp9fp5GHZwCKXRtptRIa~YEa1qhCERDt88CmFWVbARWQDxv1SMk5OUV7ONLhGqwarrDPpSGv5A6EcJCRfp~Kis0VadrjIeyPpfBusgoig~hV3fagFA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
     </Cocktail>
   </Wrapper>
   );
