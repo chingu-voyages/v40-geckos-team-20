@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import CocktailListContextProvider from './context/actions/cocktailList-actions';
+import { GlobalContextProvider } from './context/use-cocktailContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CocktailListContextProvider>
+    <GlobalContextProvider>
       <App />
-    </CocktailListContextProvider>
+    </GlobalContextProvider>
   </React.StrictMode>
 );
