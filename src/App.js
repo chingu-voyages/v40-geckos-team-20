@@ -1,4 +1,5 @@
 import './App.css';
+import GlobalStyles from './components/GlobalStyles';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       {/* Cockail List */}
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
+      <GlobalStyles />
     </div>
   );
 }
