@@ -1,5 +1,6 @@
 import './App.css';
 import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
+import TestContextSelectedCocktail from './components/_TestComponents/TestContextSelectedCocktail';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
       <TestContextCocktailList />
+      <TestContextSelectedCocktail />
     </div>
   );
 }

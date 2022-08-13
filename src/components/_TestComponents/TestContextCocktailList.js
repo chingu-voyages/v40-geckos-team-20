@@ -12,10 +12,11 @@ const Test_Context = () => {
   const clickHandlerSearch = () => searchCocktails('summer');
   const clickHandlerClear = () => clearCocktails();
 
-  console.log(cocktails);
+  console.log('cocktails state: ', cocktails);
 
   return (
     <div>
+      <h2>Test Cocktail List</h2>
       <button onClick={clickHandlerRandom}>Get Random List</button>
       <button onClick={clickHandlerSearch}>Search</button>
       <button onClick={clickHandlerClear}>Clear List</button>
