@@ -1,5 +1,5 @@
 import './App.css';
-import Test_Context from './components/_TestComponents/Test_Context';
+import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       {/* Cockail List */}
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
-      <Test_Context />
+      <TestContextCocktailList />
     </div>
   );
 }
