@@ -1,20 +1,7 @@
 import './App.css';
-import { useCocktailContext } from './context/use-cocktailContext';
-import { useEffect } from 'react';
+import Test_Context from './components/_TestComponents/Test_Context';
 
 function App() {
-  const { cocktails, searchCocktails, getRandomCocktails, clearCocktails } =
-    useCocktailContext();
-
-  useEffect(() => {
-    // searchCocktails('summer');
-    getRandomCocktails(6);
-    setTimeout(clearCocktails, 5000);
-  }, []);
-
-  console.log(cocktails.status);
-  console.log(cocktails.drinks);
-
   return (
     <div className='App'>
       <h1>EZ Cocktails</h1>
@@ -23,6 +10,7 @@ function App() {
       {/* Cockail List */}
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
+      <Test_Context />
     </div>
   );
 }
