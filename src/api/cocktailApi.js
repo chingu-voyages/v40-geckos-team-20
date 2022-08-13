@@ -29,8 +29,10 @@ const getRandomCocktail = () => {
 
 const getCocktailDetails = (id) => {
   if (!id) throw new Error('getCocktailDetails api method called with no id!');
-  if (typeof id !== 'string' && typeof id !== 'number')
-    throw new Error('getCocktailDetails api method called with invalid id!');
+  if (typeof id !== 'number')
+    throw new Error(
+      'getCocktailDetails api method must be called with an id that is a number!'
+    );
   const results = sendHttpRequest({
     url: `${URL.GET_COCKTAIL}${id}`,
   });
