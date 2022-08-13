@@ -53,6 +53,10 @@ const GlobalStyles = createGlobalStyle`
   #root, #__next {
     isolation: isolate;
   }
+
+  #root {
+    height: 100%;
+  }
 `;
 
 export default GlobalStyles;
