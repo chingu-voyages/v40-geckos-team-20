@@ -1,3 +1,7 @@
+/*
+Maps to endpoints at Cocktail DB API: https://www.thecocktaildb.com/api.php
+*/
+
 import sendHttpRequest from '../utils/sendHttpRequest';
 
 const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1';
@@ -8,8 +12,10 @@ const URL = {
 };
 
 const searchByName = (searchTerm = '') => {
+  if (typeof searchTerm !== 'string' && typeof searchTerm !== 'number')
+    throw new Error('searchByName api method called with invalid searchTerm!');
   const results = sendHttpRequest({
-    url: `${URL.SEARCH}/${searchTerm}`,
+    url: `${URL.SEARCH}${searchTerm}`,
   });
   return results;
 };
@@ -22,10 +28,11 @@ const getRandomCocktail = () => {
 };
 
 const getCocktailDetails = (id) => {
-  if (!id)
-    throw new Error('No id supplied to getCocktailDetails api endpoint!');
+  if (!id) throw new Error('getCocktailDetails api method called with no id!');
+  if (typeof id !== 'string' && typeof id !== 'number')
+    throw new Error('getCocktailDetails api method called with invalid id!');
   const results = sendHttpRequest({
-    url: `${URL.GET_COCKTAIL}/${id}`,
+    url: `${URL.GET_COCKTAIL}${id}`,
   });
   return results;
 };
