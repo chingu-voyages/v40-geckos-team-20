@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCocktailContext } from '../../context/use-cocktailContext';
+import { useCocktailContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
 
 console.log(CONTEXT_STATUS);

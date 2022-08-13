@@ -1,9 +1,9 @@
 import React from 'react';
-import { useCocktailContext } from '../../context/use-cocktailContext';
+import { useSelectedCocktailContext } from '../../context/use-context';
 
 const TestContextSelectedCocktail = () => {
   const { selectedCocktail, updateSelectedCocktail, clearSelectedCocktail } =
-    useCocktailContext();
+    useSelectedCocktailContext();
 
   const clickHandlerUpdate = () => updateSelectedCocktail(11007);
   const clickHandlerClear = () => clearSelectedCocktail('summer');
