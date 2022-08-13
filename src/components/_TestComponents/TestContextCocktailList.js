@@ -1,12 +1,12 @@
 import React from 'react';
-import { useCocktailContext } from '../../context/use-context';
+import { useCocktailListContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
 
 console.log(CONTEXT_STATUS);
 
 const Test_Context = () => {
   const { cocktails, searchCocktails, getRandomCocktails, clearCocktails } =
-    useCocktailContext();
+    useCocktailListContext();
 
   const clickHandlerRandom = () => getRandomCocktails(6);
   const clickHandlerSearch = () => searchCocktails('summer');

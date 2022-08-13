@@ -14,7 +14,7 @@ const GlobalContextProvider = ({ children }) => (
   </CocktailListContextProvider>
 );
 
-const useCocktailContext = () => {
+const useCocktailListContext = () => {
   const { cocktails, searchCocktails, getRandomCocktails, clearCocktails } =
     useContext(CocktailListContext);
 
@@ -38,7 +38,7 @@ const useSelectedCocktailContext = () => {
 };
 
 export {
-  useCocktailContext,
+  useCocktailListContext,
   useSelectedCocktailContext,
   GlobalContextProvider,
 };
