@@ -1,34 +1,35 @@
-import React from "react";
 import "./SearchBar.css";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function SearchBar() {
+  const [message, setMessage] = useState();
+
   return (
-    <section>
-      <form>
-        <input
-          type="text"
-          placeholder="Search for a cocktail..."
-          id="search-bar"
-        />
+    <div className="SearchBar">
+      <input
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Search for a cocktail..."
+        id="search-bar"
+      />
+      <button disabled={!message} className="search-btn">
+        Search
+      </button>
 
-        <input type="button" value="Search" className="search-btn" />
-
-        <div class="dropdown">
-          <button class="btn" id="categories">
-            Categories
-          </button>
-          <div class="dropdown-content">
-            {" "}
-            <a href="#" rel="noreferrer" target="_blank">
-              Alcoholic
-            </a>
-            <a href="#" rel="noreferrer" target="_blank">
-              Non-Alcholic
-            </a>
-          </div>
+      <div class="dropdown">
+        <button class="btn" id="categories">
+          Categories
+        </button>
+        <div class="dropdown-content">
+          {" "}
+          <a href="#" rel="noreferrer" target="_blank">
+            Alcoholic
+          </a>
+          <a href="#" rel="noreferrer" target="_blank">
+            Non-Alcholic
+          </a>
         </div>
-      </form>
-    </section>
+      </div>
+    </div>
   );
 }
