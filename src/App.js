@@ -11,8 +11,9 @@ function App() {
       {/* Cockail List */}
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
-      <TestContextCocktailList />
-      <TestContextSelectedCocktail />
+      {/* FOR CODE REVIEW / TESTING - ADD THE FOLLOWING TWO COMPONENTS */}
+      {/* <TestContextCocktailList /> */}
+      {/* <TestContextSelectedCocktail /> */}
     </div>
   );
 }
