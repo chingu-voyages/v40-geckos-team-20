@@ -3,6 +3,7 @@
 :root {
   --primary-color: #ca0000;
   --secondary-color: #ffffff;
+  --font-family: "Inter", sans-serif;
 }
 
 form {
@@ -21,7 +22,8 @@ form {
 }
 
 /* Dropdown Button  and  Search Button CSS*/
-.btn {
+.btn,
+.search-btn {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   padding: 10px;
@@ -31,6 +33,10 @@ form {
   margin-left: 10px;
   font-family: "Inter", sans-serif;
   font-weight: bold;
+}
+
+.search-btn:active {
+  transform: scale(0.8, 0.8);
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -43,17 +49,19 @@ form {
 .dropdown-content {
   display: none;
   position: absolute;
+  right: 0;
   background-color: var(--primary-color);
-  min-width: 100px;
+  min-width: 30px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
   color: var(--secondary-color);
-  padding: 12px 16px;
+  padding: 11px;
   text-decoration: none;
   display: block;
   font-size: 11px;

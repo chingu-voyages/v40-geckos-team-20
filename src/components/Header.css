@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+
+.Header h1 {
+  margin-top: 0px;
+  font-size: 80px;
+  color: #ca0000;
+  font-family: "Oswald", sans-serif;
+}
+
+.Header img {
+  margin-top: 70px;
+  margin-bottom: 0px;
+  width: 151px;
+  height: 141px;
+}

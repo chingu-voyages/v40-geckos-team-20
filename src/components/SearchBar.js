@@ -1,5 +1,6 @@
 import React from "react";
 import "./SearchBar.css";
+import styled from "styled-components";
 
 export default function SearchBar() {
   return (
@@ -11,10 +12,12 @@ export default function SearchBar() {
           id="search-bar"
         />
 
-        <input type="button" value="Search" className="btn" />
+        <input type="button" value="Search" className="search-btn" />
 
         <div class="dropdown">
-          <button class="btn">Categories</button>
+          <button class="btn" id="categories">
+            Categories
+          </button>
           <div class="dropdown-content">
             {" "}
             <a href="#" rel="noreferrer" target="_blank">
@@ -26,9 +29,6 @@ export default function SearchBar() {
           </div>
         </div>
       </form>
-      <div className="hint">
-        suggested cocktails: cosmo, moscow mule, sazerac...
-      </div>
     </section>
   );
 }
