@@ -1,4 +1,5 @@
 import './App.css';
+import CocktailList from './components/CocktailList';
 
 function App() {
   return (
@@ -6,7 +7,7 @@ function App() {
       <h1>EZ Cocktails</h1>
       {/* Header */}
       {/* Search Bar */}
-      {/* Cockail List */}
+      <CocktailList />
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
     </div>
