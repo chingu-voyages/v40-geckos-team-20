@@ -1,4 +1,5 @@
 import './App.css';
+import CocktailList from './components/CocktailList';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from "styled-components/macro";
 
@@ -26,7 +27,7 @@ function App() {
       <Title>EZ Cocktails</Title>
       {/* Header */}
       {/* Search Bar */}
-      {/* Cockail List */}
+      <CocktailList />
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
       </Wrapper>
