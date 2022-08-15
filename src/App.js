@@ -1,5 +1,5 @@
 import './App.css';
-import GlobalStyles from './components/GlobalStyles';
+import GlobalStyles from './styles/GlobalStyles';
 import styled from "styled-components/macro";
 
 const Background = styled.div`
