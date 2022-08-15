@@ -1,5 +1,5 @@
 import './App.css';
-import CocktailList from './components/CocktailList';
+import CocktailList from './components/CocktailList/CocktailList';
 
 function App() {
   return (
