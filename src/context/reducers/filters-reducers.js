@@ -18,8 +18,8 @@ const FiltersReducer = (filters, action) => {
       };
     case FILTER_ACTIONS.LOADING:
       return { ...filters, status: CONTEXT_STATUS.LOADING };
-    case FILTER_ACTIONS.CLEAR:
-      return { ...FILTERS_INITIAL };
+    case FILTER_ACTIONS.CLEAR_SELECTED:
+      return { ...filters, selectedFilters: null };
     default:
       console.log(`Unknown Cocktail List action: ${action.type}`);
       return filters;

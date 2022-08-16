@@ -1,5 +1,8 @@
 import React from 'react';
-import { useCocktailListContext } from '../../context/use-context';
+import {
+  useCocktailListContext,
+  useFiltersContext,
+} from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
 
 console.log(CONTEXT_STATUS);

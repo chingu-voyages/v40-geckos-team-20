@@ -25,5 +25,5 @@ export const FILTER_ACTIONS = {
   LOADING: 'loading',
   SET_ALLFILTERS: 'setallfilters',
   UPDATE_FILTERS: 'updatefilters',
-  CLEAR: 'clear',
+  CLEAR_SELECTED: 'clearselected',
 };

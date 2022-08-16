@@ -2,13 +2,13 @@ import React from 'react';
 import { useFiltersContext } from '../../context/use-context';
 
 const TestContextFilters = () => {
-  const { filters, getAllFilters, updateFilters, clearAllFilters } =
+  const { filters, getAllFilters, updateFilters, clearSelectedFilters } =
     useFiltersContext();
 
   const testFilters = {
     categories: ['a', 'b', 'c'],
     glasses: ['tall', 'short'],
-    alcoholic: ['alcoholic'],
+    alcoholic: ['alcoholic', 'another'],
     misc1: { a: 1, b: 2 },
     misc2: [1, 2, 3, 4, 5],
     misc3: 1,
@@ -17,7 +17,7 @@ const TestContextFilters = () => {
 
   const clickHandlerGetFilters = () => getAllFilters();
   const clickHandlerUpdateFilter = () => updateFilters(testFilters);
-  const clickHandlerClearFilter = () => clearAllFilters();
+  const clickHandlerClearFilter = () => clearSelectedFilters();
 
   console.log(filters);
 

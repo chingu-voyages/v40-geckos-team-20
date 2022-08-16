@@ -75,10 +75,10 @@ export default function FiltersContextProvider({ children }) {
     }
   };
 
-  // CLEAR ALL FILTERS
-  const clearAllFilters = async () => {
+  // CLEAR SELECTED FILTERS
+  const clearSelectedFilters = async () => {
     filtersDispatcher({
-      type: FILTER_ACTIONS.CLEAR,
+      type: FILTER_ACTIONS.CLEAR_SELECTED,
     });
   };
 
@@ -88,7 +88,7 @@ export default function FiltersContextProvider({ children }) {
         filters,
         getAllFilters,
         updateFilters,
-        clearAllFilters,
+        clearSelectedFilters,
       }}
     >
       {children}

@@ -9,7 +9,6 @@ export const CTLIST_INITIAL = {
   status: CONTEXT_STATUS.IDLE,
   drinks: null,
   searchTerm: null,
-  filters: null,
   error: null,
 };
 

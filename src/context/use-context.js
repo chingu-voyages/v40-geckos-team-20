@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import CocktailListContextProvider, {
   CocktailListContext,
 } from './actions/cocktailList-actions';
@@ -18,8 +18,21 @@ const GlobalContextProvider = ({ children }) => (
 );
 
 const useCocktailListContext = () => {
-  const { cocktails, searchCocktails, getRandomCocktails, clearCocktails } =
-    useContext(CocktailListContext);
+  const {
+    cocktails,
+    searchCocktails,
+    getRandomCocktails,
+    filterCocktails,
+    clearCocktails,
+  } = useContext(CocktailListContext);
+  const { filters } = useContext(FiltersContext);
+
+  const { selectedFilters } = filters;
+
+  useEffect(() => {
+    console.log('My useEffect is running baby!');
+    console.log(selectedFilters);
+  }, [selectedFilters]);
 
   return {
     cocktails,
@@ -41,13 +54,13 @@ const useSelectedCocktailContext = () => {
 };
 
 const useFiltersContext = () => {
-  const { filters, getAllFilters, updateFilters, clearAllFilters } =
+  const { filters, getAllFilters, updateFilters, clearSelectedFilters } =
     useContext(FiltersContext);
   return {
     filters,
     getAllFilters,
     updateFilters,
-    clearAllFilters,
+    clearSelectedFilters,
   };
 };
 
