@@ -18,6 +18,9 @@ export default function CocktailListContextProvider({ children }) {
     CocktailListReducer,
     CTLIST_INITIAL
   );
+  /**
+   * const [allCocktails, setAllCocktails] = useState(null)
+   */
 
   // SEARCH COCKTAILS
   const searchCocktails = async (searchTerm) => {
@@ -27,6 +30,11 @@ export default function CocktailListContextProvider({ children }) {
       });
       const data = await searchByName(searchTerm);
       const drinks = data?.drinks ? data.drinks : [];
+
+      /**
+       *  update allCocktails -> setAllCocktails
+       */
+
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
         payload: { drinks, searchTerm },
@@ -56,6 +64,9 @@ export default function CocktailListContextProvider({ children }) {
         return data.drinks[0];
       });
       const drinks = await Promise.all(promises);
+      /**
+       *  update allCocktails -> setAllCocktails
+       */
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
         payload: { drinks },
@@ -71,6 +82,9 @@ export default function CocktailListContextProvider({ children }) {
     cocktailListDispatcher({
       type: CTLIST_ACTIONS.CLEAR_LIST,
     });
+    /**
+     *  clear allCocktails -> setAllCocktails
+     */
   };
 
   return (
