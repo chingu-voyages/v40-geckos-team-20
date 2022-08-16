@@ -1,5 +1,5 @@
 import React, { useReducer, createContext } from 'react';
-import FiltersReducer from '../reducers/fitlers-reducers';
+import FiltersReducer from '../reducers/filters-reducers';
 import { CONTEXT_STATUS, FILTER_ACTIONS } from '../constants';
 
 export const FiltersContext = createContext();

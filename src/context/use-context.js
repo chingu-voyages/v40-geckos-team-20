@@ -5,11 +5,14 @@ import CocktailListContextProvider, {
 import SelectedCocktailContextProvider, {
   SelectedCocktailContext,
 } from './actions/selectedCocktail-actions';
+import FiltersContextProvider, {
+  FiltersContext,
+} from './actions/filters-actions';
 
 const GlobalContextProvider = ({ children }) => (
   <CocktailListContextProvider>
     <SelectedCocktailContextProvider>
-      {children}
+      <FiltersContextProvider>{children}</FiltersContextProvider>
     </SelectedCocktailContextProvider>
   </CocktailListContextProvider>
 );
@@ -37,8 +40,20 @@ const useSelectedCocktailContext = () => {
   };
 };
 
+const useFiltersContext = () => {
+  const { filters, getAllFilters, updateFilters, clearAllFilters } =
+    useContext(FiltersContext);
+  return {
+    filters,
+    getAllFilters,
+    updateFilters,
+    clearAllFilters,
+  };
+};
+
 export {
   useCocktailListContext,
   useSelectedCocktailContext,
+  useFiltersContext,
   GlobalContextProvider,
 };
