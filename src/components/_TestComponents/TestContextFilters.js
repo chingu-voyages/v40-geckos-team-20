@@ -23,6 +23,7 @@ const TestContextFilters = () => {
 
   return (
     <div>
+      <h2>Test Filters</h2>
       <button onClick={clickHandlerGetFilters}>Get Fitlers</button>
       <button onClick={clickHandlerUpdateFilter}>Update Filter</button>
       <button onClick={clickHandlerClearFilter}>Clear Filter</button>

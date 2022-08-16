@@ -1,6 +1,11 @@
 import React, { useReducer, createContext } from 'react';
 import FiltersReducer from '../reducers/filters-reducers';
 import { CONTEXT_STATUS, FILTER_ACTIONS } from '../constants';
+import {
+  getFilterListOfAlcoholic,
+  getFilterListOfCategories,
+  getFilterListOfGlasses,
+} from '../../api/cocktailApi';
 
 export const FiltersContext = createContext();
 
@@ -23,12 +28,18 @@ export default function FiltersContextProvider({ children }) {
       filtersDispatcher({
         type: FILTER_ACTIONS.LOADING,
       });
-      // const data = await searchByName(searchTerm);
-      // const drinks = data?.drinks ? data.drinks : [];
+
+      const cat_data = await getFilterListOfCategories();
+      const categories = cat_data.drinks.map((f) => f.strCategory);
+      const alc_data = await getFilterListOfAlcoholic();
+      const alcoholic = alc_data.drinks.map((f) => f.strAlcoholic);
+      const gl_data = await getFilterListOfGlasses();
+      const glasses = gl_data.drinks.map((f) => f.strGlass);
+
       const allFilters = {
-        categories: ['c1', 'c2', 'c3'],
-        glasses: ['g1', 'g2', 'g3'],
-        alcoholic: ['a1', 'a2', 'a3'],
+        categories,
+        glasses,
+        alcoholic,
       };
 
       filtersDispatcher({
