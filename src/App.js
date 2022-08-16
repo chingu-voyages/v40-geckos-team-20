@@ -13,8 +13,8 @@ function App() {
       {/* Cocktail Details Preview*/}
       {/* Some new bug fix! */}
       {/* FOR CODE REVIEW / TESTING - ADD THE FOLLOWING TWO COMPONENTS */}
-      {<TestContextCocktailList />}
-      {<TestContextSelectedCocktail />}
+      <TestContextCocktailList />
+      <TestContextSelectedCocktail />
     </div>
   );
 }
