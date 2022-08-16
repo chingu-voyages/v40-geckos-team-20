@@ -30,16 +30,13 @@ export default function FiltersContextProvider({ children }) {
       });
 
       const cat_data = await getFilterListOfCategories();
-      const categories = cat_data.drinks.map((f) => f.strCategory);
       const alc_data = await getFilterListOfAlcoholic();
-      const alcoholic = alc_data.drinks.map((f) => f.strAlcoholic);
       const gl_data = await getFilterListOfGlasses();
-      const glasses = gl_data.drinks.map((f) => f.strGlass);
 
       const allFilters = {
-        categories,
-        glasses,
-        alcoholic,
+        categories: cat_data.drinks.map((f) => f.strCategory),
+        glasses: gl_data.drinks.map((f) => f.strGlass),
+        alcoholic: alc_data.drinks.map((f) => f.strAlcoholic),
       };
 
       filtersDispatcher({
