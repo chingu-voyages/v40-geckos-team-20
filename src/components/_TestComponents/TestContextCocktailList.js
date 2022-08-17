@@ -4,6 +4,7 @@ import {
   useFiltersContext,
 } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
+import styled from 'styled-components/macro';
 
 console.log(CONTEXT_STATUS);
 
@@ -18,7 +19,7 @@ const Test_Context = () => {
   console.log('cocktails state: ', cocktails);
 
   return (
-    <div>
+    <Wrapper>
       <h2>Test Cocktail List</h2>
       <button onClick={clickHandlerRandom}>Get Random List</button>
       <button onClick={clickHandlerSearch}>Search</button>
@@ -27,8 +28,12 @@ const Test_Context = () => {
         cocktails.drinks.map((cocktail, i) => (
           <p key={i}>{cocktail.strDrink}</p>
         ))}
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  color: white;
+`;
 
 export default Test_Context;

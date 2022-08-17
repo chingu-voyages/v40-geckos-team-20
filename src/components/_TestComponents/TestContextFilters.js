@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFiltersContext } from '../../context/use-context';
+import styled from 'styled-components/macro';
 
 const TestContextFilters = () => {
   const { filters, getAllFilters, updateFilters, clearSelectedFilters } =
@@ -22,13 +23,17 @@ const TestContextFilters = () => {
   console.log(filters);
 
   return (
-    <div>
+    <Wrapper>
       <h2>Test Filters</h2>
       <button onClick={clickHandlerGetFilters}>Get Fitlers</button>
       <button onClick={clickHandlerUpdateFilter}>Update Filter</button>
       <button onClick={clickHandlerClearFilter}>Clear Filter</button>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  color: white;
+`;
 
 export default TestContextFilters;
