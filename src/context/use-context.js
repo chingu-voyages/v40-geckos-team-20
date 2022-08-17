@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo } from 'react';
+import { useContext, useEffect, useCallback } from 'react';
 import CocktailListContextProvider, {
   CocktailListContext,
 } from './actions/cocktailList-actions';
@@ -32,7 +32,8 @@ const useCocktailListContext = () => {
   useEffect(() => {
     console.log('My useEffect is running baby!');
     console.log(selectedFilters);
-  }, [selectedFilters]);
+    if (selectedFilters) filterCocktails(selectedFilters);
+  }, [selectedFilters, filterCocktails]);
 
   return {
     cocktails,

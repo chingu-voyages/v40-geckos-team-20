@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useState, useCallback } from 'react';
 import { searchByName, getRandomCocktail } from '../../api/cocktailApi';
 import CocktailListReducer from '../reducers/cocktailList-reducer';
 import { CONTEXT_STATUS, CTLIST_ACTIONS } from '../constants';
@@ -17,9 +17,7 @@ export default function CocktailListContextProvider({ children }) {
     CocktailListReducer,
     CTLIST_INITIAL
   );
-  /**
-   * const [allCocktails, setAllCocktails] = useState(null)
-   */
+  const [allCocktails, setAllCocktails] = useState(null);
 
   // SEARCH COCKTAILS
   const searchCocktails = async (searchTerm) => {
@@ -33,6 +31,7 @@ export default function CocktailListContextProvider({ children }) {
       /**
        *  update allCocktails -> setAllCocktails
        */
+      setAllCocktails(drinks);
 
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
@@ -66,6 +65,8 @@ export default function CocktailListContextProvider({ children }) {
       /**
        *  update allCocktails -> setAllCocktails
        */
+      setAllCocktails(drinks);
+
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
         payload: { drinks },
@@ -76,6 +77,16 @@ export default function CocktailListContextProvider({ children }) {
     }
   };
 
+  const filterCocktails = useCallback(
+    (selectedFilters) => {
+      cocktailListDispatcher({
+        type: CTLIST_ACTIONS.UPDATE_LIST,
+        payload: { drinks: selectedFilters ? [1, 2, 3, 4] : allCocktails },
+      });
+    },
+    [allCocktails]
+  );
+
   // CLEAR COCKTAILS
   const clearCocktails = async () => {
     cocktailListDispatcher({
@@ -84,6 +95,7 @@ export default function CocktailListContextProvider({ children }) {
     /**
      *  clear allCocktails -> setAllCocktails
      */
+    setAllCocktails(null);
   };
 
   return (
@@ -92,6 +104,7 @@ export default function CocktailListContextProvider({ children }) {
         cocktails,
         searchCocktails,
         getRandomCocktails,
+        filterCocktails,
         clearCocktails,
       }}
     >
