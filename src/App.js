@@ -1,5 +1,5 @@
 import './App.css';
-import CocktailList from './components/CocktailList';
+import CocktailList from './components/CocktailList/CocktailList';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from "styled-components/macro";
 
