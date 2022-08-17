@@ -1,4 +1,5 @@
 import './App.css';
+import CocktailDetailPreview from './components/CocktailDetailPreview/CocktailDetailPreview';
 import CocktailList from './components/CocktailList/CocktailList';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
@@ -31,7 +32,7 @@ function App() {
         {/* Header */}
         {/* Search Bar */}
         <CocktailList />
-        {/* Cocktail Details Preview*/}
+        <CocktailDetailPreview />
         {/* Some new bug fix! */}
         {/* FOR CODE REVIEW / TESTING - ADD THE FOLLOWING TWO COMPONENTS */}
         {/* <TestContextCocktailList /> */}
