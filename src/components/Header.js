@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header.css";
 import logo from "../images/logo.png";
-import styled from "styled-components";
 
 export default function Header() {
   return (

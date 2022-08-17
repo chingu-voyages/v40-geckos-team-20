@@ -1,6 +1,5 @@
 import "./SearchBar.css";
 import React, { useState } from "react";
-import styled from "styled-components";
 
 export default function SearchBar() {
   const [message, setMessage] = useState();
@@ -16,16 +15,16 @@ export default function SearchBar() {
         Search
       </button>
 
-      <div class="dropdown">
-        <button class="btn" id="categories">
+      <div className="dropdown">
+        <button className="btn" id="categories">
           Categories
         </button>
-        <div class="dropdown-content">
+        <div className="dropdown-content">
           {" "}
-          <a href="#" rel="noreferrer" target="_blank">
+          <a href="#" rel="noreferrer">
             Alcoholic
           </a>
-          <a href="#" rel="noreferrer" target="_blank">
+          <a href="#" rel="noreferrer">
             Non-Alcholic
           </a>
         </div>
