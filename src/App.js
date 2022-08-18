@@ -3,7 +3,10 @@ import CocktailDetailPreview from './components/CocktailDetailPreview/CocktailDe
 import CocktailList from './components/CocktailList/CocktailList';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
+import SearchBar from './components/SearchBar';
+import Header from './components/Header';
 
+// Components used for testing
 import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
 import TestContextSelectedCocktail from './components/_TestComponents/TestContextSelectedCocktail';
 import TestContextFilters from './components/_TestComponents/TestContextFilters';
@@ -21,20 +24,14 @@ const Wrapper = styled.div`
   padding: 80px 0;
 `;
 
-const Title = styled.h1`
-  text-align: center;
-`;
-
 function App() {
   return (
     <Background>
       <Wrapper>
-        <Title>EZ Cocktails</Title>
-        {/* Header */}
-        {/* Search Bar */}
+        <Header />
+        <SearchBar />
         <CocktailList />
         <CocktailDetailPreview />
-        {/* Some new bug fix! */}
         {/* FOR CODE REVIEW / TESTING - ADD THE FOLLOWING TWO COMPONENTS */}
         <TestContextFilters />
         <TestContextCocktailList />
