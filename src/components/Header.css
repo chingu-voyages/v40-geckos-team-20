@@ -5,6 +5,7 @@
   font-size: 80px;
   color: #ca0000;
   font-family: "Oswald", sans-serif;
+  text-align: center;
 }
 
 .Header img {
@@ -12,4 +13,8 @@
   margin-bottom: 0px;
   width: 151px;
   height: 141px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

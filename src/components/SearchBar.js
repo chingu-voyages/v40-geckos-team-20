@@ -21,12 +21,8 @@ export default function SearchBar() {
         </button>
         <div className="dropdown-content">
           {" "}
-          <a href="#" rel="noreferrer">
-            Alcoholic
-          </a>
-          <a href="#" rel="noreferrer">
-            Non-Alcholic
-          </a>
+          <div>Alcoholic</div>
+          <div>Non-Alcholic</div>
         </div>
       </div>
     </div>

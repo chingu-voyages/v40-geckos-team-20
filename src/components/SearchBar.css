@@ -6,8 +6,9 @@
   --font-family: "Inter", sans-serif;
 }
 
-form {
+.SearchBar {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 /* Search Bar */
@@ -64,7 +65,7 @@ form {
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content div {
   color: var(--secondary-color);
   padding: 11px;
   text-decoration: none;
@@ -73,7 +74,7 @@ form {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+.dropdown-content div:hover {
   background-color: rgb(226, 48, 48);
 }
 
