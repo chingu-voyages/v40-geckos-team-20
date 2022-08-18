@@ -13,7 +13,7 @@ const Test_Context = () => {
     useCocktailListContext();
 
   const clickHandlerRandom = () => getRandomCocktails(6);
-  const clickHandlerSearch = () => searchCocktails('summer');
+  const clickHandlerSearch = () => searchCocktails('berry');
   const clickHandlerClear = () => clearCocktails();
 
   console.log('cocktails state: ', cocktails);

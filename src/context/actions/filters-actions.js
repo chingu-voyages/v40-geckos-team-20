@@ -60,6 +60,14 @@ export default function FiltersContextProvider({ children }) {
         throw new Error('addFilters requires an object argument of filters!');
 
       const names = ['categories', 'glasses', 'alcoholic'];
+
+      for (const name of names) {
+        if (filters.hasOwnProperty(name) && filters[name].constructor !== Array)
+          throw new Error(
+            `updateFilters received the property "${name}" as a non-array, it must be an array!`
+          );
+      }
+
       const mapped = Object.keys(filters)
         .filter((i) => names.includes(i))
         .map((i) => ({ [i]: filters[i] }));

@@ -88,11 +88,36 @@ export default function CocktailListContextProvider({ children }) {
         return;
       }
       console.log('In filtering function, filtering cocktails...');
+
+      if (!selectedFilters) {
+        cocktailListDispatcher({
+          type: CTLIST_ACTIONS.UPDATE_LIST,
+          payload: { drinks: allCocktails, filtered: false },
+        });
+        return;
+      }
+
+      const passArrayFilter = (testItem, itemArray) => {
+        if (!itemArray) return true;
+        return itemArray.includes(testItem);
+      };
+
+      const {
+        categories = null,
+        glasses = null,
+        alcoholic = null,
+      } = selectedFilters;
+
+      const drinks = allCocktails?.filter(
+        (d) =>
+          passArrayFilter(d.strCategory, categories) &&
+          passArrayFilter(d.strGlass, glasses) &&
+          passArrayFilter(d.strAlcoholic, alcoholic)
+      );
+
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: selectedFilters
-          ? { drinks: [1, 2, 3, 4], filtered: true }
-          : { drinks: allCocktails, filtered: false },
+        payload: { drinks, filtered: true },
       });
     },
     [allCocktails, cocktails.filtered]

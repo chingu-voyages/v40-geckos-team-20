@@ -7,9 +7,10 @@ const TestContextFilters = () => {
     useFiltersContext();
 
   const testFilters = {
-    categories: ['a', 'b', 'c'],
-    glasses: ['tall', 'short'],
-    alcoholic: ['alcoholic', 'another'],
+    categories: ['Punch / Party Drink', 'Coffee / Tea'],
+    glasses: ['Punch Bowl', 'Irish coffee cup'],
+    alcoholic: ['Non alcoholic'],
+    // alcoholic: { a: ['Non alcoholic'], b: 'yes' },
     misc1: { a: 1, b: 2 },
     misc2: [1, 2, 3, 4, 5],
     misc3: 1,
