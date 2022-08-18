@@ -8,6 +8,7 @@ export const CocktailListContext = createContext();
 export const CTLIST_INITIAL = {
   status: CONTEXT_STATUS.IDLE,
   drinks: null,
+  filtered: null,
   searchTerm: null,
   error: null,
 };
@@ -35,7 +36,7 @@ export default function CocktailListContextProvider({ children }) {
 
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: { drinks, searchTerm },
+        payload: { drinks, searchTerm, filtered: false },
       });
     } catch (error) {
       console.error('TODOLATER: HANDLE THIS ERROR!');
@@ -69,7 +70,7 @@ export default function CocktailListContextProvider({ children }) {
 
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: { drinks },
+        payload: { drinks, filtered: false },
       });
     } catch (error) {
       console.error('HANDLE THIS ERROR!');
@@ -79,12 +80,22 @@ export default function CocktailListContextProvider({ children }) {
 
   const filterCocktails = useCallback(
     (selectedFilters) => {
+      console.log('In filtering function, checking if we need to filter...');
+      console.log(selectedFilters);
+      console.log(cocktails.filtered);
+      if (!selectedFilters && !cocktails.filtered) {
+        console.log('Nope do not need to filter');
+        return;
+      }
+      console.log('In filtering function, filtering cocktails...');
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: { drinks: selectedFilters ? [1, 2, 3, 4] : allCocktails },
+        payload: selectedFilters
+          ? { drinks: [1, 2, 3, 4], filtered: true }
+          : { drinks: allCocktails, filtered: false },
       });
     },
-    [allCocktails]
+    [allCocktails, cocktails.filtered]
   );
 
   // CLEAR COCKTAILS
