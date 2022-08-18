@@ -63,11 +63,11 @@ export default function FiltersContextProvider({ children }) {
       const mapped = Object.keys(filters)
         .filter((i) => names.includes(i))
         .map((i) => ({ [i]: filters[i] }));
-      const selectedFilters = mapped.length ? Object.assign(...mapped) : {};
+      const updatedFilters = mapped.length ? Object.assign(...mapped) : {};
 
       filtersDispatcher({
         type: FILTER_ACTIONS.UPDATE_FILTERS,
-        payload: { selectedFilters },
+        payload: { updatedFilters },
       });
     } catch (error) {
       console.error('HANDLE THIS ERROR!');

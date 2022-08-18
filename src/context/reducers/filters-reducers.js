@@ -11,11 +11,12 @@ const FiltersReducer = (filters, action) => {
         allFilters,
       };
     case FILTER_ACTIONS.UPDATE_FILTERS:
-      const { selectedFilters } = action.payload;
-      return {
-        ...filters,
-        selectedFilters: { ...filters.selectedFilters, ...selectedFilters },
-      };
+      const { updatedFilters } = action.payload;
+      const combined = { ...filters.updatedFilters, ...updatedFilters };
+      const selectedFilters = Object.fromEntries(
+        Object.entries(combined).filter(([_, v]) => v?.length)
+      );
+      return { ...filters, selectedFilters };
     case FILTER_ACTIONS.LOADING:
       return { ...filters, status: CONTEXT_STATUS.LOADING };
     case FILTER_ACTIONS.CLEAR_SELECTED:
