@@ -20,7 +20,7 @@ const Test_Context = () => {
       <button onClick={clickHandlerRandom}>Get Random List</button>
       <button onClick={clickHandlerSearch}>Search</button>
       <button onClick={clickHandlerClear}>Clear List</button>
-      {cocktails?.drinks?.length &&
+      {!!cocktails?.drinks?.length &&
         cocktails.drinks.map((cocktail, i) => (
           <p key={i}>{cocktail.strDrink}</p>
         ))}
