@@ -10,19 +10,10 @@ const TestContextFilters = () => {
     categories: ['Punch / Party Drink', 'Coffee / Tea'],
     glasses: ['Punch Bowl', 'Irish coffee cup'],
     alcoholic: ['Non alcoholic'],
-    // alcoholic: { a: ['Non alcoholic'], b: 'yes' },
-    misc1: { a: 1, b: 2 },
-    misc2: [1, 2, 3, 4, 5],
-    misc3: 1,
-    misc4: 'hello',
   };
   const testFiltersTwo = {
     categories: ['Punch / Party Drink'],
-    // glasses: ['Punch Bowl', 'Irish coffee cup'],
-    // alcoholic: ['Non alcoholic'],
-    // categories: [],
     glasses: [],
-    // alcoholic: [],
   };
 
   const clickHandlerGetFilters = () => getAllFilters();
