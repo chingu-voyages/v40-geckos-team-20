@@ -9,8 +9,6 @@ const TestContextSelectedCocktail = () => {
   const clickHandlerUpdate = () => updateSelectedCocktail(11007);
   const clickHandlerClear = () => clearSelectedCocktail();
 
-  console.log('selectedCocktail state: ', selectedCocktail);
-
   return (
     <Wrapper>
       <h2>Test Cocktail Details</h2>

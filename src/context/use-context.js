@@ -30,8 +30,6 @@ const useCocktailListContext = () => {
   const { selectedFilters } = filters;
 
   useEffect(() => {
-    console.log('My useEffect is running baby!');
-    console.log(selectedFilters);
     filterCocktails(selectedFilters);
   }, [selectedFilters, filterCocktails]);
 

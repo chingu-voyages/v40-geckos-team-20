@@ -6,8 +6,6 @@ import {
 import { CONTEXT_STATUS } from '../../context/constants';
 import styled from 'styled-components/macro';
 
-console.log(CONTEXT_STATUS);
-
 const Test_Context = () => {
   const { cocktails, searchCocktails, getRandomCocktails, clearCocktails } =
     useCocktailListContext();
@@ -15,8 +13,6 @@ const Test_Context = () => {
   const clickHandlerRandom = () => getRandomCocktails(6);
   const clickHandlerSearch = () => searchCocktails('berry');
   const clickHandlerClear = () => clearCocktails();
-
-  console.log('cocktails state: ', cocktails);
 
   return (
     <Wrapper>

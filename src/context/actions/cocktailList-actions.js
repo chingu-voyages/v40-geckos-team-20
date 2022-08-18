@@ -80,15 +80,7 @@ export default function CocktailListContextProvider({ children }) {
 
   const filterCocktails = useCallback(
     (selectedFilters) => {
-      console.log('In filtering function, checking if we need to filter...');
-      console.log(selectedFilters);
-      console.log(cocktails.filtered);
-      if (!selectedFilters && !cocktails.filtered) {
-        console.log('Nope do not need to filter');
-        return;
-      }
-      console.log('In filtering function, filtering cocktails...');
-
+      if (!selectedFilters && !cocktails.filtered) return;
       if (!selectedFilters) {
         cocktailListDispatcher({
           type: CTLIST_ACTIONS.UPDATE_LIST,

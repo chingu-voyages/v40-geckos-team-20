@@ -59,8 +59,10 @@ export default function FiltersContextProvider({ children }) {
       if (typeof filters !== 'object')
         throw new Error('addFilters requires an object argument of filters!');
 
+      // these are our recognized filters
       const names = ['categories', 'glasses', 'alcoholic'];
 
+      // if (and only if) a recognized filter is supplied, ensure it is an array
       for (const name of names) {
         if (filters.hasOwnProperty(name) && filters[name].constructor !== Array)
           throw new Error(
@@ -68,9 +70,12 @@ export default function FiltersContextProvider({ children }) {
           );
       }
 
+      // extract only the recognized filters into a new object; discard others.
+      // filter out the recognized keys, then rebuild the object again using map and Objct.assign
       const mapped = Object.keys(filters)
         .filter((i) => names.includes(i))
         .map((i) => ({ [i]: filters[i] }));
+      // if there were no recognized objects, return an empty object
       const updatedFilters = mapped.length ? Object.assign(...mapped) : {};
 
       filtersDispatcher({

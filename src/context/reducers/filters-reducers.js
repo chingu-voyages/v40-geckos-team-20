@@ -12,7 +12,11 @@ const FiltersReducer = (filters, action) => {
       };
     case FILTER_ACTIONS.UPDATE_FILTERS:
       const { updatedFilters } = action.payload;
-      const combined = { ...filters.updatedFilters, ...updatedFilters };
+      // get acopy of the current selected filters, and overwrite them with updated filters.
+      // if a filter is an empty array, the current will be replaced with that empty array (i.e. filters cleared)
+      // if a filter was not passed in at all, the current will be kept (i.e. if filter is not supplied, keep the current values)
+      const combined = { ...filters.selectedFilters, ...updatedFilters };
+      // remove all empty filter arrays to ensure that filter is now not applied
       const selectedFilters = Object.fromEntries(
         Object.entries(combined).filter(([_, v]) => v?.length)
       );
