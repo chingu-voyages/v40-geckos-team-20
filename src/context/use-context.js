@@ -1,22 +1,37 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import CocktailListContextProvider, {
   CocktailListContext,
 } from './actions/cocktailList-actions';
 import SelectedCocktailContextProvider, {
   SelectedCocktailContext,
 } from './actions/selectedCocktail-actions';
+import FiltersContextProvider, {
+  FiltersContext,
+} from './actions/filters-actions';
 
 const GlobalContextProvider = ({ children }) => (
   <CocktailListContextProvider>
     <SelectedCocktailContextProvider>
-      {children}
+      <FiltersContextProvider>{children}</FiltersContextProvider>
     </SelectedCocktailContextProvider>
   </CocktailListContextProvider>
 );
 
 const useCocktailListContext = () => {
-  const { cocktails, searchCocktails, getRandomCocktails, clearCocktails } =
-    useContext(CocktailListContext);
+  const {
+    cocktails,
+    searchCocktails,
+    getRandomCocktails,
+    filterCocktails,
+    clearCocktails,
+  } = useContext(CocktailListContext);
+  const { filters } = useContext(FiltersContext);
+
+  const { selectedFilters } = filters;
+
+  useEffect(() => {
+    filterCocktails(selectedFilters);
+  }, [selectedFilters, filterCocktails]);
 
   return {
     cocktails,
@@ -37,8 +52,20 @@ const useSelectedCocktailContext = () => {
   };
 };
 
+const useFiltersContext = () => {
+  const { filters, getAllFilters, updateFilters, clearSelectedFilters } =
+    useContext(FiltersContext);
+  return {
+    filters,
+    getAllFilters,
+    updateFilters,
+    clearSelectedFilters,
+  };
+};
+
 export {
   useCocktailListContext,
   useSelectedCocktailContext,
+  useFiltersContext,
   GlobalContextProvider,
 };

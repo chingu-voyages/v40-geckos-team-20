@@ -4,12 +4,13 @@ import { CONTEXT_STATUS, CTLIST_ACTIONS } from '../constants';
 const CocktailListReducer = (cocktails, action) => {
   switch (action.type) {
     case CTLIST_ACTIONS.UPDATE_LIST:
-      const { drinks, searchTerm = null } = action.payload;
+      const { drinks, searchTerm = null, filtered } = action.payload;
       return {
         ...cocktails,
         status: CONTEXT_STATUS.SUCCESS,
         drinks,
         searchTerm,
+        filtered,
       };
     case CTLIST_ACTIONS.LOADING:
       return { ...cocktails, status: CONTEXT_STATUS.LOADING };
