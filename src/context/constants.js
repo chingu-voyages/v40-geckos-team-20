@@ -19,3 +19,11 @@ export const SELCOCKTAIL_ACTIONS = {
   LOADING: 'loading',
   CLEAR: 'clear',
 };
+
+// Fitler Actions
+export const FILTER_ACTIONS = {
+  LOADING: 'loading',
+  SET_ALLFILTERS: 'setallfilters',
+  UPDATE_FILTERS: 'updatefilters',
+  CLEAR_SELECTED: 'clearselected',
+};
