@@ -33,9 +33,9 @@ function App() {
         <CocktailList />
         <CocktailDetailPreview />
         {/* FOR CODE REVIEW / TESTING - ADD THE FOLLOWING TWO COMPONENTS */}
-        {/* <TestContextFilters /> */}
-        {/* <TestContextCocktailList /> */}
-        {/* <TestContextSelectedCocktail /> */}
+        <TestContextFilters />
+        <TestContextCocktailList />
+        <TestContextSelectedCocktail />
       </Wrapper>
       <GlobalStyles />
     </Background>

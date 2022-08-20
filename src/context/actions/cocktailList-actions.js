@@ -28,16 +28,23 @@ export default function CocktailListContextProvider({ children }) {
       });
       const data = await searchByName(searchTerm);
       const drinks = data?.drinks ? data.drinks : [];
-
       setAllCocktails(drinks);
-
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
         payload: { drinks, searchTerm, filtered: false },
       });
     } catch (error) {
-      console.error('TODOLATER: HANDLE THIS ERROR!');
       console.error(error);
+      cocktailListDispatcher({
+        type: CTLIST_ACTIONS.ERROR,
+        payload: {
+          error: {
+            statusCode: 404,
+            message: 'Error performing search!  Please try again later. ',
+            details: error,
+          },
+        },
+      });
     }
   };
 

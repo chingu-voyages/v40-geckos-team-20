@@ -11,6 +11,7 @@ export const CTLIST_ACTIONS = {
   UPDATE_LIST: 'updatelist',
   LOADING: 'loading',
   CLEAR_LIST: 'clearlist',
+  ERROR: 'error',
 };
 
 // Selected Cocktail Actions

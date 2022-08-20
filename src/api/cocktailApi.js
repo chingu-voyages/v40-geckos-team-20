@@ -6,7 +6,7 @@ import sendHttpRequest from '../utils/sendHttpRequest';
 
 const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1';
 const URL = {
-  SEARCH: `${BASE_URL}/search.php?s=`,
+  SEARCH: `${BASE_URL}/ssearch.php?s=`,
   RANDOM: `${BASE_URL}/random.php`,
   GET_COCKTAIL: `${BASE_URL}/lookup.php?i=`,
   FILTER_LIST: `${BASE_URL}/list.php?`,
