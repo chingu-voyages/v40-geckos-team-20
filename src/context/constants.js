@@ -28,4 +28,5 @@ export const FILTER_ACTIONS = {
   SET_ALLFILTERS: 'setallfilters',
   UPDATE_FILTERS: 'updatefilters',
   CLEAR_SELECTED: 'clearselected',
+  ERROR: 'error',
 };

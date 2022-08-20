@@ -6,6 +6,8 @@ const TestContextFilters = () => {
   const { filters, getAllFilters, updateFilters, clearSelectedFilters } =
     useFiltersContext();
 
+  console.log(filters);
+
   const testFiltersOne = {
     categories: ['Punch / Party Drink', 'Coffee / Tea'],
     glasses: ['Punch Bowl', 'Irish coffee cup'],

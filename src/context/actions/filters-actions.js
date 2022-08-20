@@ -44,8 +44,16 @@ export default function FiltersContextProvider({ children }) {
         payload: { allFilters },
       });
     } catch (error) {
-      console.error('TODOLATER: HANDLE THIS ERROR!');
-      console.error(error);
+      filtersDispatcher({
+        type: FILTER_ACTIONS.ERROR,
+        payload: {
+          error: {
+            statusCode: 400,
+            message: 'Error retreiving filter options!',
+            details: error,
+          },
+        },
+      });
     }
   };
 
