@@ -10,8 +10,6 @@ const Test_Context = () => {
   const { cocktails, searchCocktails, getRandomCocktails, clearCocktails } =
     useCocktailListContext();
 
-  console.log(cocktails);
-
   const clickHandlerRandom = () => getRandomCocktails(6);
   const clickHandlerSearch = () => searchCocktails('berry');
   const clickHandlerClear = () => clearCocktails();
