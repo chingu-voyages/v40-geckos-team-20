@@ -29,9 +29,6 @@ export default function CocktailListContextProvider({ children }) {
       const data = await searchByName(searchTerm);
       const drinks = data?.drinks ? data.drinks : [];
 
-      /**
-       *  update allCocktails -> setAllCocktails
-       */
       setAllCocktails(drinks);
 
       cocktailListDispatcher({
@@ -63,9 +60,7 @@ export default function CocktailListContextProvider({ children }) {
         return data.drinks[0];
       });
       const drinks = await Promise.all(promises);
-      /**
-       *  update allCocktails -> setAllCocktails
-       */
+
       setAllCocktails(drinks);
 
       cocktailListDispatcher({
@@ -120,9 +115,6 @@ export default function CocktailListContextProvider({ children }) {
     cocktailListDispatcher({
       type: CTLIST_ACTIONS.CLEAR_LIST,
     });
-    /**
-     *  clear allCocktails -> setAllCocktails
-     */
     setAllCocktails(null);
   };
 
