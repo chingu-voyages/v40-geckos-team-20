@@ -40,7 +40,7 @@ export default function CocktailListContextProvider({ children }) {
         payload: {
           error: {
             statusCode: 404,
-            message: 'Error performing search!  Please try again later. ',
+            message: 'Error performing search!  Please try again later.',
             details: error,
           },
         },
@@ -75,8 +75,18 @@ export default function CocktailListContextProvider({ children }) {
         payload: { drinks, filtered: false },
       });
     } catch (error) {
-      console.error('HANDLE THIS ERROR!');
       console.error(error);
+      cocktailListDispatcher({
+        type: CTLIST_ACTIONS.ERROR,
+        payload: {
+          error: {
+            statusCode: 404,
+            message:
+              'Error retreiving random cocktails!  Please try again later.',
+            details: error,
+          },
+        },
+      });
     }
   };
 
