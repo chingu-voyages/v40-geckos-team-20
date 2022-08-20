@@ -1,4 +1,3 @@
-import { FILTERS_INITIAL } from '../actions/filters-actions';
 import { CONTEXT_STATUS, FILTER_ACTIONS } from '../constants';
 
 const FiltersReducer = (filters, action) => {

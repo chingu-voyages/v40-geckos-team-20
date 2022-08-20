@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  useCocktailListContext,
-  useFiltersContext,
-} from '../../context/use-context';
-import { CONTEXT_STATUS } from '../../context/constants';
+import { useCocktailListContext } from '../../context/use-context';
 import styled from 'styled-components/macro';
 
 const Test_Context = () => {
