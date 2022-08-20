@@ -39,7 +39,7 @@ export default function CocktailListContextProvider({ children }) {
         type: CTLIST_ACTIONS.ERROR,
         payload: {
           error: {
-            statusCode: 404,
+            statusCode: 400,
             message: 'Error performing search!  Please try again later.',
             details: error,
           },
@@ -80,7 +80,7 @@ export default function CocktailListContextProvider({ children }) {
         type: CTLIST_ACTIONS.ERROR,
         payload: {
           error: {
-            statusCode: 404,
+            statusCode: 400,
             message:
               'Error retreiving random cocktails!  Please try again later.',
             details: error,

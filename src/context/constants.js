@@ -19,6 +19,7 @@ export const SELCOCKTAIL_ACTIONS = {
   UPDATE: 'update',
   LOADING: 'loading',
   CLEAR: 'clear',
+  ERROR: 'error',
 };
 
 // Fitler Actions

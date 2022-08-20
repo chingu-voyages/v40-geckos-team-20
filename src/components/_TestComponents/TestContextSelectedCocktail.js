@@ -6,6 +6,8 @@ const TestContextSelectedCocktail = () => {
   const { selectedCocktail, updateSelectedCocktail, clearSelectedCocktail } =
     useSelectedCocktailContext();
 
+  console.log(selectedCocktail);
+
   const clickHandlerUpdate = () => updateSelectedCocktail(11007);
   const clickHandlerClear = () => clearSelectedCocktail();
 
