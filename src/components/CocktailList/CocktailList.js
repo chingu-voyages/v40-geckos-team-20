@@ -14,7 +14,7 @@ const CocktailList = () => {
   const randomCocktails = cocktails?.drinks?.map((cocktail, i) => {
       return (
         <Cocktail key={i}>
-          <CocktailImage src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+          <CocktailImage src={`${cocktail.strDrinkThumb}/preview`} alt={cocktail.strDrink} />
         </Cocktail>
       );
     })
