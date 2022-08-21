@@ -1,5 +1,4 @@
 import './App.css';
-import CocktailDetailPreview from './components/CocktailDetailPreview/CocktailDetailPreview';
 import CocktailList from './components/CocktailList/CocktailList';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
@@ -31,7 +30,6 @@ function App() {
         <Header />
         <SearchBar />
         <CocktailList />
-        <CocktailDetailPreview />
         {/* FOR CODE REVIEW / TESTING - ADD THE FOLLOWING TWO COMPONENTS */}
         {/* <TestContextFilters /> */}
         {/* <TestContextCocktailList /> */}
