@@ -6,14 +6,17 @@ const SelectedCocktailReducer = (cocktail, action) => {
     case SELCOCKTAIL_ACTIONS.UPDATE:
       const { drink } = action.payload;
       return {
-        ...cocktail,
         status: CONTEXT_STATUS.SUCCESS,
         data: drink,
+        error: null,
       };
     case SELCOCKTAIL_ACTIONS.LOADING:
-      return { ...cocktail, status: CONTEXT_STATUS.LOADING };
+      return { ...cocktail, status: CONTEXT_STATUS.LOADING, error: null };
     case SELCOCKTAIL_ACTIONS.CLEAR:
       return { ...SELECTED_COCKTAIL_INITIAL };
+    case SELCOCKTAIL_ACTIONS.ERROR:
+      const { error } = action.payload;
+      return { ...cocktail, status: CONTEXT_STATUS.ERROR, error };
     default:
       console.log(`Unknown Selected Cocktail action: ${action.type}`);
       return cocktail;

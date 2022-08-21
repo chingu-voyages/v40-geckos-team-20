@@ -1,4 +1,3 @@
-import { FILTERS_INITIAL } from '../actions/filters-actions';
 import { CONTEXT_STATUS, FILTER_ACTIONS } from '../constants';
 
 const FiltersReducer = (filters, action) => {
@@ -9,6 +8,7 @@ const FiltersReducer = (filters, action) => {
         ...filters,
         status: CONTEXT_STATUS.SUCCESS,
         allFilters,
+        error: null,
       };
     case FILTER_ACTIONS.UPDATE_FILTERS:
       const { updatedFilters } = action.payload;
@@ -22,9 +22,12 @@ const FiltersReducer = (filters, action) => {
       );
       return { ...filters, selectedFilters };
     case FILTER_ACTIONS.LOADING:
-      return { ...filters, status: CONTEXT_STATUS.LOADING };
+      return { ...filters, status: CONTEXT_STATUS.LOADING, error: null };
     case FILTER_ACTIONS.CLEAR_SELECTED:
       return { ...filters, selectedFilters: null };
+    case FILTER_ACTIONS.ERROR:
+      const { error } = action.payload;
+      return { ...filters, status: CONTEXT_STATUS.ERROR, error };
     default:
       console.log(`Unknown Cocktail List action: ${action.type}`);
       return filters;
