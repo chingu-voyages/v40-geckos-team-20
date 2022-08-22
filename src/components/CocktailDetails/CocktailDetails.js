@@ -4,6 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 const CocktailDetails = () => {
   const id = +useParams().id;
 
+  // use id to update selected cocktail
+
   return (
     <>
       <h1>Cocktail Details Page</h1>
