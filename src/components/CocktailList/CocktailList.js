@@ -9,7 +9,7 @@ const CocktailList = () => {
   useEffect(() => {
     const clickHandlerRandom = () => getRandomCocktails(6);
     clickHandlerRandom();
-  }, []);
+  }, [getRandomCocktails]);
 
   const randomCocktails = cocktails?.drinks?.map((cocktail, i) => {
     return (
