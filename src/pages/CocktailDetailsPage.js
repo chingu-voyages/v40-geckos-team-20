@@ -1,7 +1,8 @@
 import React from 'react';
+import CocktailDetails from '../components/CocktailDetails/CocktailDetails';
 
 const CocktailDetailsPage = () => {
-  return <div>REPLACE THIS DIV WITH THE COCKTAIL DETAILS PAGE COMPONENT!</div>;
+  return <CocktailDetails />;
 };
 
 export default CocktailDetailsPage;
