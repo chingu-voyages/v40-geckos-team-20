@@ -1,8 +1,6 @@
 import './App.css';
-import CocktailList from './components/CocktailList/CocktailList';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
-import SearchBar from './components/SearchBar';
 import Header from './components/Header';
 import {
   BrowserRouter as Router,
