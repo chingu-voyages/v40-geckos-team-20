@@ -1,17 +1,30 @@
 import "./SearchBar.css";
 import React, { useState } from "react";
+import { useCocktailListContext } from "../context/use-context";
 
-export default function SearchBar() {
-  const [message, setMessage] = useState();
+const SearchBar = () => {
+  const [message, setMessage] = useState("");
+  const { searchCocktails } = useCocktailListContext();
+  const clickHandlerSearch = () => searchCocktails();
+
+  const handleChange = (event, useCocktailListContext) => {
+    setMessage(event.target.value);
+    console.log(event.target.value);
+    console.log(useCocktailListContext);
+  };
 
   return (
     <div className="SearchBar">
       <input
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={(event) => handleChange(event, useCocktailListContext)}
         placeholder="Search for a cocktail..."
         id="search-bar"
       />
-      <button disabled={!message} className="search-btn">
+      <button
+        disabled={!message}
+        className="search-btn"
+        onClick={clickHandlerSearch}
+      >
         Search
       </button>
 
@@ -27,4 +40,6 @@ export default function SearchBar() {
       </div>
     </div>
   );
-}
+};
+
+export default SearchBar;
