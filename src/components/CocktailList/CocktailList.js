@@ -13,14 +13,14 @@ const CocktailList = () => {
 
   const randomCocktails = cocktails?.drinks?.map((cocktail, i) => {
     return (
-      <Link key={i} to={`/cocktails/${cocktail.idDrink}`}>
-        <Cocktail>
+      <Cocktail key={i}>
+        <Link to={`/cocktails/${cocktail.idDrink}`}>
           <CocktailImage
             src={`${cocktail.strDrinkThumb}/preview`}
             alt={cocktail.strDrink}
           />
-        </Cocktail>
-      </Link>
+        </Link>
+      </Cocktail>
     );
   });
 
