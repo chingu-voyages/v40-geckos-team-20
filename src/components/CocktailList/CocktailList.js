@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useCocktailListContext } from '../../context/use-context';
 import { Wrapper, Cocktail, CocktailImage } from './CocktailList.styled';
 
 const CocktailList = () => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
+  const firstRender = useRef(true);
 
   useEffect(() => {
-    const clickHandlerRandom = () => getRandomCocktails(6);
-    clickHandlerRandom();
+    if (firstRender.current) {
+      firstRender.current = false;
+      getRandomCocktails(6);
+    }
   }, [getRandomCocktails]);
 
   const randomCocktails = cocktails?.drinks?.map((cocktail, i) => {
