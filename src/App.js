@@ -4,6 +4,14 @@ import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
 import SearchBar from './components/SearchBar';
 import Header from './components/Header';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
+import CocktailListPage from './pages/CocktailListPage';
+import CocktailDetailsPage from './pages/CocktailDetailsPage';
 
 // import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
 // import TestContextSelectedCocktail from './components/_TestComponents/TestContextSelectedCocktail';
@@ -24,17 +32,22 @@ const Wrapper = styled.div`
 
 function App() {
   return (
-    <Background>
-      <Wrapper>
-        <Header />
-        <SearchBar />
-        <CocktailList />
-        {/* <TestContextFilters /> */}
-        {/* <TestContextCocktailList /> */}
-        {/* <TestContextSelectedCocktail /> */}
-      </Wrapper>
-      <GlobalStyles />
-    </Background>
+    <Router>
+      <Background>
+        <Wrapper>
+          <Header />
+          <Routes>
+            <Route path='/cocktails/:id' element={<CocktailDetailsPage />} />
+            <Route exact path='/cocktails' element={<CocktailListPage />} />
+            <Route index element={<CocktailListPage />} />
+          </Routes>
+          {/* <TestContextFilters /> */}
+          {/* <TestContextCocktailList /> */}
+          {/* <TestContextSelectedCocktail /> */}
+        </Wrapper>
+        <GlobalStyles />
+      </Background>
+    </Router>
   );
 }
 
