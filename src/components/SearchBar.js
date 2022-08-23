@@ -5,25 +5,28 @@ import { useCocktailListContext } from "../context/use-context";
 const SearchBar = () => {
   const [message, setMessage] = useState("");
   const { searchCocktails } = useCocktailListContext();
-  const clickHandlerSearch = () => searchCocktails();
 
-  const handleChange = (event, useCocktailListContext) => {
+  const handleChange = (event) => {
     setMessage(event.target.value);
     console.log(event.target.value);
-    console.log(useCocktailListContext);
+  };
+
+  const handleSubmit = (searchTerm) => {
+    console.log(searchTerm);
+    searchCocktails(searchTerm);
   };
 
   return (
     <div className="SearchBar">
       <input
-        onChange={(event) => handleChange(event, useCocktailListContext)}
+        onChange={(event) => handleChange(event)}
         placeholder="Search for a cocktail..."
         id="search-bar"
       />
       <button
         disabled={!message}
         className="search-btn"
-        onClick={clickHandlerSearch}
+        onClick={() => handleSubmit(message)}
       >
         Search
       </button>
