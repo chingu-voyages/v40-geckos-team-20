@@ -45,6 +45,11 @@
   transform: scale(0.8, 0.8);
 }
 
+/* hand curser upon hover when clickable */
+.search-btn:hover:not(:disabled) {
+  cursor: pointer;
+}
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
@@ -76,6 +81,7 @@
 /* Change color of dropdown links on hover */
 .dropdown-content div:hover {
   background-color: rgb(226, 48, 48);
+  cursor: pointer;
 }
 
 /* Show the dropdown menu on hover */
