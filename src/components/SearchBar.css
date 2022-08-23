@@ -41,7 +41,7 @@
   background-color: #bf5c5c;
 }
 
-.search-btn:active {
+.search-btn:active:not(:disabled) {
   transform: scale(0.8, 0.8);
 }
 
