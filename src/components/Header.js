@@ -2,9 +2,10 @@ import React from "react";
 import "./Header.css";
 import logo from "../images/logo.png";
 import styled from 'styled-components/macro';
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const BackCTAWrapper = styled.div`
+  visibility: ${ props => props.hasId ? "visible" : "hidden"};
   background-color: #ca0000;
   width: 160px;
   border-radius: 4px;
@@ -21,10 +22,14 @@ const BackCTAWrapper = styled.div`
 
 
 export default function Header() {
-
+  const location = useLocation();
+  const hasId = () => {
+    return location.pathname !== "/";
+  }
+  
   return (
     <div className="Header">
-      <BackCTAWrapper>
+      <BackCTAWrapper hasId={hasId()}>
         <Link to="/" className="back-cta">Back</Link>
       </BackCTAWrapper>
       <img src={logo} alt="Ez-Logo" />
