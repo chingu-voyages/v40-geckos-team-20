@@ -24,7 +24,7 @@ const CocktailDetails = () => {
   return (
     <Wrapper>
       <Header>
-        <CocktailImage />
+        <CocktailImage src="https://www.thecocktaildb.com/images/media/drink/vvpxwy1439907208.jpg/preview" alt="Sazerac" />
         <CocktailName>Sazerac</CocktailName>
       </Header>
       <Main>
