@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
 
 export const Wrapper = styled.ul`
   color: pink;
@@ -11,7 +11,13 @@ export const Wrapper = styled.ul`
 `;
 
 export const Cocktail = styled.li`
- 
+  &:hover {
+    transform: scale(1.02);
+  }
+  &:active {
+    transform: scale(0.99);
+  }
+  transition: transform 0.1s ease-in-out;
 `;
 
 export const CocktailImage = styled.img`
@@ -19,5 +25,5 @@ export const CocktailImage = styled.img`
   height: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  border: 1px solid #CA0000;
+  border: 1px solid #ca0000;
 `;

@@ -49,7 +49,7 @@ export default function CocktailListContextProvider({ children }) {
   };
 
   // GET RANDOM COCKTAILS
-  const getRandomCocktails = async (amount) => {
+  const getRandomCocktails = useCallback(async (amount) => {
     try {
       if (!amount)
         throw new Error(
@@ -87,7 +87,7 @@ export default function CocktailListContextProvider({ children }) {
         },
       });
     }
-  };
+  }, []);
 
   const filterCocktails = useCallback(
     (selectedFilters) => {

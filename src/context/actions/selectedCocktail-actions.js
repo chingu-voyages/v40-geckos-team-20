@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useCallback } from 'react';
 import SelectedCocktailReducer from '../reducers/selectedCocktail-reducer';
 import { CONTEXT_STATUS, SELCOCKTAIL_ACTIONS } from '../constants';
 import { getCocktailDetails } from '../../api/cocktailApi';
@@ -18,7 +18,7 @@ export default function SelectedCocktailContextProvider({ children }) {
   );
 
   // UPDATE SELECTED COCKTAIL
-  const updateSelectedCocktail = async (id) => {
+  const updateSelectedCocktail = useCallback(async (id) => {
     try {
       selectedCocktailDispatcher({
         type: SELCOCKTAIL_ACTIONS.LOADING,
@@ -47,7 +47,7 @@ export default function SelectedCocktailContextProvider({ children }) {
         },
       });
     }
-  };
+  }, []);
 
   // CLEAR COCKTAIL
   const clearSelectedCocktail = async () => {
