@@ -36,8 +36,8 @@ function App() {
         <Wrapper>
           <Header />
           <Routes>
-            <Route path='/cocktails/:id' element={<CocktailDetailsPage />} />
             <Route exact path='/cocktails' element={<Navigate to='/' />} />
+            <Route path='/cocktails/:id' element={<CocktailDetailsPage />} />
             <Route index element={<CocktailListPage />} />
           </Routes>
           {/* <TestContextFilters /> */}
