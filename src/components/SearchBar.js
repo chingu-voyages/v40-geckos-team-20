@@ -1,10 +1,12 @@
 import "./SearchBar.css";
 import React, { useState } from "react";
 import { useCocktailListContext } from "../context/use-context";
+import { useFiltersContext } from "../context/use-context";
 
 const SearchBar = () => {
   const [message, setMessage] = useState("");
   const { searchCocktails } = useCocktailListContext();
+  const { updateFilters } = useFiltersContext();
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -14,6 +16,12 @@ const SearchBar = () => {
   const handleSubmit = (searchTerm) => {
     console.log(searchTerm);
     searchCocktails(searchTerm);
+  };
+
+  const clickHandleUpdateFilter = () => {
+    updateFilters({
+      alcoholic: ["Non alcoholic"],
+    });
   };
 
   return (
@@ -38,7 +46,7 @@ const SearchBar = () => {
         <div className="dropdown-content">
           {" "}
           <div>Alcoholic</div>
-          <div>Non-Alcholic</div>
+          <div onClick={() => clickHandleUpdateFilter}>Non-Alcholic</div>
         </div>
       </div>
     </div>
