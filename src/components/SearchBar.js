@@ -18,7 +18,11 @@ const SearchBar = () => {
     searchCocktails(searchTerm);
   };
 
-  const clickHandleUpdateFilter = () => {
+  const clickHandleUpdateFilter1 = () => {
+    updateFilters({ alcoholic: ["Alcoholic"] });
+  };
+
+  const clickHandleUpdateFilter2 = () => {
     updateFilters({
       alcoholic: ["Non alcoholic"],
     });
@@ -45,8 +49,8 @@ const SearchBar = () => {
         </button>
         <div className="dropdown-content">
           {" "}
-          <div>Alcoholic</div>
-          <div onClick={() => clickHandleUpdateFilter}>Non-Alcholic</div>
+          <div onClick={clickHandleUpdateFilter1}>Alcoholic</div>
+          <div onClick={clickHandleUpdateFilter2}>Non-Alcholic</div>
         </div>
       </div>
     </div>
