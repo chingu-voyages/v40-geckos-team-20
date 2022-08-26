@@ -17,3 +17,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.Header .back-cta {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  width: 100%;
+}
