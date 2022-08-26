@@ -5,7 +5,7 @@ import styled from 'styled-components/macro';
 import { useLocation, Link } from "react-router-dom";
 
 const BackCTAWrapper = styled.div`
-  visibility: ${ props => props.hasId ? "visible" : "hidden"};
+  visibility: ${ props => props.notRoot ? "visible" : "hidden"};
   background-color: #ca0000;
   width: 160px;
   border-radius: 4px;
@@ -23,13 +23,13 @@ const BackCTAWrapper = styled.div`
 
 export default function Header() {
   const location = useLocation();
-  const hasId = () => {
+  const notRoot = () => {
     return location.pathname !== "/";
   }
   
   return (
     <div className="Header">
-      <BackCTAWrapper hasId={hasId()}>
+      <BackCTAWrapper notRoot={notRoot()}>
         <Link to="/" className="back-cta">Back</Link>
       </BackCTAWrapper>
       <img src={logo} alt="Ez-Logo" />
