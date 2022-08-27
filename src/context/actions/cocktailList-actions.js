@@ -81,7 +81,8 @@ export default function CocktailListContextProvider({ children }) {
         payload: {
           error: {
             statusCode: 400,
-            message: 'Error retreiving random cocktails!',
+            message:
+              'Error retreiving random cocktails! Please try again later.',
             details: error,
           },
         },
