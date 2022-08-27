@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   color: white;
   max-width: 40rem;
-  margin: 5rem auto;
+  margin: 4rem auto;
 
   .image-wrapper {
     width: 10rem;
