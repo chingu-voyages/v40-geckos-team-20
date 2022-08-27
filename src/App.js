@@ -12,9 +12,9 @@ import {
 import CocktailListPage from './pages/CocktailListPage';
 import CocktailDetailsPage from './pages/CocktailDetailsPage';
 
-// import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
-// import TestContextSelectedCocktail from './components/_TestComponents/TestContextSelectedCocktail';
-// import TestContextFilters from './components/_TestComponents/TestContextFilters';
+/*import TestContextCocktailList from "./components/_TestComponents/TestContextCocktailList";*/
+/*import TestContextSelectedCocktail from "./components/_TestComponents/TestContextSelectedCocktail";*/
+/*import TestContextFilters from "./components/_TestComponents/TestContextFilters";*/
 
 const Background = styled.div`
   background-image: url(${backgroundImage});
