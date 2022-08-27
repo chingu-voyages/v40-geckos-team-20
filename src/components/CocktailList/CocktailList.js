@@ -4,6 +4,7 @@ import { useCocktailListContext } from '../../context/use-context';
 import { Wrapper, Cocktail, CocktailImage } from './CocktailList.styled';
 import { CONTEXT_STATUS } from '../../context/constants';
 import Spinner from '../UI/Spinner/Spinner';
+import { InfoMessage, ErrorMessage } from '../MessageState/MessageState';
 
 const CocktailList = () => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
@@ -38,8 +39,15 @@ const CocktailList = () => {
     <>
       {status === LOADING && <Spinner />}
       {status === SUCCESS && haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
-      {status === SUCCESS && !haveDrinks && <p>{'No drinks!'}</p>}
-      {status === ERROR && <p>{error.message}</p>}
+      {status === SUCCESS && !haveDrinks && (
+        <InfoMessage
+          title='No cocktails to display'
+          message='Please try searching again, or adjust the filters you may have selected.'
+        />
+      )}
+      {status === ERROR && (
+        <ErrorMessage title='Error loading cocktails' message={error.message} />
+      )}
     </>
   );
 };
