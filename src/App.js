@@ -1,25 +1,22 @@
-import "./App.css";
-import CocktailDetailPreview from "./components/CocktailDetailPreview/CocktailDetailPreview";
-import CocktailList from "./components/CocktailList/CocktailList";
-import GlobalStyles from "./styles/GlobalStyles";
-import styled from "styled-components/macro";
-import SearchBar from "./components/SearchBar";
-import Header from "./components/Header";
-import backgroundImage from "./images/background-image.jpg";
+import './App.css';
+import GlobalStyles from './styles/GlobalStyles';
+import styled from 'styled-components/macro';
+import Header from './components/Header';
+import backgroundImage from './images/background-image.jpg';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-} from "react-router-dom";
-import CocktailListPage from "./pages/CocktailListPage";
+} from 'react-router-dom';
+import CocktailListPage from './pages/CocktailListPage';
+import CocktailDetailsPage from './pages/CocktailDetailsPage';
 
 /*import TestContextCocktailList from "./components/_TestComponents/TestContextCocktailList";*/
 /*import TestContextSelectedCocktail from "./components/_TestComponents/TestContextSelectedCocktail";*/
 /*import TestContextFilters from "./components/_TestComponents/TestContextFilters";*/
 
 const Background = styled.div`
-<
   background-image: url(${backgroundImage});
   background-size: cover;
   min-height: 100%;
@@ -39,8 +36,8 @@ function App() {
         <Wrapper>
           <Header />
           <Routes>
-            <Route path="/cocktails/:id" element={<CocktailDetailsPage />} />
-            <Route exact path="/cocktails" element={<Navigate to="/" />} />
+            <Route path='/cocktails/:id' element={<CocktailDetailsPage />} />
+            <Route exact path='/cocktails' element={<Navigate to='/' />} />
             <Route index element={<CocktailListPage />} />
           </Routes>
           {/* <TestContextFilters /> */}
