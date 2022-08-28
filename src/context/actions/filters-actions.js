@@ -44,48 +44,49 @@ export default function FiltersContextProvider({ children }) {
         payload: { allFilters },
       });
     } catch (error) {
-      console.error('TODOLATER: HANDLE THIS ERROR!');
-      console.error(error);
+      filtersDispatcher({
+        type: FILTER_ACTIONS.ERROR,
+        payload: {
+          error: {
+            statusCode: 400,
+            message: 'Error retreiving filter options!',
+            details: error,
+          },
+        },
+      });
     }
   };
 
   // UPDATE FILTERS
-  const updateFilters = async (filters) => {
-    try {
-      if (!filters)
+  const updateFilters = (filters) => {
+    if (!filters)
+      throw new Error('addFilters function called with no filters passed in!');
+    if (typeof filters !== 'object')
+      throw new Error('addFilters requires an object argument of filters!');
+
+    // these are our recognized filters
+    const names = ['categories', 'glasses', 'alcoholic'];
+
+    // if (and only if) a recognized filter is supplied, ensure it is an array
+    for (const name of names) {
+      if (filters.hasOwnProperty(name) && filters[name].constructor !== Array)
         throw new Error(
-          'addFilters function called with no filters passed in!'
+          `updateFilters received the property "${name}" as a non-array, it must be an array!`
         );
-      if (typeof filters !== 'object')
-        throw new Error('addFilters requires an object argument of filters!');
-
-      // these are our recognized filters
-      const names = ['categories', 'glasses', 'alcoholic'];
-
-      // if (and only if) a recognized filter is supplied, ensure it is an array
-      for (const name of names) {
-        if (filters.hasOwnProperty(name) && filters[name].constructor !== Array)
-          throw new Error(
-            `updateFilters received the property "${name}" as a non-array, it must be an array!`
-          );
-      }
-
-      // extract only the recognized filters into a new object; discard others.
-      // filter out the recognized keys, then rebuild the object again using map and Objct.assign
-      const mapped = Object.keys(filters)
-        .filter((i) => names.includes(i))
-        .map((i) => ({ [i]: filters[i] }));
-      // if there were no recognized objects, return an empty object
-      const updatedFilters = mapped.length ? Object.assign(...mapped) : {};
-
-      filtersDispatcher({
-        type: FILTER_ACTIONS.UPDATE_FILTERS,
-        payload: { updatedFilters },
-      });
-    } catch (error) {
-      console.error('HANDLE THIS ERROR!');
-      console.error(error);
     }
+
+    // extract only the recognized filters into a new object; discard others.
+    // filter out the recognized keys, then rebuild the object again using map and Objct.assign
+    const mapped = Object.keys(filters)
+      .filter((i) => names.includes(i))
+      .map((i) => ({ [i]: filters[i] }));
+    // if there were no recognized objects, return an empty object
+    const updatedFilters = mapped.length ? Object.assign(...mapped) : {};
+
+    filtersDispatcher({
+      type: FILTER_ACTIONS.UPDATE_FILTERS,
+      payload: { updatedFilters },
+    });
   };
 
   // CLEAR SELECTED FILTERS

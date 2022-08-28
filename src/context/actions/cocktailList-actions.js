@@ -28,24 +28,28 @@ export default function CocktailListContextProvider({ children }) {
       });
       const data = await searchByName(searchTerm);
       const drinks = data?.drinks ? data.drinks : [];
-
-      /**
-       *  update allCocktails -> setAllCocktails
-       */
       setAllCocktails(drinks);
-
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
         payload: { drinks, searchTerm, filtered: false },
       });
     } catch (error) {
-      console.error('TODOLATER: HANDLE THIS ERROR!');
       console.error(error);
+      cocktailListDispatcher({
+        type: CTLIST_ACTIONS.ERROR,
+        payload: {
+          error: {
+            statusCode: 400,
+            message: 'Error performing search!  Please try again later.',
+            details: error,
+          },
+        },
+      });
     }
   };
 
   // GET RANDOM COCKTAILS
-  const getRandomCocktails = async (amount) => {
+  const getRandomCocktails = useCallback(async (amount) => {
     try {
       if (!amount)
         throw new Error(
@@ -63,9 +67,7 @@ export default function CocktailListContextProvider({ children }) {
         return data.drinks[0];
       });
       const drinks = await Promise.all(promises);
-      /**
-       *  update allCocktails -> setAllCocktails
-       */
+
       setAllCocktails(drinks);
 
       cocktailListDispatcher({
@@ -73,10 +75,20 @@ export default function CocktailListContextProvider({ children }) {
         payload: { drinks, filtered: false },
       });
     } catch (error) {
-      console.error('HANDLE THIS ERROR!');
       console.error(error);
+      cocktailListDispatcher({
+        type: CTLIST_ACTIONS.ERROR,
+        payload: {
+          error: {
+            statusCode: 400,
+            message:
+              'Error retreiving random cocktails! Please try again later.',
+            details: error,
+          },
+        },
+      });
     }
-  };
+  }, []);
 
   const filterCocktails = useCallback(
     (selectedFilters) => {
@@ -120,9 +132,6 @@ export default function CocktailListContextProvider({ children }) {
     cocktailListDispatcher({
       type: CTLIST_ACTIONS.CLEAR_LIST,
     });
-    /**
-     *  clear allCocktails -> setAllCocktails
-     */
     setAllCocktails(null);
   };
 

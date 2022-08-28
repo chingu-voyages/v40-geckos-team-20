@@ -9,7 +9,6 @@
 }
 
 .Header img {
-  margin-top: 70px;
   margin-bottom: 0px;
   width: 151px;
   height: 141px;
@@ -17,4 +16,11 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.Header .back-cta {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  width: 100%;
 }

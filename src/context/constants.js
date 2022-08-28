@@ -11,6 +11,7 @@ export const CTLIST_ACTIONS = {
   UPDATE_LIST: 'updatelist',
   LOADING: 'loading',
   CLEAR_LIST: 'clearlist',
+  ERROR: 'error',
 };
 
 // Selected Cocktail Actions
@@ -18,6 +19,7 @@ export const SELCOCKTAIL_ACTIONS = {
   UPDATE: 'update',
   LOADING: 'loading',
   CLEAR: 'clear',
+  ERROR: 'error',
 };
 
 // Fitler Actions
@@ -26,4 +28,5 @@ export const FILTER_ACTIONS = {
   SET_ALLFILTERS: 'setallfilters',
   UPDATE_FILTERS: 'updatefilters',
   CLEAR_SELECTED: 'clearselected',
+  ERROR: 'error',
 };
