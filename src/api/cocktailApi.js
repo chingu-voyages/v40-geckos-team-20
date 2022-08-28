@@ -22,13 +22,21 @@ const searchByName = (searchTerm = '') => {
   return results;
 };
 
-const searchByIngredient = (searchTerm = '') => {
+const searchByIngredient = async (searchTerm = '') => {
   if (typeof searchTerm !== 'string' && typeof searchTerm !== 'number')
     throw new Error('searchByName api method called with invalid searchTerm!');
-  const results = sendHttpRequest({
-    url: `${URL.FILTER}${searchTerm}`,
-  });
-  return results;
+
+  try {
+    const results = await sendHttpRequest({
+      url: `${URL.FILTER}${searchTerm}`,
+    });
+
+    return results;
+  } catch (error) {
+    // There's  quirk with the Cocktail DB api where if you pass an ingredient name that does not exist, the response is broken and cannot be .json()-ed, so adding a try/catch here to catch that scenario and return null in that case (instead of failing)
+    if (error.message === 'Unexpected end of JSON input') return null;
+    throw error;
+  }
 };
 
 const getRandomCocktail = () => {

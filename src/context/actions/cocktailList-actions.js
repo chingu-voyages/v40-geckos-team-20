@@ -1,5 +1,9 @@
 import React, { useReducer, createContext, useState, useCallback } from 'react';
-import { searchByName, getRandomCocktail } from '../../api/cocktailApi';
+import {
+  searchByName,
+  searchByIngredient,
+  getRandomCocktail,
+} from '../../api/cocktailApi';
 import CocktailListReducer from '../reducers/cocktailList-reducer';
 import { CONTEXT_STATUS, CTLIST_ACTIONS } from '../constants';
 
@@ -26,8 +30,22 @@ export default function CocktailListContextProvider({ children }) {
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.LOADING,
       });
-      const data = await searchByName(searchTerm);
-      const drinks = data?.drinks ? data.drinks : [];
+
+      // search for cocktails by cocktail name
+      const data_name = await searchByName(searchTerm);
+      const drinks_name = data_name?.drinks ? data_name.drinks : [];
+
+      // search for cocktails by ingredient
+      const data_ingr = await searchByIngredient(searchTerm);
+      const drinks_ingr = data_ingr?.drinks ? data_ingr.drinks : [];
+
+      // combine results (ensure there are no duplicates)
+      const ids = new Set(drinks_name.map((d) => d.idDrink));
+      const drinks = [
+        ...drinks_name,
+        ...drinks_ingr.filter((d) => !ids.has(d.idDrink)),
+      ];
+
       setAllCocktails(drinks);
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
