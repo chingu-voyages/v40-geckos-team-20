@@ -84,9 +84,14 @@
   cursor: pointer;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* Show the dropdown menu on hover (when not disabled)*/
+.dropdown:not(.disabled):hover .dropdown-content {
   display: block;
+}
+
+/* If dropdown menu is disabled, change color */
+.dropdown.disabled .btn {
+  background-color: #bf5c5c;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
