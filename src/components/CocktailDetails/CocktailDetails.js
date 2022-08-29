@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useSelectedCocktailContext } from "../../context/use-context";
 import {
   Wrapper,
   Header,
@@ -17,14 +18,23 @@ import {
 } from "./CocktailDetails.styled";
 
 const CocktailDetails = () => {
+  const { selectedCocktail, updateSelectedCocktail } =
+    useSelectedCocktailContext();
   const id = +useParams().id;
 
-  // use id to update selected cocktail
+  useEffect(() => {
+    updateSelectedCocktail(id);
+  }, [id]);
+
+  console.log(selectedCocktail.data);
 
   return (
     <Wrapper>
       <Header>
-        <CocktailImage src="https://www.thecocktaildb.com/images/media/drink/vvpxwy1439907208.jpg/preview" alt="Sazerac" />
+        <CocktailImage
+          src="https://www.thecocktaildb.com/images/media/drink/vvpxwy1439907208.jpg/preview"
+          alt="Sazerac"
+        />
         <CocktailName>Sazerac</CocktailName>
       </Header>
       <Main>
@@ -41,18 +51,22 @@ const CocktailDetails = () => {
           <RecipeTitle>Recipe</RecipeTitle>
           <RecipeContent>
             <RecipeItem>
-            Rinse a chilled rocks glass with absinthe, discarding any excess, and set aside.
+              Rinse a chilled rocks glass with absinthe, discarding any excess,
+              and set aside.
             </RecipeItem>
             <RecipeItem>
-              In a mixing glass, muddle the sugar cube, water and the Peychaud’s and Angostura bitters.
+              In a mixing glass, muddle the sugar cube, water and the Peychaud’s
+              and Angostura bitters.
             </RecipeItem>
             <RecipeItem>
-              Add the rye and cognac, fill the mixing glass with ice and stir until well-chilled.
+              Add the rye and cognac, fill the mixing glass with ice and stir
+              until well-chilled.
             </RecipeItem>
+            <RecipeItem>Strain into the prepared glass. </RecipeItem>
             <RecipeItem>
-              Strain into the prepared glass.            </RecipeItem>
-            <RecipeItem>
-              Twist the lemon peel over the drink’s surface to express the peel’s oils, then garnish with the peel.            </RecipeItem>
+              Twist the lemon peel over the drink’s surface to express the
+              peel’s oils, then garnish with the peel.
+            </RecipeItem>
           </RecipeContent>
         </RecipeWrapper>
       </Main>
