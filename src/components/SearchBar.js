@@ -1,11 +1,11 @@
-import './SearchBar.css';
-import React, { useState } from 'react';
-import { useCocktailListContext } from '../context/use-context';
-import { useFiltersContext } from '../context/use-context';
-import { CONTEXT_STATUS } from '../context/constants';
+import "./SearchBar.css";
+import React, { useState } from "react";
+import { useCocktailListContext } from "../context/use-context";
+import { useFiltersContext } from "../context/use-context";
+import { CONTEXT_STATUS } from "../context/constants";
 
 const SearchBar = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const { cocktails, searchCocktails } = useCocktailListContext();
   const { updateFilters } = useFiltersContext();
 
@@ -24,37 +24,44 @@ const SearchBar = () => {
     searchCocktails(searchTerm);
   };
 
+  const handleKeypress = (e) => {
+    if (e.keyCode === "Return") {
+      handleSubmit();
+    }
+  };
+
   const clickHandleUpdateFilter1 = () => {
-    updateFilters({ alcoholic: ['Alcoholic'] });
+    updateFilters({ alcoholic: ["Alcoholic"] });
   };
 
   const clickHandleUpdateFilter2 = () => {
     updateFilters({
-      alcoholic: ['Non alcoholic'],
+      alcoholic: ["Non alcoholic"],
     });
   };
 
   return (
-    <div className='SearchBar'>
+    <div className="SearchBar">
       <input
         onChange={(event) => handleChange(event)}
-        placeholder='Search for a cocktail...'
-        id='search-bar'
+        placeholder="Search for a cocktail..."
+        id="search-bar"
+        onKeyDown={handleKeypress}
       />
       <button
         disabled={disableSearch}
-        className='search-btn'
+        className="search-btn"
         onClick={() => handleSubmit(message)}
       >
         Search
       </button>
 
-      <div className={`dropdown${disableFilter ? ' disabled' : ''}`}>
-        <button className='btn' id='categories'>
+      <div className={`dropdown${disableFilter ? " disabled" : ""}`}>
+        <button className="btn" id="categories">
           Categories
         </button>
-        <div className='dropdown-content'>
-          {' '}
+        <div className="dropdown-content">
+          {" "}
           <div onClick={clickHandleUpdateFilter1}>Alcoholic</div>
           <div onClick={clickHandleUpdateFilter2}>Non-Alcholic</div>
         </div>
