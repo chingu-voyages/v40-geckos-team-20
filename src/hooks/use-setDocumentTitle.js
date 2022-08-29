@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-const useSetDocumentTitle = (defaultPageTitle, dynamicPageTitle) => {
+const useSetDocumentTitle = (dynamicPageTitle, defaultPageTitle = null) => {
   useEffect(() => {
     const defaultAppTitle = 'EZ Cocktails';
-    document.title = dynamicPageTitle ? dynamicPageTitle : defaultPageTitle;
+    document.title = dynamicPageTitle || defaultPageTitle || defaultAppTitle;
     return () => {
       document.title = defaultAppTitle;
     };
