@@ -15,6 +15,7 @@ export const Header = styled.header`
 `
 
 export const CocktailImage = styled.img`
+  width: 40%;
   border-radius: 50%;
   aspect-ratio: 1/1;
   object-fit: cover;
