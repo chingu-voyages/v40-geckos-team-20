@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import { GlobalVariables } from './GlobalVariables';
 
 const GlobalStyles = createGlobalStyle`
+
+  ${GlobalVariables}
+
   /*
   1. Use a more-intuitive box-sizing model.
   */
@@ -27,6 +31,10 @@ const GlobalStyles = createGlobalStyle`
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    margin: 0;
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   /*
     6. Improve media defaults
@@ -57,6 +65,7 @@ const GlobalStyles = createGlobalStyle`
   #root {
     height: 100%;
   }
+
 `;
 
 export default GlobalStyles;

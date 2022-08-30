@@ -1,4 +1,3 @@
-import './App.css';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
 import Header from './components/Header/Header';
