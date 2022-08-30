@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelectedCocktailContext } from "../../context/use-context";
+import { CONTEXT_STATUS } from "../../context/constants";
 import {
   Wrapper,
   Header,
@@ -20,53 +21,63 @@ import {
 const CocktailDetails = () => {
   const { selectedCocktail, updateSelectedCocktail } =
     useSelectedCocktailContext();
+  const { data, status } = selectedCocktail;
+  const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
   const id = +useParams().id;
-  const cocktail = selectedCocktail.data;
 
   useEffect(() => {
     updateSelectedCocktail(id);
-  }, [id]); 
+  }, [id]);
 
-  const ingredients = [];
+  let ingredientsUI;
+  let recipesUI;
 
-  for (let i = 1; i <= 15; i++) {
-    const propertyName = `strIngredient${i}`
-    if (cocktail) {
-      cocktail[propertyName] && ingredients.push(cocktail[propertyName]);
-    }
+  if (status === SUCCESS) {
+    ingredientsUI = createIngredientsUI();
+    recipesUI = createRecipesUI();
   }
 
-  const ingredientsUI = ingredients.map((ingredient) => {
-    return <IngredientsItem key={ingredient}>{ingredient}</IngredientsItem>
-  })
+  function createIngredientsUI() {
+    const ingredients = [];
 
-  const recipes = cocktail?.strInstructions.split('. ');
-  
-  const recipesUI = recipes?.map((recipe, i) => {
-    return <RecipeItem key={i}>{recipe}</RecipeItem>
-  })
-  
+    for (let i = 1; i <= 15; i++) {
+      const propertyName = `strIngredient${i}`;
+      data[propertyName] && ingredients.push(data[propertyName]);
+    }
+
+    const ingredientsUI = ingredients.map((ingredient) => {
+      return <IngredientsItem key={ingredient}>{ingredient}</IngredientsItem>;
+    });
+
+    return ingredientsUI;
+  }
+
+  function createRecipesUI() {
+    const recipes = data.strInstructions.split(". ");
+    const recipesUI = recipes.map((recipe, i) => {
+      return <RecipeItem key={i}>{recipe}</RecipeItem>;
+    });
+
+    return recipesUI;
+  }
+
   return (
     <Wrapper>
       <Header>
         <CocktailImage
-          src={cocktail && cocktail.strDrinkThumb}
-          alt={cocktail && cocktail.strDrink}
+          src={data && data.strDrinkThumb}
+          alt={data && data.strDrink}
         />
-        <CocktailName>{cocktail && cocktail.strDrink}</CocktailName>
+        <CocktailName>{data && data.strDrink}</CocktailName>
       </Header>
       <Main>
         <IngredientsWrapper>
           <IngredientsTitle>Ingredients</IngredientsTitle>
-          <IngredientsContent>
-            {ingredientsUI}
-          </IngredientsContent>
+          <IngredientsContent>{ingredientsUI}</IngredientsContent>
         </IngredientsWrapper>
         <RecipeWrapper>
           <RecipeTitle>Recipe</RecipeTitle>
-          <RecipeContent>
-            {recipesUI}
-          </RecipeContent>
+          <RecipeContent>{recipesUI}</RecipeContent>
         </RecipeWrapper>
       </Main>
       <Link to="/">Back</Link>
