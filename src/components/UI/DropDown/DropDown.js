@@ -7,33 +7,33 @@ import {
 } from './DropDown.styled';
 import { ReactComponent as DownSvg } from '../../../images/down-arrow.svg';
 
-const DropDown = () => {
-  const [open, setOpen] = useState(false);
-  const buttonRef = useRef(null);
+const OPTIONS = [
+  'Any',
+  'Alcoholic',
+  'Non-alcoholic',
+  'Optional alcohol',
+  'Something else',
+  'Alcoholic',
+  'Non-alcoholic',
+  'Optional alcohol',
+  'Something else',
+];
 
-  const options = [
-    'Any',
-    'Alcoholic',
-    'Non-alcoholic',
-    'Optional alcohol',
-    'Something else',
-    'Alcoholic',
-    'Non-alcoholic',
-    'Optional alcohol',
-    'Something else',
-  ];
+const DropDown = ({ defaultIndex = 0, options = OPTIONS }) => {
+  const [open, setOpen] = useState(false);
+  const [selection, setSelection] = useState(
+    options?.length ? options[defaultIndex] : '-'
+  );
+  const buttonRef = useRef(null);
   const id = useId();
 
-  const toggleDropDown = () => {
-    setOpen((prev) => !prev);
-  };
+  const toggleDropDownHandler = () => setOpen((prev) => !prev);
 
   const DropDownContent = () => {
     const contentRef = useRef(null);
 
     useEffect(() => {
       const handleOutsideClick = (e) => {
-        console.log('clicked!');
         if (
           contentRef.current &&
           !contentRef.current.contains(e.target) &&
@@ -50,9 +50,17 @@ const DropDown = () => {
 
     return (
       <DropDownItems ref={contentRef}>
-        {options.map((i, index) => (
-          <DropDownItem key={index}>{i}</DropDownItem>
-        ))}
+        {options.map((i, index) => {
+          const selectHandler = () => {
+            setSelection(i);
+            setOpen(false);
+          };
+          return (
+            <DropDownItem key={index} onClick={selectHandler}>
+              {i}
+            </DropDownItem>
+          );
+        })}
       </DropDownItems>
     );
   };
@@ -62,11 +70,11 @@ const DropDown = () => {
       <label htmlFor={id}>Category</label>
       <DropDownButton
         ref={buttonRef}
-        onClick={toggleDropDown}
+        onClick={toggleDropDownHandler}
         id={id}
         open={open}
       >
-        Any
+        {selection}
         <DownSvg />
       </DropDownButton>
 

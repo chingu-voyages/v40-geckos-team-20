@@ -13,7 +13,7 @@ export const DropDownWrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  width: 10rem;
+  width: 12rem;
   position: relative;
 
   label {
