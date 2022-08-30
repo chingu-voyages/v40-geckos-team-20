@@ -77,5 +77,6 @@ export const RecipeContent = styled.section`
 `
 
 export const RecipeItem = styled.p`
-
+  line-height: 1.5;
+  margin-bottom: 1rem;
 `
