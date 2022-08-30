@@ -38,6 +38,9 @@ const CocktailDetails = () => {
     recipesUI = createRecipesUI();
   }
 
+  // If we have a cocktail name, add it to the browser tab title
+  useSetDocumentTitle(status === SUCCESS && data?.strDrink);
+
   function createIngredientsUI() {
     const ingredients = [];
 
@@ -61,9 +64,6 @@ const CocktailDetails = () => {
 
     return recipesUI;
   }
-
-  // If we have a cocktail name, add it to the browser tab title
-  useSetDocumentTitle(data?.strDrink);
 
   return (
     <Wrapper>
