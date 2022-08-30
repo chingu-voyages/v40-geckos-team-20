@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useSelectedCocktailContext } from "../../context/use-context";
+import { CONTEXT_STATUS } from "../../context/constants";
 import {
   Wrapper,
   Header,
@@ -17,43 +19,65 @@ import {
 } from "./CocktailDetails.styled";
 
 const CocktailDetails = () => {
+  const { selectedCocktail, updateSelectedCocktail } =
+    useSelectedCocktailContext();
+  const { data, status } = selectedCocktail;
+  const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
   const id = +useParams().id;
 
-  // use id to update selected cocktail
+  useEffect(() => {
+    updateSelectedCocktail(id);
+  }, [id]);
+
+  let ingredientsUI;
+  let recipesUI;
+
+  if (status === SUCCESS) {
+    ingredientsUI = createIngredientsUI();
+    recipesUI = createRecipesUI();
+  }
+
+  function createIngredientsUI() {
+    const ingredients = [];
+
+    for (let i = 1; i <= 15; i++) {
+      const propertyName = `strIngredient${i}`;
+      data[propertyName] && ingredients.push(data[propertyName]);
+    }
+
+    const ingredientsUI = ingredients.map((ingredient) => {
+      return <IngredientsItem key={ingredient}>{ingredient}</IngredientsItem>;
+    });
+
+    return ingredientsUI;
+  }
+
+  function createRecipesUI() {
+    const recipes = data.strInstructions.split(". ");
+    const recipesUI = recipes.map((recipe, i) => {
+      return <RecipeItem key={i}>{recipe}</RecipeItem>;
+    });
+
+    return recipesUI;
+  }
 
   return (
     <Wrapper>
       <Header>
-        <CocktailImage src="https://www.thecocktaildb.com/images/media/drink/vvpxwy1439907208.jpg/preview" alt="Sazerac" />
-        <CocktailName>Sazerac</CocktailName>
+        <CocktailImage
+          src={data && data.strDrinkThumb}
+          alt={data && data.strDrink}
+        />
+        <CocktailName>{data && data.strDrink}</CocktailName>
       </Header>
       <Main>
         <IngredientsWrapper>
           <IngredientsTitle>Ingredients</IngredientsTitle>
-          <IngredientsContent>
-            <IngredientsItem>2 ounces of rye bourbon</IngredientsItem>
-            <IngredientsItem>1/4 ounce simple syrup</IngredientsItem>
-            <IngredientsItem>2 dashes angusta bitters</IngredientsItem>
-            <IngredientsItem>Orange peel for garnish</IngredientsItem>
-          </IngredientsContent>
+          <IngredientsContent>{ingredientsUI}</IngredientsContent>
         </IngredientsWrapper>
         <RecipeWrapper>
           <RecipeTitle>Recipe</RecipeTitle>
-          <RecipeContent>
-            <RecipeItem>
-            Rinse a chilled rocks glass with absinthe, discarding any excess, and set aside.
-            </RecipeItem>
-            <RecipeItem>
-              In a mixing glass, muddle the sugar cube, water and the Peychaud’s and Angostura bitters.
-            </RecipeItem>
-            <RecipeItem>
-              Add the rye and cognac, fill the mixing glass with ice and stir until well-chilled.
-            </RecipeItem>
-            <RecipeItem>
-              Strain into the prepared glass.            </RecipeItem>
-            <RecipeItem>
-              Twist the lemon peel over the drink’s surface to express the peel’s oils, then garnish with the peel.            </RecipeItem>
-          </RecipeContent>
+          <RecipeContent>{recipesUI}</RecipeContent>
         </RecipeWrapper>
       </Main>
       <Link to="/">Back</Link>

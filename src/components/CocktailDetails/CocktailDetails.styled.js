@@ -15,6 +15,7 @@ export const Header = styled.header`
 `
 
 export const CocktailImage = styled.img`
+  width: 40%;
   border-radius: 50%;
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -71,10 +72,11 @@ export const RecipeTitle = styled.h3`
   letter-spacing: 1.5px;
 `
 
-export const RecipeContent = styled.ol`
+export const RecipeContent = styled.section`
 
 `
 
-export const RecipeItem = styled.li`
-
+export const RecipeItem = styled.p`
+  line-height: 1.5;
+  margin-bottom: 1rem;
 `
