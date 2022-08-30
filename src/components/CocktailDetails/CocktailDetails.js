@@ -14,6 +14,7 @@ import {
   RecipeWrapper,
   RecipeTitle,
   RecipeContent,
+  RecipeItem,
 } from "./CocktailDetails.styled";
 
 const CocktailDetails = () => {
@@ -38,6 +39,12 @@ const CocktailDetails = () => {
   const ingredientsUI = ingredients.map((ingredient) => {
     return <IngredientsItem key={ingredient}>{ingredient}</IngredientsItem>
   })
+
+  const recipes = cocktail?.strInstructions.split('. ');
+  
+  const recipesUI = recipes?.map((recipe, i) => {
+    return <RecipeItem key={i}>{recipe}</RecipeItem>
+  })
   
   return (
     <Wrapper>
@@ -51,7 +58,6 @@ const CocktailDetails = () => {
       <Main>
         <IngredientsWrapper>
           <IngredientsTitle>Ingredients</IngredientsTitle>
-          
           <IngredientsContent>
             {ingredientsUI}
           </IngredientsContent>
@@ -59,7 +65,7 @@ const CocktailDetails = () => {
         <RecipeWrapper>
           <RecipeTitle>Recipe</RecipeTitle>
           <RecipeContent>
-            {cocktail?.strInstructions}
+            {recipesUI}
           </RecipeContent>
         </RecipeWrapper>
       </Main>
