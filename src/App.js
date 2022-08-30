@@ -1,7 +1,7 @@
 import './App.css';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import backgroundImage from './images/background-image.jpg';
 import {
   BrowserRouter as Router,

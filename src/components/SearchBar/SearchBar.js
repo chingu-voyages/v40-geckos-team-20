@@ -1,8 +1,8 @@
 import './SearchBar.css';
 import React, { useState } from 'react';
-import { useCocktailListContext } from '../context/use-context';
-import { useFiltersContext } from '../context/use-context';
-import { CONTEXT_STATUS } from '../context/constants';
+import { useCocktailListContext } from '../../context/use-context';
+import { useFiltersContext } from '../../context/use-context';
+import { CONTEXT_STATUS } from '../../context/constants';
 
 const SearchBar = () => {
   const [message, setMessage] = useState('');
