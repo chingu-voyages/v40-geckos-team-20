@@ -12,6 +12,7 @@ import {
 import CocktailListPage from './pages/CocktailListPage';
 import CocktailDetailsPage from './pages/CocktailDetailsPage';
 import { QuestionMessage } from './components/MessageState/MessageState';
+import ScrollToTop from './utils/ScrollToTop';
 
 /*import TestContextCocktailList from "./components/_TestComponents/TestContextCocktailList";*/
 /*import TestContextSelectedCocktail from "./components/_TestComponents/TestContextSelectedCocktail";*/
@@ -33,6 +34,7 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Background>
         <Wrapper>
           <Header />
