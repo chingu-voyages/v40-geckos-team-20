@@ -72,10 +72,10 @@ export const RecipeTitle = styled.h3`
   letter-spacing: 1.5px;
 `
 
-export const RecipeContent = styled.ol`
+export const RecipeContent = styled.section`
 
 `
 
-export const RecipeItem = styled.li`
+export const RecipeItem = styled.p`
 
 `
