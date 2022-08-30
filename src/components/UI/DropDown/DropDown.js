@@ -9,6 +9,7 @@ import { ReactComponent as DownSvg } from '../../../images/down-arrow.svg';
 
 const DropDown = () => {
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef(null);
 
   const options = [
     'Any',
@@ -32,7 +33,12 @@ const DropDown = () => {
 
     useEffect(() => {
       const handleOutsideClick = (e) => {
-        if (contentRef.current && !contentRef.current.contains(e.target))
+        console.log('clicked!');
+        if (
+          contentRef.current &&
+          !contentRef.current.contains(e.target) &&
+          !buttonRef.current.contains(e.target)
+        )
           setOpen(false);
       };
 
@@ -40,7 +46,7 @@ const DropDown = () => {
 
       return () =>
         document.removeEventListener('mousedown', handleOutsideClick);
-    }, [contentRef]);
+    }, []);
 
     return (
       <DropDownItems ref={contentRef}>
@@ -54,7 +60,12 @@ const DropDown = () => {
   return (
     <DropDownWrapper>
       <label htmlFor={id}>Category</label>
-      <DropDownButton onClick={toggleDropDown} id={id} open={open}>
+      <DropDownButton
+        ref={buttonRef}
+        onClick={toggleDropDown}
+        id={id}
+        open={open}
+      >
         Any
         <DownSvg />
       </DropDownButton>
