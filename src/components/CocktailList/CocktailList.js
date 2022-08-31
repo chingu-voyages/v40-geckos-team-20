@@ -17,14 +17,14 @@ const CocktailList = () => {
 
   const allDrinks = drinks?.slice();
   const haveDrinks = drinks?.length;
-  const chunkedCocktails = allDrinks && chunkArrayInGroups(allDrinks, 6);
+  const chunkedCocktails = allDrinks && chunkArrayInGroups(allDrinks, 9);
   const cocktailList =
     status === SUCCESS && haveDrinks && generateCocktailListUI();
 
   useEffect(() => {
     if (firstRender.current && status === IDLE) {
       firstRender.current = false;
-      getRandomCocktails(6);
+      getRandomCocktails(9);
     }
   }, [getRandomCocktails, status, IDLE]);
 
