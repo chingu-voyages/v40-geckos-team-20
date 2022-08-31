@@ -1,7 +1,7 @@
 import React from "react";
 import { PaginationWrapper, PaginationItem } from "./Pagination.styled";
 
-const Pagination = ({ chunkedCocktails, currentPage }) => {
+const Pagination = ({ chunkedCocktails, currentPage, handlePageClick }) => {
   const paginationBar =
     chunkedCocktails &&
     chunkedCocktails[currentPage - 1]?.map((ct, i) => {
@@ -11,6 +11,7 @@ const Pagination = ({ chunkedCocktails, currentPage }) => {
           pageNum={pageNum}
           isCurrentPage={pageNum === currentPage}
           key={i}
+          onClick={() => handlePageClick(pageNum)}
         />
       );
     });

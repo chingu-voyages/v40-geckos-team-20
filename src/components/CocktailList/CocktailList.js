@@ -54,6 +54,10 @@ const CocktailList = () => {
     }
   }
 
+  function handlePageClick(pageNum) {
+    setCurrentPage(pageNum);
+  }
+
   const haveDrinks = cocktailList?.length;
 
   return (
@@ -64,6 +68,7 @@ const CocktailList = () => {
         <Pagination
           chunkedCocktails={chunkedCocktails}
           currentPage={currentPage}
+          handlePageClick={handlePageClick}
         />
       )}
       {status === SUCCESS && !haveDrinks && (
