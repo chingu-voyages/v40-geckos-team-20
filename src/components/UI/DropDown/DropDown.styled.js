@@ -37,8 +37,13 @@ export const DropDownButton = styled.button`
   border: none;
   border-radius: 3px;
   font-weight: bold;
-  cursor: pointer;
-  &:hover {
+  &:disabled {
+    background-color: var(--primary-disabled);
+  }
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+  &:hover:not(:disabled) {
     background-color: var(--primary-color-light);
   }
 `;

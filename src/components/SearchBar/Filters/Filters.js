@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import DropDown from '../../UI/DropDown/DropDown';
-import { useFiltersContext } from '../../../context/use-context';
+import {
+  useFiltersContext,
+  useCocktailListContext,
+} from '../../../context/use-context';
 import { CONTEXT_STATUS } from '../../../context/constants';
 import { FilterWrapper } from './Filters.styled';
 
 const Filters = () => {
   const { filters, updateFilters } = useFiltersContext();
+  const { cocktails } = useCocktailListContext();
 
   const { status, error, allFilters, selectedFilters } = filters;
 
@@ -33,6 +37,8 @@ const Filters = () => {
   const updateFilter = (filterKey, newVal) =>
     updateFilters({ [filterKey]: newVal === 'Any' ? [] : [newVal] });
 
+  const isListLoading = cocktails.status === CONTEXT_STATUS.LOADING;
+
   return (
     <FilterWrapper>
       <DropDown
@@ -40,18 +46,21 @@ const Filters = () => {
         currentSelection={selectedFilter('categories')}
         options={filterOptions('categories')}
         updateFunc={(newVal) => updateFilter('categories', newVal)}
+        disabled={isListLoading}
       />
       <DropDown
         label='Alcohol'
         currentSelection={selectedFilter('alcoholic')}
         options={filterOptions('alcoholic')}
         updateFunc={(newVal) => updateFilter('alcoholic', newVal)}
+        disabled={isListLoading}
       />
       <DropDown
         label='Glass'
         currentSelection={selectedFilter('glasses')}
         options={filterOptions('glasses')}
         updateFunc={(newVal) => updateFilter('glasses', newVal)}
+        disabled={isListLoading}
       />
     </FilterWrapper>
   );

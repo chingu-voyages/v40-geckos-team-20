@@ -7,7 +7,13 @@ import {
 } from './DropDown.styled';
 import { ReactComponent as DownSvg } from '../../../images/down-arrow.svg';
 
-const DropDown = ({ label, currentSelection, options, updateFunc }) => {
+const DropDown = ({
+  label,
+  currentSelection,
+  options,
+  updateFunc,
+  disabled = false,
+}) => {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState('-');
   const buttonRef = useRef(null);
@@ -66,6 +72,7 @@ const DropDown = ({ label, currentSelection, options, updateFunc }) => {
         onClick={toggleDropDownHandler}
         id={id}
         open={open}
+        disabled={disabled}
       >
         {selection}
         <DownSvg />
