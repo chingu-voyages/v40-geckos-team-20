@@ -35,10 +35,9 @@ const Wrapper = styled.div`
 function App() {
   const { getAllFilters } = useFiltersContext();
 
-  // TO DO!!! USECALLBACK FOR GETALLFILTERS
   useEffect(() => {
     getAllFilters();
-  }, []);
+  }, [getAllFilters]);
 
   return (
     <Router>
