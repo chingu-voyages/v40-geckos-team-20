@@ -1,19 +1,16 @@
 import './SearchBar.css';
 import React, { useState } from 'react';
 import { useCocktailListContext } from '../../context/use-context';
-import { useFiltersContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
 import Filters from './Filters/Filters';
 
 const SearchBar = () => {
   const [message, setMessage] = useState('');
   const { cocktails, searchCocktails } = useCocktailListContext();
-  const { updateFilters } = useFiltersContext();
 
   const { status } = cocktails;
   const { LOADING } = CONTEXT_STATUS;
   const disableSearch = !message || status === LOADING;
-  const disableFilter = status === LOADING;
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -23,16 +20,6 @@ const SearchBar = () => {
   const handleSubmit = (searchTerm) => {
     console.log(searchTerm);
     searchCocktails(searchTerm);
-  };
-
-  const clickHandleUpdateFilter1 = () => {
-    updateFilters({ alcoholic: ['Alcoholic'] });
-  };
-
-  const clickHandleUpdateFilter2 = () => {
-    updateFilters({
-      alcoholic: ['Non alcoholic'],
-    });
   };
 
   return (
