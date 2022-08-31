@@ -54,6 +54,8 @@ export const DropDownItems = styled.div`
   padding: 10px 0;
   border-radius: 3px;
   z-index: 1;
+  max-height: 450px;
+  overflow-y: auto;
 `;
 
 export const DropDownItem = styled.div`
