@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useCocktailListContext } from '../../context/use-context';
 import { useFiltersContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
-import DropDown from '../UI/DropDown/DropDown';
+import Filters from './Filters/Filters';
 
 const SearchBar = () => {
   const [message, setMessage] = useState('');
@@ -60,7 +60,7 @@ const SearchBar = () => {
           <div onClick={clickHandleUpdateFilter2}>Non-Alcholic</div>
         </div>
       </div>
-      <DropDown />
+      <Filters />
     </div>
   );
 };

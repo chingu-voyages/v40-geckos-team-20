@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components/macro';
 import Header from './components/Header/Header';
@@ -12,10 +13,11 @@ import CocktailListPage from './pages/CocktailListPage';
 import CocktailDetailsPage from './pages/CocktailDetailsPage';
 import { QuestionMessage } from './components/MessageState/MessageState';
 import ScrollToTop from './utils/ScrollToTop';
+import { useFiltersContext } from './context/use-context';
 
-/*import TestContextCocktailList from "./components/_TestComponents/TestContextCocktailList";*/
-/*import TestContextSelectedCocktail from "./components/_TestComponents/TestContextSelectedCocktail";*/
-/*import TestContextFilters from "./components/_TestComponents/TestContextFilters";*/
+// import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
+// import TestContextSelectedCocktail from './components/_TestComponents/TestContextSelectedCocktail';
+// import TestContextFilters from './components/_TestComponents/TestContextFilters';
 
 const Background = styled.div`
   background-image: url(${backgroundImage});
@@ -31,6 +33,13 @@ const Wrapper = styled.div`
 `;
 
 function App() {
+  const { getAllFilters } = useFiltersContext();
+
+  // TO DO!!! USECALLBACK FOR GETALLFILTERS
+  useEffect(() => {
+    getAllFilters();
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />

@@ -7,27 +7,17 @@ import {
 } from './DropDown.styled';
 import { ReactComponent as DownSvg } from '../../../images/down-arrow.svg';
 
-const OPTIONS = [
-  'Any',
-  'Alcoholic',
-  'Non-alcoholic',
-  'Optional alcohol',
-  'Something else',
-  'Alcoholic',
-  'Non-alcoholic',
-  'Optional alcohol',
-  'Something else',
-];
-
-const DropDown = ({ defaultIndex = 0, options = OPTIONS }) => {
+const DropDown = ({ label, currentSelection, options, updateFunc }) => {
   const [open, setOpen] = useState(false);
-  const [selection, setSelection] = useState(
-    options?.length ? options[defaultIndex] : '-'
-  );
+  const [selection, setSelection] = useState('-');
   const buttonRef = useRef(null);
   const id = useId();
 
   const toggleDropDownHandler = () => setOpen((prev) => !prev);
+
+  useEffect(() => {
+    if (currentSelection) setSelection(currentSelection);
+  }, [currentSelection]);
 
   // Abstracted component for the drop down content, to handle the outside click/closing
   const DropDownContent = () => {
@@ -51,24 +41,26 @@ const DropDown = ({ defaultIndex = 0, options = OPTIONS }) => {
 
     return (
       <DropDownItems ref={contentRef}>
-        {options.map((i, index) => {
-          const selectHandler = () => {
-            setSelection(i);
-            setOpen(false);
-          };
-          return (
-            <DropDownItem key={index} onClick={selectHandler}>
-              {i}
-            </DropDownItem>
-          );
-        })}
+        {options &&
+          options.map((i, index) => {
+            const selectHandler = () => {
+              setSelection(i);
+              setOpen(false);
+              updateFunc(i);
+            };
+            return (
+              <DropDownItem key={index} onClick={selectHandler}>
+                {i}
+              </DropDownItem>
+            );
+          })}
       </DropDownItems>
     );
   };
 
   return (
     <DropDownWrapper>
-      <label htmlFor={id}>Category</label>
+      <label htmlFor={id}>{label}</label>
       <DropDownButton
         ref={buttonRef}
         onClick={toggleDropDownHandler}
