@@ -2,7 +2,6 @@ import './SearchBar.css';
 import React, { useState } from 'react';
 import { useCocktailListContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
-import Filters from './Filters/Filters';
 
 const SearchBar = () => {
   const [message, setMessage] = useState('');
@@ -36,7 +35,6 @@ const SearchBar = () => {
       >
         Search
       </button>
-      <Filters />
     </div>
   );
 };

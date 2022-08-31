@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import DropDown from '../../UI/DropDown/DropDown';
+import DropDown from '../UI/DropDown/DropDown';
 import {
   useFiltersContext,
   useCocktailListContext,
-} from '../../../context/use-context';
-import { CONTEXT_STATUS } from '../../../context/constants';
+} from '../../context/use-context';
+import { CONTEXT_STATUS } from '../../context/constants';
 import { FilterWrapper } from './Filters.styled';
 
 const Filters = () => {
