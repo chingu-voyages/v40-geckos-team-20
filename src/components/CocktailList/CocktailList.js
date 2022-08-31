@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useCocktailListContext } from '../../context/use-context';
-import { Wrapper, Cocktail, CocktailImage } from './CocktailList.styled';
-import { CONTEXT_STATUS } from '../../context/constants';
-import Spinner from '../UI/Spinner/Spinner';
-import { InfoMessage, ErrorMessage } from '../MessageState/MessageState';
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useCocktailListContext } from "../../context/use-context";
+import { Wrapper, Cocktail, CocktailImage } from "./CocktailList.styled";
+import { CONTEXT_STATUS } from "../../context/constants";
+import Spinner from "../UI/Spinner/Spinner";
+import { InfoMessage, ErrorMessage } from "../MessageState/MessageState";
+import Pagination from "../UI/Pagination/Pagination";
 
 const CocktailList = () => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
@@ -25,30 +26,30 @@ const CocktailList = () => {
     }
   }, [getRandomCocktails, status, IDLE]);
 
-  
-
   function chunkArrayInGroups(arr, size) {
     let chunkedCocktails = [];
-    for(let i = 0; i < arr.length; i += size) {
-      chunkedCocktails.push(arr.slice(i, i+size));
+    for (let i = 0; i < arr.length; i += size) {
+      chunkedCocktails.push(arr.slice(i, i + size));
     }
     return chunkedCocktails;
   }
 
   function generateCocktailListUI() {
     if (chunkedCocktails) {
-      const cocktailList = chunkedCocktails[currentPage - 1].map((cocktail, i) => {
-        return (
-          <Cocktail key={i}>
-            <Link to={`/cocktails/${cocktail.idDrink}`}>
-              <CocktailImage
-                src={`${cocktail.strDrinkThumb}/preview`}
-                alt={cocktail.strDrink}
-              />
-            </Link>
-          </Cocktail>
-        );
-      });
+      const cocktailList = chunkedCocktails[currentPage - 1].map(
+        (cocktail, i) => {
+          return (
+            <Cocktail key={i}>
+              <Link to={`/cocktails/${cocktail.idDrink}`}>
+                <CocktailImage
+                  src={`${cocktail.strDrinkThumb}/preview`}
+                  alt={cocktail.strDrink}
+                />
+              </Link>
+            </Cocktail>
+          );
+        }
+      );
       return cocktailList;
     }
   }
@@ -59,14 +60,20 @@ const CocktailList = () => {
     <>
       {status === LOADING && <Spinner />}
       {status === SUCCESS && haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
+      {status === SUCCESS && (
+        <Pagination
+          chunkedCocktails={chunkedCocktails}
+          currentPage={currentPage}
+        />
+      )}
       {status === SUCCESS && !haveDrinks && (
         <InfoMessage
-          title='No cocktails to display'
-          message='Please try searching again, or adjust the filters you may have selected.'
+          title="No cocktails to display"
+          message="Please try searching again, or adjust the filters you may have selected."
         />
       )}
       {status === ERROR && (
-        <ErrorMessage title='Error loading cocktails' message={error.message} />
+        <ErrorMessage title="Error loading cocktails" message={error.message} />
       )}
     </>
   );
