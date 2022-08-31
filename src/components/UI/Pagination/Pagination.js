@@ -3,8 +3,7 @@ import { PaginationWrapper, PaginationItem } from "./Pagination.styled";
 
 const Pagination = ({ chunkedCocktails, currentPage, handlePageClick }) => {
   const paginationBar =
-    chunkedCocktails &&
-    chunkedCocktails[currentPage - 1]?.map((ct, i) => {
+    chunkedCocktails?.map((ct, i) => {
       const pageNum = i + 1;
       return (
         <PaginationItem
