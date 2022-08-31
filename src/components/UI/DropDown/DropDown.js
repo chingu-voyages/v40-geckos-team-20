@@ -29,9 +29,11 @@ const DropDown = ({ defaultIndex = 0, options = OPTIONS }) => {
 
   const toggleDropDownHandler = () => setOpen((prev) => !prev);
 
+  // Abstracted component for the drop down content, to handle the outside click/closing
   const DropDownContent = () => {
     const contentRef = useRef(null);
 
+    // close the drop down when user clicks outside it (but not if they click the button)
     useEffect(() => {
       const handleOutsideClick = (e) => {
         if (
@@ -41,9 +43,8 @@ const DropDown = ({ defaultIndex = 0, options = OPTIONS }) => {
         )
           setOpen(false);
       };
-
       document.addEventListener('mousedown', handleOutsideClick);
-
+      // clear event listener when drop down closes
       return () =>
         document.removeEventListener('mousedown', handleOutsideClick);
     }, []);
