@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import DropDown from '../../UI/DropDown/DropDown';
 import { useFiltersContext } from '../../../context/use-context';
 import { CONTEXT_STATUS } from '../../../context/constants';
+import { FilterWrapper } from './Filters.styled';
 
 const Filters = () => {
   const { filters, updateFilters } = useFiltersContext();
@@ -33,7 +34,7 @@ const Filters = () => {
     updateFilters({ [filterKey]: newVal === 'Any' ? [] : [newVal] });
 
   return (
-    <div>
+    <FilterWrapper>
       <DropDown
         label='Category'
         currentSelection={selectedFilter('categories')}
@@ -52,7 +53,7 @@ const Filters = () => {
         options={filterOptions('glasses')}
         updateFunc={(newVal) => updateFilter('glasses', newVal)}
       />
-    </div>
+    </FilterWrapper>
   );
 };
 

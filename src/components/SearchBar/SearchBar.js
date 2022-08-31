@@ -49,17 +49,6 @@ const SearchBar = () => {
       >
         Search
       </button>
-
-      <div className={`dropdown${disableFilter ? ' disabled' : ''}`}>
-        <button className='btn' id='categories'>
-          Categories
-        </button>
-        <div className='dropdown-content'>
-          {' '}
-          <div onClick={clickHandleUpdateFilter1}>Alcoholic</div>
-          <div onClick={clickHandleUpdateFilter2}>Non-Alcholic</div>
-        </div>
-      </div>
       <Filters />
     </div>
   );
