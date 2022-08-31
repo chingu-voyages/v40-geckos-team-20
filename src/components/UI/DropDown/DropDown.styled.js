@@ -51,6 +51,7 @@ export const DropDownItems = styled.div`
   background-color: var(--primary-color);
   min-width: 30px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
   border-radius: 3px;
   z-index: 1;
 `;
@@ -58,12 +59,6 @@ export const DropDownItems = styled.div`
 export const DropDownItem = styled.div`
   padding: 5px 10px;
   cursor: pointer;
-  &:first-child {
-    padding-top: 10px;
-  }
-  &:last-child {
-    padding-bottom: 10px;
-  }
   &:hover {
     background-color: var(--primary-color-light);
   }
