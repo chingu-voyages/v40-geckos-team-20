@@ -6,7 +6,9 @@ const CocktailListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   return (
     <>
-      <SearchBar />
+      <SearchBar
+        setCurrentPage={setCurrentPage}
+      />
       <CocktailList
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

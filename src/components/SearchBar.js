@@ -4,7 +4,7 @@ import { useCocktailListContext } from '../context/use-context';
 import { useFiltersContext } from '../context/use-context';
 import { CONTEXT_STATUS } from '../context/constants';
 
-const SearchBar = () => {
+const SearchBar = ( { setCurrentPage } ) => {
   const [message, setMessage] = useState('');
   const { cocktails, searchCocktails } = useCocktailListContext();
   const { updateFilters } = useFiltersContext();
@@ -21,6 +21,7 @@ const SearchBar = () => {
 
   const handleSubmit = (searchTerm) => {
     console.log(searchTerm);
+    setCurrentPage(1);
     searchCocktails(searchTerm);
   };
 
