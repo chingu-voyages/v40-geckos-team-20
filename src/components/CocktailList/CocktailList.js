@@ -16,8 +16,10 @@ const CocktailList = () => {
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
 
   const allDrinks = drinks?.slice();
+  const haveDrinks = drinks?.length;
   const chunkedCocktails = allDrinks && chunkArrayInGroups(allDrinks, 6);
-  const cocktailList = generateCocktailListUI();
+  const cocktailList =
+    status === SUCCESS && haveDrinks && generateCocktailListUI();
 
   useEffect(() => {
     if (firstRender.current && status === IDLE) {
@@ -57,8 +59,6 @@ const CocktailList = () => {
   function handlePageClick(pageNum) {
     setCurrentPage(pageNum);
   }
-
-  const haveDrinks = cocktailList?.length;
 
   return (
     <>
