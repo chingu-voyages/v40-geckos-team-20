@@ -11,20 +11,21 @@ const CocktailList = () => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
   const [currentPage, setCurrentPage] = useState(1);
   const firstRender = useRef(true);
+  const cocktailsPerPage = 9;
 
   const { status, error, drinks } = cocktails;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
 
   const allDrinks = drinks?.slice();
   const haveDrinks = drinks?.length;
-  const chunkedCocktails = allDrinks && chunkArrayInGroups(allDrinks, 9);
+  const chunkedCocktails = allDrinks && chunkArrayInGroups(allDrinks, cocktailsPerPage);
   const cocktailList =
     status === SUCCESS && haveDrinks && generateCocktailListUI();
 
   useEffect(() => {
     if (firstRender.current && status === IDLE) {
       firstRender.current = false;
-      getRandomCocktails(9);
+      getRandomCocktails(cocktailsPerPage);
     }
   }, [getRandomCocktails, status, IDLE]);
 
@@ -64,7 +65,7 @@ const CocktailList = () => {
     <>
       {status === LOADING && <Spinner />}
       {status === SUCCESS && haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
-      {status === SUCCESS && (
+      {status === SUCCESS && (drinks.length > cocktailsPerPage) && (
         <Pagination
           chunkedCocktails={chunkedCocktails}
           currentPage={currentPage}
