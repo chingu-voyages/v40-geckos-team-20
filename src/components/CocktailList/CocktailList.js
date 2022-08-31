@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useCocktailListContext } from "../../context/use-context";
 import { Wrapper, Cocktail, CocktailImage } from "./CocktailList.styled";
@@ -7,9 +7,9 @@ import Spinner from "../UI/Spinner/Spinner";
 import { InfoMessage, ErrorMessage } from "../MessageState/MessageState";
 import Pagination from "../UI/Pagination/Pagination";
 
-const CocktailList = () => {
+const CocktailList = ( { currentPage, setCurrentPage} ) => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
-  const [currentPage, setCurrentPage] = useState(1);
+  
   const firstRender = useRef(true);
   const cocktailsPerPage = 9;
 
