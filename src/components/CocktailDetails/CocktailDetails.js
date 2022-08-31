@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useSelectedCocktailContext } from "../../context/use-context";
-import { CONTEXT_STATUS } from "../../context/constants";
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useSelectedCocktailContext } from '../../context/use-context';
+import { CONTEXT_STATUS } from '../../context/constants';
 import {
   Wrapper,
   Header,
@@ -16,7 +16,8 @@ import {
   RecipeTitle,
   RecipeContent,
   RecipeItem,
-} from "./CocktailDetails.styled";
+} from './CocktailDetails.styled';
+import useSetDocumentTitle from '../../hooks/use-setDocumentTitle';
 
 const CocktailDetails = () => {
   const { selectedCocktail, updateSelectedCocktail } =
@@ -37,6 +38,9 @@ const CocktailDetails = () => {
     recipesUI = createRecipesUI();
   }
 
+  // If we have a cocktail name, add it to the browser tab title
+  useSetDocumentTitle(status === SUCCESS && data?.strDrink);
+
   function createIngredientsUI() {
     const ingredients = [];
 
@@ -53,7 +57,7 @@ const CocktailDetails = () => {
   }
 
   function createRecipesUI() {
-    const recipes = data.strInstructions.split(". ");
+    const recipes = data.strInstructions.split('. ');
     const recipesUI = recipes.map((recipe, i) => {
       return <RecipeItem key={i}>{recipe}</RecipeItem>;
     });
@@ -80,7 +84,7 @@ const CocktailDetails = () => {
           <RecipeContent>{recipesUI}</RecipeContent>
         </RecipeWrapper>
       </Main>
-      <Link to="/">Back</Link>
+      <Link to='/'>Back</Link>
     </Wrapper>
   );
 };
