@@ -26,10 +26,12 @@ const SearchBar = ( { setCurrentPage } ) => {
   };
 
   const clickHandleUpdateFilter1 = () => {
+    setCurrentPage(1);
     updateFilters({ alcoholic: ['Alcoholic'] });
   };
 
   const clickHandleUpdateFilter2 = () => {
+    setCurrentPage(1);
     updateFilters({
       alcoholic: ['Non alcoholic'],
     });
