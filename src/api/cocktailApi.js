@@ -106,7 +106,7 @@ const getCocktailsByFilter = async (searchTerm = '', code) => {
 
   try {
     const results = await sendHttpRequest({
-      url: `${URL.FILTER}${code}=list`,
+      url: `${URL.FILTER}${code}=${searchTerm}`,
     });
 
     return results;
