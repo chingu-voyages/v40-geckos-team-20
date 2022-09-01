@@ -11,6 +11,8 @@ import {
 } from 'react-router-dom';
 import CocktailListPage from './pages/CocktailListPage';
 import CocktailDetailsPage from './pages/CocktailDetailsPage';
+import { QuestionMessage } from './components/MessageState/MessageState';
+import ScrollToTop from './utils/ScrollToTop';
 
 /*import TestContextCocktailList from "./components/_TestComponents/TestContextCocktailList";*/
 /*import TestContextSelectedCocktail from "./components/_TestComponents/TestContextSelectedCocktail";*/
@@ -32,6 +34,7 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Background>
         <Wrapper>
           <Header />
@@ -39,6 +42,15 @@ function App() {
             <Route path='/cocktails/:id' element={<CocktailDetailsPage />} />
             <Route exact path='/cocktails' element={<Navigate to='/' />} />
             <Route index element={<CocktailListPage />} />
+            <Route
+              path='*'
+              element={
+                <QuestionMessage
+                  title='404! Page not found'
+                  message='We cannot find that page; please check the url.'
+                />
+              }
+            />
           </Routes>
           {/* <TestContextFilters /> */}
           {/* <TestContextCocktailList /> */}

@@ -4,8 +4,10 @@ import { useCocktailListContext } from "../context/use-context";
 import { useFiltersContext } from "../context/use-context";
 import { CONTEXT_STATUS } from "../context/constants";
 
-const SearchBar = () => {
-  const [message, setMessage] = useState("");
+
+const SearchBar = ( { setCurrentPage } ) => {
+  const [message, setMessage] = useState('');
+
   const { cocktails, searchCocktails } = useCocktailListContext();
   const { updateFilters } = useFiltersContext();
 
@@ -21,6 +23,7 @@ const SearchBar = () => {
 
   const handleSubmit = (searchTerm) => {
     console.log(searchTerm);
+    setCurrentPage(1);
     searchCocktails(searchTerm);
   };
 
@@ -31,10 +34,12 @@ const SearchBar = () => {
   };
 
   const clickHandleUpdateFilter1 = () => {
-    updateFilters({ alcoholic: ["Alcoholic"] });
+    setCurrentPage(1);
+    updateFilters({ alcoholic: ['Alcoholic'] });
   };
 
   const clickHandleUpdateFilter2 = () => {
+    setCurrentPage(1);
     updateFilters({
       alcoholic: ["Non alcoholic"],
     });
