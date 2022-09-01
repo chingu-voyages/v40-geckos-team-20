@@ -108,6 +108,7 @@ export default function CocktailListContextProvider({ children }) {
     }
   }, []);
 
+  // FILTER COCKTAILS
   const filterCocktails = useCallback(
     (selectedFilters) => {
       if (!selectedFilters && !cocktails.filtered) return;
