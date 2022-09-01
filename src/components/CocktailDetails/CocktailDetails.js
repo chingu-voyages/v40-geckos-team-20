@@ -49,8 +49,8 @@ const CocktailDetails = () => {
       data[propertyName] && ingredients.push(data[propertyName]);
     }
 
-    const ingredientsUI = ingredients.map((ingredient) => {
-      return <IngredientsItem key={ingredient}>{ingredient}</IngredientsItem>;
+    const ingredientsUI = ingredients.map((ingredient, i) => {
+      return <IngredientsItem key={i}>{ingredient}</IngredientsItem>;
     });
 
     return ingredientsUI;

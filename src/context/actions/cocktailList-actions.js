@@ -3,6 +3,7 @@ import {
   searchByName,
   searchByIngredient,
   getRandomCocktail,
+  getCocktailDetails,
 } from '../../api/cocktailApi';
 import CocktailListReducer from '../reducers/cocktailList-reducer';
 import { CONTEXT_STATUS, CTLIST_ACTIONS } from '../constants';
@@ -37,14 +38,24 @@ export default function CocktailListContextProvider({ children }) {
 
       // search for cocktails by ingredient
       const data_ingr = await searchByIngredient(searchTerm);
-      const drinks_ingr = data_ingr?.drinks ? data_ingr.drinks : [];
+      const drinks_ingr_initial = data_ingr?.drinks ? data_ingr.drinks : [];
 
-      // combine results (ensure there are no duplicates)
+      // remove duplicates
       const ids = new Set(drinks_name.map((d) => d.idDrink));
-      const drinks = [
-        ...drinks_name,
-        ...drinks_ingr.filter((d) => !ids.has(d.idDrink)),
-      ];
+      const drinks_ingr_shallow = drinks_ingr_initial.filter(
+        (d) => !ids.has(d.idDrink)
+      );
+
+      // fill out details for drinks from ingredients search
+      const promises = drinks_ingr_shallow.map(async (d) => {
+        const data = await getCocktailDetails(+d.idDrink);
+        if (!data?.drinks || !data.drinks.length) throw new Error('not_found');
+        return data.drinks[0];
+      });
+      const drinks_ingr_full = await Promise.all(promises);
+
+      // combine results
+      const drinks = [...drinks_name, ...drinks_ingr_full];
 
       setAllCocktails(drinks);
       cocktailListDispatcher({
