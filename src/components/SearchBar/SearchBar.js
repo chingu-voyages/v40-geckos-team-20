@@ -13,7 +13,6 @@ const SearchBar = ({ setCurrentPage }) => {
 
   const handleChange = (event) => {
     setMessage(event.target.value);
-    console.log(event.target.value);
   };
 
   const handleSubmit = (searchTerm) => {
