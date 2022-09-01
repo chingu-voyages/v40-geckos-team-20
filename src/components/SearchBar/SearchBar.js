@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useCocktailListContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
 
-const SearchBar = ( { setCurrentPage } ) => {
+const SearchBar = ({ setCurrentPage }) => {
   const [message, setMessage] = useState('');
   const { cocktails, searchCocktails } = useCocktailListContext();
 
