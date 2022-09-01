@@ -85,36 +85,8 @@ const getFilterListOfGlasses = () =>
 
 const getFilterListOfAlcoholic = () =>
   sendHttpRequest({
-    url: `${URL.FILTER}a=`,
+    url: `${URL.FILTER_LIST}a=list`,
   });
-
-/**
- * GET LIST OF COCKTAILS FOR A SINGLE FILTER VALUE
- */
-const getCocktailsByCategory = (searchTerm) =>
-  getCocktailsByFilter(searchTerm, 'c');
-const getCocktailsByAlcohol = (searchTerm) =>
-  getCocktailsByFilter(searchTerm, 'a');
-const getCocktailsByGlass = (searchTerm) =>
-  getCocktailsByFilter(searchTerm, 'g');
-
-const getCocktailsByFilter = async (searchTerm = '', code) => {
-  if (typeof searchTerm !== 'string' && typeof searchTerm !== 'number')
-    throw new Error(
-      'filterByCategory api method called with invalid searchTerm!'
-    );
-
-  try {
-    const results = await sendHttpRequest({
-      url: `${URL.FILTER}${code}=${searchTerm}`,
-    });
-
-    return results;
-  } catch (error) {
-    if (error.message === 'Unexpected end of JSON input') return null;
-    throw error;
-  }
-};
 
 export {
   searchByName,
@@ -124,7 +96,4 @@ export {
   getFilterListOfCategories,
   getFilterListOfGlasses,
   getFilterListOfAlcoholic,
-  getCocktailsByCategory,
-  getCocktailsByAlcohol,
-  getCocktailsByGlass,
 };
