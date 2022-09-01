@@ -16,7 +16,6 @@ const SearchBar = ({ setCurrentPage }) => {
   };
 
   const handleSubmit = (searchTerm) => {
-    console.log(searchTerm);
     setCurrentPage(1);
     searchCocktails(searchTerm);
   };
