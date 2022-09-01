@@ -22,12 +22,19 @@ const SearchBar = ({ setCurrentPage }) => {
     searchCocktails(searchTerm);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      handleSubmit(message);
+    }
+  };
+
   return (
     <div className='SearchBar'>
       <input
         onChange={(event) => handleChange(event)}
         placeholder='Search for a cocktail...'
         id='search-bar'
+        onKeyDown={handleKeyPress}
       />
       <button
         disabled={disableSearch}
