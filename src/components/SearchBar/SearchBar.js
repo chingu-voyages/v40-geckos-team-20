@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useCocktailListContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
 
-const SearchBar = ({ setCurrentPage }) => {
+const SearchBar = () => {
   const [message, setMessage] = useState('');
   const { cocktails, searchCocktails } = useCocktailListContext();
 
@@ -15,10 +15,7 @@ const SearchBar = ({ setCurrentPage }) => {
     setMessage(event.target.value);
   };
 
-  const handleSubmit = (searchTerm) => {
-    setCurrentPage(1);
-    searchCocktails(searchTerm);
-  };
+  const handleSubmit = (searchTerm) => searchCocktails(searchTerm);
 
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
