@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
 export const Wrapper = styled.ul`
   color: pink;
@@ -20,24 +20,6 @@ export const CocktailName = styled.p`
   font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
-`
-
-export const Cocktail = styled.li`
-  position: relative;
-  &:hover {
-    transform: scale(1.02);
-    background-color: #000000;
-  }
-
-  &:hover ${CocktailName} {
-    display: block;
-  }
-  
-  &:active {
-    transform: scale(0.99);
-  }
-
-  transition: transform 0.1s ease-in-out;
 `;
 
 export const CocktailImage = styled.img`
@@ -46,7 +28,25 @@ export const CocktailImage = styled.img`
   aspect-ratio: 1/1;
   object-fit: cover;
   border: 1px solid #ca0000;
+`;
+
+export const Cocktail = styled.li`
+  position: relative;
   &:hover {
+    transform: scale(1.02);
+    background-color: black;
+  }
+
+  &:hover ${CocktailName} {
+    display: block;
+  }
+  &:hover ${CocktailImage} {
     opacity: 0.3;
   }
+
+  &:active {
+    transform: scale(0.99);
+  }
+
+  transition: transform 0.1s ease-in-out;
 `;
