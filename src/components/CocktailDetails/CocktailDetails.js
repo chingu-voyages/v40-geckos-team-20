@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useSelectedCocktailContext } from '../../context/use-context';
-import { CONTEXT_STATUS } from '../../context/constants';
+import React, { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useSelectedCocktailContext } from "../../context/use-context";
+import { CONTEXT_STATUS } from "../../context/constants";
+import Spinner from "../UI/Spinner/Spinner";
+import { ErrorMessage } from "../MessageState/MessageState";
 import {
   Wrapper,
   Header,
@@ -16,13 +18,13 @@ import {
   RecipeTitle,
   RecipeContent,
   RecipeItem,
-} from './CocktailDetails.styled';
-import useSetDocumentTitle from '../../hooks/use-setDocumentTitle';
+} from "./CocktailDetails.styled";
+import useSetDocumentTitle from "../../hooks/use-setDocumentTitle";
 
 const CocktailDetails = () => {
   const { selectedCocktail, updateSelectedCocktail } =
     useSelectedCocktailContext();
-  const { data, status } = selectedCocktail;
+  const { data, status, error } = selectedCocktail;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
   const id = +useParams().id;
 
@@ -57,7 +59,7 @@ const CocktailDetails = () => {
   }
 
   function createRecipesUI() {
-    const recipes = data.strInstructions.split('. ');
+    const recipes = data.strInstructions.split(". ");
     const recipesUI = recipes.map((recipe, i) => {
       return <RecipeItem key={i}>{recipe}</RecipeItem>;
     });
@@ -66,26 +68,34 @@ const CocktailDetails = () => {
   }
 
   return (
-    <Wrapper>
-      <Header>
-        <CocktailImage
-          src={data && data.strDrinkThumb}
-          alt={data && data.strDrink}
-        />
-        <CocktailName>{data && data.strDrink}</CocktailName>
-      </Header>
-      <Main>
-        <IngredientsWrapper>
-          <IngredientsTitle>Ingredients</IngredientsTitle>
-          <IngredientsContent>{ingredientsUI}</IngredientsContent>
-        </IngredientsWrapper>
-        <RecipeWrapper>
-          <RecipeTitle>Recipe</RecipeTitle>
-          <RecipeContent>{recipesUI}</RecipeContent>
-        </RecipeWrapper>
-      </Main>
-      <Link to='/'>Back</Link>
-    </Wrapper>
+    <>
+      {status === LOADING && <Spinner />}
+      {status === SUCCESS && (
+        <Wrapper>
+          <Header>
+            <CocktailImage
+              src={data && data.strDrinkThumb}
+              alt={data && data.strDrink}
+            />
+            <CocktailName>{data && data.strDrink}</CocktailName>
+          </Header>
+          <Main>
+            <IngredientsWrapper>
+              <IngredientsTitle>Ingredients</IngredientsTitle>
+              <IngredientsContent>{ingredientsUI}</IngredientsContent>
+            </IngredientsWrapper>
+            <RecipeWrapper>
+              <RecipeTitle>Recipe</RecipeTitle>
+              <RecipeContent>{recipesUI}</RecipeContent>
+            </RecipeWrapper>
+          </Main>
+          <Link to="/">Back</Link>
+        </Wrapper>
+      )}
+      {status === ERROR && (
+        <ErrorMessage title="Error loading cocktails" message={error.message} />
+      )}
+    </>
   );
 };
 
