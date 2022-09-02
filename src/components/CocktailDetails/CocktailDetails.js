@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useSelectedCocktailContext } from '../../context/use-context';
-import { CONTEXT_STATUS } from '../../context/constants';
+import React, { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useSelectedCocktailContext } from "../../context/use-context";
+import { CONTEXT_STATUS } from "../../context/constants";
 import Spinner from "../UI/Spinner/Spinner";
+import { ErrorMessage } from "../MessageState/MessageState";
 import {
   Wrapper,
   Header,
@@ -17,13 +18,13 @@ import {
   RecipeTitle,
   RecipeContent,
   RecipeItem,
-} from './CocktailDetails.styled';
-import useSetDocumentTitle from '../../hooks/use-setDocumentTitle';
+} from "./CocktailDetails.styled";
+import useSetDocumentTitle from "../../hooks/use-setDocumentTitle";
 
 const CocktailDetails = () => {
   const { selectedCocktail, updateSelectedCocktail } =
     useSelectedCocktailContext();
-  const { data, status } = selectedCocktail;
+  const { data, status, error } = selectedCocktail;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
   const id = +useParams().id;
 
@@ -58,7 +59,7 @@ const CocktailDetails = () => {
   }
 
   function createRecipesUI() {
-    const recipes = data.strInstructions.split('. ');
+    const recipes = data.strInstructions.split(". ");
     const recipesUI = recipes.map((recipe, i) => {
       return <RecipeItem key={i}>{recipe}</RecipeItem>;
     });
@@ -68,8 +69,8 @@ const CocktailDetails = () => {
 
   return (
     <>
-      { status === LOADING && <Spinner />}
-      { status === SUCCESS &&
+      {status === LOADING && <Spinner />}
+      {status === SUCCESS && (
         <Wrapper>
           <Header>
             <CocktailImage
@@ -88,11 +89,13 @@ const CocktailDetails = () => {
               <RecipeContent>{recipesUI}</RecipeContent>
             </RecipeWrapper>
           </Main>
-          <Link to='/'>Back</Link>
+          <Link to="/">Back</Link>
         </Wrapper>
-      }
+      )}
+      {status === ERROR && (
+        <ErrorMessage title="Error loading cocktails" message={error.message} />
+      )}
     </>
-    
   );
 };
 
