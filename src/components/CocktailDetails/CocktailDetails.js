@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelectedCocktailContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
+import Spinner from "../UI/Spinner/Spinner";
 import {
   Wrapper,
   Header,
@@ -66,26 +67,32 @@ const CocktailDetails = () => {
   }
 
   return (
-    <Wrapper>
-      <Header>
-        <CocktailImage
-          src={data && data.strDrinkThumb}
-          alt={data && data.strDrink}
-        />
-        <CocktailName>{data && data.strDrink}</CocktailName>
-      </Header>
-      <Main>
-        <IngredientsWrapper>
-          <IngredientsTitle>Ingredients</IngredientsTitle>
-          <IngredientsContent>{ingredientsUI}</IngredientsContent>
-        </IngredientsWrapper>
-        <RecipeWrapper>
-          <RecipeTitle>Recipe</RecipeTitle>
-          <RecipeContent>{recipesUI}</RecipeContent>
-        </RecipeWrapper>
-      </Main>
-      <Link to='/'>Back</Link>
-    </Wrapper>
+    <>
+      { status === LOADING && <Spinner />}
+      { status === SUCCESS &&
+        <Wrapper>
+          <Header>
+            <CocktailImage
+              src={data && data.strDrinkThumb}
+              alt={data && data.strDrink}
+            />
+            <CocktailName>{data && data.strDrink}</CocktailName>
+          </Header>
+          <Main>
+            <IngredientsWrapper>
+              <IngredientsTitle>Ingredients</IngredientsTitle>
+              <IngredientsContent>{ingredientsUI}</IngredientsContent>
+            </IngredientsWrapper>
+            <RecipeWrapper>
+              <RecipeTitle>Recipe</RecipeTitle>
+              <RecipeContent>{recipesUI}</RecipeContent>
+            </RecipeWrapper>
+          </Main>
+          <Link to='/'>Back</Link>
+        </Wrapper>
+      }
+    </>
+    
   );
 };
 
