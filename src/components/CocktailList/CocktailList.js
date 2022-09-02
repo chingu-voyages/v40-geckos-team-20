@@ -48,8 +48,8 @@ const CocktailList = ( { currentPage, setCurrentPage} ) => {
                   src={`${cocktail.strDrinkThumb}/preview`}
                   alt={cocktail.strDrink}
                 />
+                <CocktailName>{cocktail.strDrink}</CocktailName>
               </Link>
-              <CocktailName>{cocktail.strDrink}</CocktailName>
             </Cocktail>
           );
         }
