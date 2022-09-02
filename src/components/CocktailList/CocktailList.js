@@ -28,6 +28,14 @@ const CocktailList = () => {
     }
   }, [getRandomCocktails, status, IDLE]);
 
+  // Prevent flashing of previously loaded cocktials just before viewing new set
+  useEffect(() => {
+    if (status !== SUCCESS) {
+      setCurrentPage(1);
+      setChunkedCocktails([]);
+    }
+  }, [status, SUCCESS]);
+
   // If Context API returns a freshlist of cocktails, (re)generate and save chunkedCocktails and set current page to 1
   useEffect(() => {
     setCurrentPage(1);
