@@ -89,7 +89,6 @@ const CocktailDetails = () => {
               <RecipeContent>{recipesUI}</RecipeContent>
             </RecipeWrapper>
           </Main>
-          <Link to="/">Back</Link>
         </Wrapper>
       )}
       {status === ERROR && (
