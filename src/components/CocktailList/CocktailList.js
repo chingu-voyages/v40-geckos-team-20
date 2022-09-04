@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useCocktailListContext } from "../../context/use-context";
-import { Wrapper, Cocktail, CocktailImage } from "./CocktailList.styled";
+import { Wrapper, Cocktail, CocktailImage, CocktailName } from "./CocktailList.styled";
 import { CONTEXT_STATUS } from "../../context/constants";
 import Spinner from "../UI/Spinner/Spinner";
 import { InfoMessage, ErrorMessage } from "../MessageState/MessageState";
@@ -48,6 +48,7 @@ const CocktailList = ( { currentPage, setCurrentPage} ) => {
                   src={`${cocktail.strDrinkThumb}/preview`}
                   alt={cocktail.strDrink}
                 />
+                <CocktailName>{cocktail.strDrink}</CocktailName>
               </Link>
             </Cocktail>
           );
