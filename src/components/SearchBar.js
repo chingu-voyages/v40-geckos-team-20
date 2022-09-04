@@ -2,11 +2,19 @@ import "./SearchBar.css";
 import React, { useState } from "react";
 import { useCocktailListContext } from "../context/use-context";
 import { useFiltersContext } from "../context/use-context";
+import { CONTEXT_STATUS } from "../context/constants";
 
-const SearchBar = () => {
-  const [message, setMessage] = useState("");
-  const { searchCocktails } = useCocktailListContext();
+
+const SearchBar = ( { setCurrentPage } ) => {
+  const [message, setMessage] = useState('');
+
+  const { cocktails, searchCocktails } = useCocktailListContext();
   const { updateFilters } = useFiltersContext();
+
+  const { status } = cocktails;
+  const { LOADING } = CONTEXT_STATUS;
+  const disableSearch = !message || status === LOADING;
+  const disableFilter = status === LOADING;
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -15,14 +23,23 @@ const SearchBar = () => {
 
   const handleSubmit = (searchTerm) => {
     console.log(searchTerm);
+    setCurrentPage(1);
     searchCocktails(searchTerm);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      handleSubmit(message);
+    }
+  };
+
   const clickHandleUpdateFilter1 = () => {
-    updateFilters({ alcoholic: ["Alcoholic"] });
+    setCurrentPage(1);
+    updateFilters({ alcoholic: ['Alcoholic'] });
   };
 
   const clickHandleUpdateFilter2 = () => {
+    setCurrentPage(1);
     updateFilters({
       alcoholic: ["Non alcoholic"],
     });
@@ -34,16 +51,17 @@ const SearchBar = () => {
         onChange={(event) => handleChange(event)}
         placeholder="Search for a cocktail..."
         id="search-bar"
+        onKeyDown={handleKeyPress}
       />
       <button
-        disabled={!message}
+        disabled={disableSearch}
         className="search-btn"
         onClick={() => handleSubmit(message)}
       >
         Search
       </button>
 
-      <div className="dropdown">
+      <div className={`dropdown${disableFilter ? " disabled" : ""}`}>
         <button className="btn" id="categories">
           Categories
         </button>
