@@ -41,7 +41,7 @@ const CocktailDetails = () => {
   }
 
   // If we have a cocktail name, add it to the browser tab title
-  useSetDocumentTitle(status === SUCCESS && data?.strDrink);
+  useSetDocumentTitle(status === SUCCESS && `EZ Cocktails - ${data?.strDrink}`);
 
   function createIngredientsUI() {
     const ingredients = [];
