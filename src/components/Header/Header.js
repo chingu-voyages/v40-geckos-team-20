@@ -1,11 +1,11 @@
-import React from "react";
-import "./Header.css";
-import logo from "../images/logo.png";
+import React from 'react';
+import './Header.css';
+import logo from '../../images/logo.png';
 import styled from 'styled-components/macro';
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from 'react-router-dom';
 
 const BackCTAWrapper = styled.div`
-  visibility: ${ props => props.notRoot ? "visible" : "hidden"};
+  visibility: ${(props) => (props.notRoot ? 'visible' : 'hidden')};
   background-color: #ca0000;
   width: 160px;
   border-radius: 4px;
@@ -20,19 +20,20 @@ const BackCTAWrapper = styled.div`
   }
 `;
 
-
 export default function Header() {
   const location = useLocation();
   const notRoot = () => {
-    return location.pathname !== "/";
-  }
-  
+    return location.pathname !== '/';
+  };
+
   return (
-    <div className="Header">
+    <div className='Header'>
       <BackCTAWrapper notRoot={notRoot()}>
-        <Link to="/" className="back-cta">Back</Link>
+        <Link to='/' className='back-cta'>
+          Back
+        </Link>
       </BackCTAWrapper>
-      <img src={logo} alt="Ez-Logo" />
+      <img src={logo} alt='Ez-Logo' />
       <h1> EZ Cocktails</h1>
     </div>
   );

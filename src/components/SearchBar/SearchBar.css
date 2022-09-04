@@ -1,18 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
-
-:root {
-  --primary-color: #ca0000;
-  --secondary-color: #ffffff;
-  --font-family: "Inter", sans-serif;
-}
-
 .SearchBar {
   text-align: center;
   margin-bottom: 30px;
 }
 
 /* Search Bar */
-
 #search-bar {
   border-radius: 3px;
   padding: 6px 10px;
@@ -32,7 +23,6 @@
   border: none;
   border-radius: 3px;
   margin-left: 10px;
-  font-family: "Inter", sans-serif;
   font-weight: bold;
 }
 

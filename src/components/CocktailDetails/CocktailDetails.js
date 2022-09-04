@@ -41,7 +41,7 @@ const CocktailDetails = () => {
   }
 
   // If we have a cocktail name, add it to the browser tab title
-  useSetDocumentTitle(status === SUCCESS && data?.strDrink);
+  useSetDocumentTitle(status === SUCCESS && `EZ Cocktails - ${data?.strDrink}`);
 
   function createIngredientsUI() {
     const ingredients = [];
@@ -51,8 +51,8 @@ const CocktailDetails = () => {
       data[propertyName] && ingredients.push(data[propertyName]);
     }
 
-    const ingredientsUI = ingredients.map((ingredient) => {
-      return <IngredientsItem key={ingredient}>{ingredient}</IngredientsItem>;
+    const ingredientsUI = ingredients.map((ingredient, i) => {
+      return <IngredientsItem key={i}>{ingredient}</IngredientsItem>;
     });
 
     return ingredientsUI;
@@ -89,7 +89,6 @@ const CocktailDetails = () => {
               <RecipeContent>{recipesUI}</RecipeContent>
             </RecipeWrapper>
           </Main>
-          <Link to="/">Back</Link>
         </Wrapper>
       )}
       {status === ERROR && (
