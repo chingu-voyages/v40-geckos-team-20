@@ -15,7 +15,10 @@ const SearchBar = () => {
     setMessage(event.target.value);
   };
 
-  const handleSubmit = (searchTerm) => searchCocktails(searchTerm);
+  const handleSubmit = (searchTerm) => {
+    searchCocktails(searchTerm);
+    setMessage('');
+  };
 
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
@@ -30,6 +33,7 @@ const SearchBar = () => {
         placeholder='Search for a cocktail...'
         id='search-bar'
         onKeyDown={handleKeyPress}
+        value={message}
       />
       <button
         disabled={disableSearch}
