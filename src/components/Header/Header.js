@@ -26,6 +26,8 @@ export default function Header() {
     return location.pathname !== '/';
   };
 
+  // Note: the reason why the link enclosing the img logo is a direct <a> and not a <Link> is because we want clicking the logo to refresh the app completely (i.e. load new cocktails, and (I think?) clear state) - i.e. as if the user clicks the refresh button in the browser.  Therefore <a> will do this instead of just changing the url with <Link>
+
   return (
     <div className='Header'>
       <BackCTAWrapper notRoot={notRoot()}>
@@ -33,7 +35,10 @@ export default function Header() {
           Back
         </Link>
       </BackCTAWrapper>
-      <img src={logo} alt='Ez-Logo' />
+      <a href='/'>
+        <img src={logo} alt='Ez-Logo' />
+      </a>
+
       <h1> EZ Cocktails</h1>
     </div>
   );
