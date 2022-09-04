@@ -3,18 +3,17 @@ import React, { useState } from "react";
 import { useCocktailListContext } from "../context/use-context";
 import { useFiltersContext } from "../context/use-context";
 import { CONTEXT_STATUS } from "../context/constants";
+import { useRef } from "react";
 
-
-const SearchBar = ( { setCurrentPage } ) => {
-  const [message, setMessage] = useState('');
-
+const SearchBar = ({ setCurrentPage }) => {
+  const [message, setMessage] = useState("");
   const { cocktails, searchCocktails } = useCocktailListContext();
   const { updateFilters } = useFiltersContext();
-
   const { status } = cocktails;
   const { LOADING } = CONTEXT_STATUS;
   const disableSearch = !message || status === LOADING;
   const disableFilter = status === LOADING;
+  const ref = useRef(null);
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -25,6 +24,7 @@ const SearchBar = ( { setCurrentPage } ) => {
     console.log(searchTerm);
     setCurrentPage(1);
     searchCocktails(searchTerm);
+    setMessage("");
   };
 
   const handleKeyPress = (e) => {
@@ -35,7 +35,7 @@ const SearchBar = ( { setCurrentPage } ) => {
 
   const clickHandleUpdateFilter1 = () => {
     setCurrentPage(1);
-    updateFilters({ alcoholic: ['Alcoholic'] });
+    updateFilters({ alcoholic: ["Alcoholic"] });
   };
 
   const clickHandleUpdateFilter2 = () => {
@@ -52,6 +52,7 @@ const SearchBar = ( { setCurrentPage } ) => {
         placeholder="Search for a cocktail..."
         id="search-bar"
         onKeyDown={handleKeyPress}
+        value={message}
       />
       <button
         disabled={disableSearch}
