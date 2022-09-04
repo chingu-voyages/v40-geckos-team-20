@@ -21,7 +21,6 @@ export default function Header() {
       <a href='/'>
         <img src={logo} alt='Ez-Logo' />
       </a>
-
       <h1> EZ Cocktails</h1>
     </HeaderWrapper>
   );
