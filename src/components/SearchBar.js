@@ -7,7 +7,6 @@ import { useRef } from "react";
 
 const SearchBar = ({ setCurrentPage }) => {
   const [message, setMessage] = useState("");
-
   const { cocktails, searchCocktails } = useCocktailListContext();
   const { updateFilters } = useFiltersContext();
   const { status } = cocktails;
@@ -25,6 +24,7 @@ const SearchBar = ({ setCurrentPage }) => {
     console.log(searchTerm);
     setCurrentPage(1);
     searchCocktails(searchTerm);
+    setMessage("");
   };
 
   const handleKeyPress = (e) => {
@@ -52,6 +52,7 @@ const SearchBar = ({ setCurrentPage }) => {
         placeholder="Search for a cocktail..."
         id="search-bar"
         onKeyDown={handleKeyPress}
+        value={message}
       />
       <button
         disabled={disableSearch}
