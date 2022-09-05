@@ -1,7 +1,6 @@
-import styled, { css } from 'styled-components/macro';
-import { Link } from 'react-router-dom';
+import { css } from 'styled-components/macro';
 
-const GenericButtonStyles = css`
+export const ButtonStyles = css`
   background-color: var(--primary-color);
   color: var(--secondary-color);
   padding: 10px;
@@ -17,12 +16,4 @@ const GenericButtonStyles = css`
   &:hover:not(:disabled) {
     background-color: var(--primary-color-dark);
   }
-`;
-
-export const RegularButton = styled.button`
-  ${GenericButtonStyles}
-`;
-
-export const ButtonStyledLink = styled(Link)`
-  ${GenericButtonStyles}
 `;
