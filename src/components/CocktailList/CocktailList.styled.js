@@ -1,6 +1,10 @@
 import styled from "styled-components/macro";
 
 export const Wrapper = styled.ul`
+  @media (max-width: 1600px) {
+    width: 85%;
+    margin: 0 auto;
+  }
   color: pink;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
