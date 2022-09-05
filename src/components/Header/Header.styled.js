@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const BackCTAWrapper = styled.div`
   visibility: ${(props) => (props.notRoot ? 'visible' : 'hidden')};
-  background-color: #ca0000;
+  background-color: var(--primary-color);
   width: 160px;
   border-radius: 4px;
   padding: 8px;
@@ -14,7 +14,7 @@ export const BackCTAWrapper = styled.div`
 
   &:hover,
   &:focus {
-    background-color: #b80202;
+    background-color: var(--primary-color-dark);
   }
 `;
 
@@ -39,7 +39,7 @@ export const HeaderWrapper = styled.header`
   h1 {
     margin-top: 0px;
     font-size: 80px;
-    color: #ca0000;
+    color: var(--primary-color);
     font-family: 'Oswald', sans-serif;
   }
 `;
