@@ -32,6 +32,7 @@ export const CocktailImage = styled.img`
   aspect-ratio: 1/1;
   object-fit: cover;
   border: 1px solid #ca0000;
+  border-radius: 6px;
 `;
 
 export const Cocktail = styled.li`
@@ -39,6 +40,7 @@ export const Cocktail = styled.li`
   &:hover {
     transform: scale(1.02);
     background-color: black;
+    border-radius: 6px;
   }
 
   &:hover ${CocktailName} {
