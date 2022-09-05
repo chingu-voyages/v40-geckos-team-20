@@ -1,21 +1,26 @@
 import styled from 'styled-components/macro';
+import { ButtonStyles } from '../UI/Button.styled';
 
 export const BackCTAWrapper = styled.div`
   visibility: ${(props) => (props.notRoot ? 'visible' : 'hidden')};
-  background-color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  width: 160px;
+  text-align: center;
+
+  ${ButtonStyles}/* background-color: var(--primary-color);
   width: 160px;
   border-radius: 4px;
   padding: 8px;
   text-align: center;
   font-weight: 600;
   font-size: 1.2rem;
-  position: absolute;
-  left: 0;
+
 
   &:hover,
   &:focus {
     background-color: var(--primary-color-dark);
-  }
+  } */
 `;
 
 export const HeaderWrapper = styled.header`
