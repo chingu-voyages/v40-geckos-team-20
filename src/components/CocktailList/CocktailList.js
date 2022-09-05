@@ -1,24 +1,30 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useCocktailListContext } from "../../context/use-context";
-import { Wrapper, Cocktail, CocktailImage } from "./CocktailList.styled";
+import {
+  Wrapper,
+  Cocktail,
+  CocktailImage,
+  ShowingResults,
+} from "./CocktailList.styled";
 import { CONTEXT_STATUS } from "../../context/constants";
 import Spinner from "../UI/Spinner/Spinner";
 import { InfoMessage, ErrorMessage } from "../MessageState/MessageState";
 import Pagination from "../UI/Pagination/Pagination";
 
-const CocktailList = ( { currentPage, setCurrentPage} ) => {
+const CocktailList = ({ currentPage, setCurrentPage }) => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
-  
+
   const firstRender = useRef(true);
   const cocktailsPerPage = 9;
 
-  const { status, error, drinks } = cocktails;
+  const { status, error, drinks, searchTerm } = cocktails;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
 
   const allDrinks = drinks?.slice();
   const haveDrinks = drinks?.length;
-  const chunkedCocktails = allDrinks && chunkArrayInGroups(allDrinks, cocktailsPerPage);
+  const chunkedCocktails =
+    allDrinks && chunkArrayInGroups(allDrinks, cocktailsPerPage);
   const cocktailList =
     status === SUCCESS && haveDrinks && generateCocktailListUI();
 
@@ -64,8 +70,13 @@ const CocktailList = ( { currentPage, setCurrentPage} ) => {
   return (
     <>
       {status === LOADING && <Spinner />}
+      {status === SUCCESS && haveDrinks && (
+        <ShowingResults>
+          Showing {haveDrinks} results for "{searchTerm}"...
+        </ShowingResults>
+      )}
       {status === SUCCESS && haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
-      {status === SUCCESS && (drinks.length > cocktailsPerPage) && (
+      {status === SUCCESS && drinks.length > cocktailsPerPage && (
         <Pagination
           chunkedCocktails={chunkedCocktails}
           currentPage={currentPage}

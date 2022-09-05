@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
 export const Wrapper = styled.ul`
   color: pink;
@@ -26,4 +26,10 @@ export const CocktailImage = styled.img`
   aspect-ratio: 1/1;
   object-fit: cover;
   border: 1px solid #ca0000;
+`;
+
+export const ShowingResults = styled.p`
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
 `;
