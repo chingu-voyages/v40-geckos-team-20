@@ -48,6 +48,7 @@ export const Cocktail = styled.li`
   }
   &:hover ${CocktailImage} {
     opacity: 0.3;
+    border: none;
   }
 
   &:active {
