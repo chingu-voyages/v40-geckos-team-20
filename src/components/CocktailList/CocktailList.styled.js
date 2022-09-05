@@ -5,7 +5,7 @@ export const Wrapper = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   display: grid;
-  gap: 40px;
+  gap: 80px;
   list-style-type: none;
   padding-left: 0;
 `;
