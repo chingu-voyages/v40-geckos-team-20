@@ -1,4 +1,4 @@
-import { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
 export const ButtonStyles = css`
   background-color: var(--primary-color);
@@ -16,4 +16,8 @@ export const ButtonStyles = css`
   &:hover:not(:disabled) {
     background-color: var(--primary-color-dark);
   }
+`;
+
+export const Button = styled.button`
+  ${ButtonStyles}
 `;

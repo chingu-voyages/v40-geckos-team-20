@@ -2,6 +2,7 @@ import './SearchBar.css';
 import React, { useState } from 'react';
 import { useCocktailListContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
+import { Button } from '../UI/Button.styled';
 
 const SearchBar = () => {
   const [message, setMessage] = useState('');
@@ -35,13 +36,13 @@ const SearchBar = () => {
         onKeyDown={handleKeyPress}
         value={message}
       />
-      <button
+      <Button
         disabled={disableSearch}
         className='search-btn'
         onClick={() => handleSubmit(message)}
       >
         Search
-      </button>
+      </Button>
     </div>
   );
 };
