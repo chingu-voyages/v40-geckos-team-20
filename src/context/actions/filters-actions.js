@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useCallback } from 'react';
 import FiltersReducer from '../reducers/filters-reducers';
 import { CONTEXT_STATUS, FILTER_ACTIONS } from '../constants';
 import {
@@ -23,7 +23,7 @@ export default function FiltersContextProvider({ children }) {
   );
 
   // GET ALL FILTERS
-  const getAllFilters = async () => {
+  const getAllFilters = useCallback(async () => {
     try {
       filtersDispatcher({
         type: FILTER_ACTIONS.LOADING,
@@ -55,7 +55,7 @@ export default function FiltersContextProvider({ children }) {
         },
       });
     }
-  };
+  }, []);
 
   // UPDATE FILTERS
   const updateFilters = (filters) => {
