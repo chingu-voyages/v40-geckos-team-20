@@ -10,20 +10,21 @@ export const FilterWrapper = styled.div`
 
   ${Media.upToTablet`
     justify-content: space-between;
-
-    ${DropDownWrapper} {
-      width: 30%;
-    }
-
   `}
 
   ${Media.upToPhone`
     flex-direction: column;
+  `}
 
-    ${DropDownWrapper} {
+  ${DropDownWrapper} {
+    width: 15rem;
+
+    ${Media.upToLaptop`
+    width: 30%;
+    `}
+    ${Media.upToPhone`
       width: 100%;
       margin-bottom: 1.5rem;
-    }
-
-  `}
+    `}
+  }
 `;
