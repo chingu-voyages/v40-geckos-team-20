@@ -1,17 +1,28 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
+import Media from '../../styles/Media';
 
 export const Wrapper = styled.ul`
-  @media (max-width: 1600px) {
-    width: 85%;
-    margin: 0 auto;
-  }
   color: pink;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   display: grid;
-  gap: 80px;
+  gap: 10%;
   list-style-type: none;
   padding-left: 0;
+
+  ${Media.upToLarge`
+    max-width: 50rem;
+    margin: 0 auto;
+  `}
+
+  ${Media.upToTablet`
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  `}
+
+  ${Media.upToPhone`
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  `}
 `;
 
 export const CocktailName = styled.p`
