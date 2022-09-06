@@ -39,15 +39,24 @@ export const CocktailName = styled.p`
   font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
+
+  ${Media.upToTablet`
+    display: block;
+    position: static;
+    transform: translate(0,0)
+  `}
 `;
 
 export const CocktailImage = styled.img`
   width: 100%;
-  height: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border: 1px solid #ca0000;
   border-radius: 6px;
+
+  ${Media.upToTablet`
+    margin-bottom: 1rem;
+  `}
 `;
 
 export const Cocktail = styled.li`
