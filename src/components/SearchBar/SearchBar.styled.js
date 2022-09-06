@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import Media from '../../styles/Media';
 
 export const SearchBarWrapper = styled.div`
   text-align: center;
@@ -16,4 +17,19 @@ export const SearchBarWrapper = styled.div`
   button {
     margin-left: 10px;
   }
+
+  ${Media.upToPhone`
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      margin: 0;
+    }
+
+  `}
 `;
