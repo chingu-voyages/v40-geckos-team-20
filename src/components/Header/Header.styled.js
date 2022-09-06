@@ -17,6 +17,14 @@ export const HeaderWrapper = styled.header`
     text-align: center;
 
     ${ButtonStyles}
+
+    ${Media.upToTablet`
+      width: 90px;
+    `}
+
+    ${Media.upToPhone`
+      width: auto;
+    `}
   }
 
   .logo img {
