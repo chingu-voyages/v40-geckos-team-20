@@ -16,7 +16,7 @@ export const Header = styled.header`
 `;
 
 export const CocktailImage = styled.img`
-  width: 20rem;
+  width: 25rem;
   border-radius: 50%;
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -28,7 +28,8 @@ export const CocktailName = styled.h2`
   font-family: 'Oswald', sans-serif;
   font-size: 3rem;
   letter-spacing: 1px;
-  line-height: 1;
+  line-height: 1.2;
+  text-align: center;
 `;
 
 export const Main = styled.section`
