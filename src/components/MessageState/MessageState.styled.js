@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   color: white;
   max-width: 40rem;
   margin: 4rem auto;
+  text-align: center;
 
   .image-wrapper {
     width: 10rem;
