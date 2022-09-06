@@ -5,7 +5,7 @@ import { DropDownWrapper } from '../UI/DropDown/DropDown.styled';
 export const FilterWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: 1rem auto 3rem;
+  margin: 1rem auto 2.5rem;
   max-width: 50rem;
 
   ${Media.upToTablet`
@@ -23,9 +23,6 @@ export const FilterWrapper = styled.div`
     ${DropDownWrapper} {
       width: 100%;
       margin-bottom: 1.5rem;
-      button {
-        height: 60px;
-      }
     }
 
   `}
