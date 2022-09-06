@@ -5,13 +5,17 @@ export const Wrapper = styled.ul`
   color: pink;
   grid-template-columns: repeat(3, 1fr);
   display: grid;
-  gap: 10%;
+  gap: 5rem;
   list-style-type: none;
   padding-left: 0;
 
   ${Media.upToLarge`
-    max-width: 50rem;
+    max-width: 60rem;
     margin: 0 auto;
+  `}
+
+  ${Media.upToLaptop`
+    gap: 3rem;
   `}
 
   ${Media.upToTablet`
