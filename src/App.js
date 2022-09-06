@@ -14,6 +14,7 @@ import CocktailDetailsPage from './pages/CocktailDetailsPage';
 import { QuestionMessage } from './components/MessageState/MessageState';
 import ScrollToTop from './utils/ScrollToTop';
 import { useFiltersContext } from './context/use-context';
+import Media from './styles/Media';
 
 // import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
 // import TestContextSelectedCocktail from './components/_TestComponents/TestContextSelectedCocktail';
@@ -30,6 +31,11 @@ const Wrapper = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   padding: 80px 0;
+
+  ${Media.upToTablet`
+    padding: 40px 0;
+  
+  `}
 `;
 
 function App() {

@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { ButtonStyles } from '../UI/Button.styled';
+import Media from '../../styles/Media';
 
 export const HeaderWrapper = styled.header`
   display: flex;
@@ -29,5 +30,10 @@ export const HeaderWrapper = styled.header`
     font-size: 80px;
     color: var(--primary-color);
     font-family: 'Oswald', sans-serif;
+
+    ${Media.upToTablet`
+      font-size: 60px;
+      margin-bottom: 1rem;
+    `}
   }
 `;
