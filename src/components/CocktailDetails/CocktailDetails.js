@@ -47,12 +47,22 @@ const CocktailDetails = () => {
     const ingredients = [];
 
     for (let i = 1; i <= 15; i++) {
-      const propertyName = `strIngredient${i}`;
-      data[propertyName] && ingredients.push(data[propertyName]);
+      const IngredientPropName = `strIngredient${i}`;
+      const MeasurePropName = `strMeasure${i}`;
+      data[IngredientPropName] &&
+        ingredients.push({
+          strIngredient: data[IngredientPropName],
+          strMeasure: data[MeasurePropName] || "",
+        });
     }
 
     const ingredientsUI = ingredients.map((ingredient, i) => {
-      return <IngredientsItem key={i}>{ingredient}</IngredientsItem>;
+      return (
+        <IngredientsItem key={i}>
+          {ingredient.strIngredient}
+          {ingredient.strMeasure && ` (${ingredient.strMeasure.trim()})`}
+        </IngredientsItem>
+      );
     });
 
     return ingredientsUI;
