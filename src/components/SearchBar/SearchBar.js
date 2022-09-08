@@ -34,6 +34,7 @@ const SearchBar = () => {
         placeholder='Search for a cocktail...'
         onKeyDown={handleKeyPress}
         value={message}
+        autoFocus
       />
       <Button disabled={disableSearch} onClick={() => handleSubmit(message)}>
         Search
