@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DropDown from '../UI/DropDown/DropDown';
 import {
   useFiltersContext,
@@ -9,9 +9,18 @@ import { FilterWrapper } from './Filters.styled';
 
 const Filters = () => {
   const { filters, updateFilters } = useFiltersContext();
-  const { cocktails } = useCocktailListContext();
+  const { cocktails, filterCocktails } = useCocktailListContext();
+  const [triggerFilter, setTriggerFilter] = useState(false);
 
   const { status, error, allFilters, selectedFilters } = filters;
+
+  // If the filters were changed by the user, filter the cocktail list
+  useEffect(() => {
+    if (triggerFilter) {
+      filterCocktails(selectedFilters);
+      setTriggerFilter(false);
+    }
+  }, [filterCocktails, selectedFilters, triggerFilter]);
 
   // Display error in console if there is one; can just show empty drop down boxes if there was an error
   useEffect(() => {
@@ -34,8 +43,10 @@ const Filters = () => {
   };
 
   // function used to update the given filter with a given value
-  const updateFilter = (filterKey, newVal) =>
+  const updateFilter = (filterKey, newVal) => {
     updateFilters({ [filterKey]: newVal === 'Any' ? [] : [newVal] });
+    setTriggerFilter(true);
+  };
 
   const isListLoading = cocktails.status === CONTEXT_STATUS.LOADING;
 

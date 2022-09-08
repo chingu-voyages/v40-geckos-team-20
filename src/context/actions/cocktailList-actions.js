@@ -129,8 +129,6 @@ export default function CocktailListContextProvider({ children }) {
   const filterCocktails = useCallback(
     (selectedFilters) => {
       if (!selectedFilters && !cocktails.filtered) return;
-
-      setCurrentListPage(1);
       if (!selectedFilters) {
         cocktailListDispatcher({
           type: CTLIST_ACTIONS.UPDATE_LIST,
@@ -138,6 +136,9 @@ export default function CocktailListContextProvider({ children }) {
         });
         return;
       }
+
+      console.log('Filtering cocktails...');
+      setCurrentListPage(1);
 
       const passArrayFilter = (testItem, itemArray) => {
         if (!itemArray) return true;

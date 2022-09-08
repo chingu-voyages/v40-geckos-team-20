@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import CocktailListContextProvider, {
   CocktailListContext,
 } from './actions/cocktailList-actions';
@@ -27,18 +27,12 @@ const useCocktailListContext = () => {
     currentListPage,
     setCurrentListPage,
   } = useContext(CocktailListContext);
-  const { filters } = useContext(FiltersContext);
-
-  const { selectedFilters } = filters;
-
-  useEffect(() => {
-    filterCocktails(selectedFilters);
-  }, [selectedFilters, filterCocktails]);
 
   return {
     cocktails,
     searchCocktails,
     getRandomCocktails,
+    filterCocktails,
     clearCocktails,
     currentListPage,
     setCurrentListPage,
@@ -59,6 +53,7 @@ const useSelectedCocktailContext = () => {
 const useFiltersContext = () => {
   const { filters, getAllFilters, updateFilters, clearSelectedFilters } =
     useContext(FiltersContext);
+
   return {
     filters,
     getAllFilters,

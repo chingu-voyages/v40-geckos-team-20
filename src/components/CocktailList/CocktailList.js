@@ -16,7 +16,6 @@ const CocktailList = () => {
   const { cocktails, getRandomCocktails, currentListPage, setCurrentListPage } =
     useCocktailListContext();
   const [chunkedCocktails, setChunkedCocktails] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
 
   const firstRender = useRef(true);
   const cocktailsPerPage = 9;
