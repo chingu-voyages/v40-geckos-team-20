@@ -24,6 +24,8 @@ const useCocktailListContext = () => {
     getRandomCocktails,
     filterCocktails,
     clearCocktails,
+    currentListPage,
+    setCurrentListPage,
   } = useContext(CocktailListContext);
   const { filters } = useContext(FiltersContext);
 
@@ -38,6 +40,8 @@ const useCocktailListContext = () => {
     searchCocktails,
     getRandomCocktails,
     clearCocktails,
+    currentListPage,
+    setCurrentListPage,
   };
 };
 

@@ -13,9 +13,10 @@ import { InfoMessage, ErrorMessage } from '../MessageState/MessageState';
 import Pagination from '../UI/Pagination/Pagination';
 
 const CocktailList = () => {
-  const { cocktails, getRandomCocktails } = useCocktailListContext();
+  const { cocktails, getRandomCocktails, currentListPage, setCurrentListPage } =
+    useCocktailListContext();
   const [chunkedCocktails, setChunkedCocktails] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   const firstRender = useRef(true);
   const cocktailsPerPage = 9;
@@ -36,14 +37,14 @@ const CocktailList = () => {
   // Prevent flashing of previously loaded cocktials just before viewing new set
   useEffect(() => {
     if (status !== SUCCESS) {
-      setCurrentPage(1);
+      // setCurrentListPage(1);
       setChunkedCocktails([]);
     }
   }, [status, SUCCESS]);
 
   // If Context API returns a freshlist of cocktails, (re)generate and save chunkedCocktails and set current page to 1
   useEffect(() => {
-    setCurrentPage(1);
+    // setCurrentPage(1);
     if (haveDrinks) {
       function chunkArrayInGroups(arr, size) {
         let chunkedCocktails = [];
@@ -60,7 +61,7 @@ const CocktailList = () => {
   const cocktailList =
     status === SUCCESS &&
     haveDrinks &&
-    generateCocktailListUI(chunkedCocktails[currentPage - 1]);
+    generateCocktailListUI(chunkedCocktails[currentListPage - 1]);
 
   function generateCocktailListUI(drinksToShow) {
     if (drinksToShow) {
@@ -82,7 +83,7 @@ const CocktailList = () => {
   }
 
   function handlePageClick(pageNum) {
-    setCurrentPage(pageNum);
+    setCurrentListPage(pageNum);
   }
 
   return (
@@ -92,7 +93,7 @@ const CocktailList = () => {
       {status === SUCCESS && drinks.length > cocktailsPerPage && (
         <Pagination
           chunkedCocktails={chunkedCocktails}
-          currentPage={currentPage}
+          currentPage={currentListPage}
           handlePageClick={handlePageClick}
         />
       )}

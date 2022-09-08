@@ -24,6 +24,7 @@ export default function CocktailListContextProvider({ children }) {
     CTLIST_INITIAL
   );
   const [allCocktails, setAllCocktails] = useState(null);
+  const [currentListPage, setCurrentListPage] = useState(1);
 
   // SEARCH COCKTAILS
   const searchCocktails = async (searchTerm) => {
@@ -31,6 +32,8 @@ export default function CocktailListContextProvider({ children }) {
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.LOADING,
       });
+
+      setCurrentListPage(1);
 
       // search for cocktails by cocktail name
       const data_name = await searchByName(searchTerm);
@@ -91,6 +94,9 @@ export default function CocktailListContextProvider({ children }) {
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.LOADING,
       });
+
+      setCurrentListPage(1);
+
       const promises = [...Array(amount)].map(async () => {
         const data = await getRandomCocktail();
         return data.drinks[0];
@@ -123,6 +129,8 @@ export default function CocktailListContextProvider({ children }) {
   const filterCocktails = useCallback(
     (selectedFilters) => {
       if (!selectedFilters && !cocktails.filtered) return;
+
+      setCurrentListPage(1);
       if (!selectedFilters) {
         cocktailListDispatcher({
           type: CTLIST_ACTIONS.UPDATE_LIST,
@@ -163,6 +171,7 @@ export default function CocktailListContextProvider({ children }) {
       type: CTLIST_ACTIONS.CLEAR_LIST,
     });
     setAllCocktails(null);
+    setCurrentListPage(1);
   };
 
   return (
@@ -173,6 +182,8 @@ export default function CocktailListContextProvider({ children }) {
         getRandomCocktails,
         filterCocktails,
         clearCocktails,
+        currentListPage,
+        setCurrentListPage,
       }}
     >
       {children}
