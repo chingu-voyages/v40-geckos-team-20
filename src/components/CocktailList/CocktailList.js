@@ -36,14 +36,12 @@ const CocktailList = () => {
   // Prevent flashing of previously loaded cocktials just before viewing new set
   useEffect(() => {
     if (status !== SUCCESS) {
-      // setCurrentListPage(1);
       setChunkedCocktails([]);
     }
   }, [status, SUCCESS]);
 
   // If Context API returns a freshlist of cocktails, (re)generate and save chunkedCocktails and set current page to 1
   useEffect(() => {
-    // setCurrentPage(1);
     if (haveDrinks) {
       function chunkArrayInGroups(arr, size) {
         let chunkedCocktails = [];
