@@ -62,4 +62,6 @@ export const ShowingResults = styled.p`
   color: white;
   font-size: 18px;
   margin-bottom: 10px;
+  font-weight: bold;
+  margin-left: 75px;
 `;

@@ -6,6 +6,7 @@ import {
   Cocktail,
   CocktailImage,
   CocktailName,
+  ShowingResults,
 } from "./CocktailList.styled";
 import { CONTEXT_STATUS } from "../../context/constants";
 import Spinner from "../UI/Spinner/Spinner";
