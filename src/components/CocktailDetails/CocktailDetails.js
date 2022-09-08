@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useSelectedCocktailContext } from "../../context/use-context";
-import { CONTEXT_STATUS } from "../../context/constants";
-import Spinner from "../UI/Spinner/Spinner";
-import { ErrorMessage } from "../MessageState/MessageState";
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useSelectedCocktailContext } from '../../context/use-context';
+import { CONTEXT_STATUS } from '../../context/constants';
+import Spinner from '../UI/Spinner/Spinner';
+import { ErrorMessage } from '../MessageState/MessageState';
 import {
   Wrapper,
   Header,
@@ -18,11 +18,11 @@ import {
   RecipeTitle,
   RecipeContent,
   RecipeItem,
-} from "./CocktailDetails.styled";
-import useSetDocumentTitle from "../../hooks/use-setDocumentTitle";
+} from './CocktailDetails.styled';
+import useSetDocumentTitle from '../../hooks/use-setDocumentTitle';
 
 const CocktailDetails = () => {
-  const { selectedCocktail, updateSelectedCocktail } =
+  const { selectedCocktail, updateSelectedCocktail, clearSelectedCocktail } =
     useSelectedCocktailContext();
   const { data, status, error } = selectedCocktail;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
@@ -30,7 +30,8 @@ const CocktailDetails = () => {
 
   useEffect(() => {
     updateSelectedCocktail(id);
-  }, [id]);
+    return clearSelectedCocktail;
+  }, [id, updateSelectedCocktail, clearSelectedCocktail]);
 
   let ingredientsUI;
   let recipesUI;
@@ -52,7 +53,7 @@ const CocktailDetails = () => {
       data[IngredientPropName] &&
         ingredients.push({
           strIngredient: data[IngredientPropName],
-          strMeasure: data[MeasurePropName] || "",
+          strMeasure: data[MeasurePropName] || '',
         });
     }
 
@@ -69,7 +70,7 @@ const CocktailDetails = () => {
   }
 
   function createRecipesUI() {
-    const recipes = data.strInstructions.split(". ");
+    const recipes = data.strInstructions.split('. ');
     const recipesUI = recipes.map((recipe, i) => {
       return <RecipeItem key={i}>{recipe}</RecipeItem>;
     });
@@ -102,7 +103,7 @@ const CocktailDetails = () => {
         </Wrapper>
       )}
       {status === ERROR && (
-        <ErrorMessage title="Error loading cocktails" message={error.message} />
+        <ErrorMessage title='Error loading cocktails' message={error.message} />
       )}
     </>
   );

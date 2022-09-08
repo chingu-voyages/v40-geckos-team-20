@@ -35,6 +35,7 @@ const SearchBar = () => {
         id='search-bar'
         onKeyDown={handleKeyPress}
         value={message}
+        autoFocus
       />
       <Button
         disabled={disableSearch}
