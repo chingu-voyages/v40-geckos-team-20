@@ -9,6 +9,10 @@ export const Wrapper = styled.ul`
   list-style-type: none;
   padding-left: 0;
 
+  a {
+    text-decoration: none;
+  }
+
   ${Media.upToLarge`
     max-width: 60rem;
     margin: 0 auto;
