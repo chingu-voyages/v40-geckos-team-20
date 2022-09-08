@@ -137,7 +137,6 @@ export default function CocktailListContextProvider({ children }) {
         return;
       }
 
-      console.log('Filtering cocktails...');
       setCurrentListPage(1);
 
       const passArrayFilter = (testItem, itemArray) => {
