@@ -1,12 +1,18 @@
 # EZ Cocktails
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Chingu Voyage-40 (geckos-team-20)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+EZ Cocktails is a responsive website where you can search for your favourite cocktails recipies.
 
-### `npm start`
+## Features
+
+## Running the Project
+
+## Dependencies
+
+## Contributors
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
