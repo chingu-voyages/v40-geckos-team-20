@@ -15,8 +15,13 @@ export const PaginationWrapper = styled.div`
 export const PaginationItem = styled.div`
   width: 24px;
   height: 24px;
-  margin: 12px;
+  margin-left: 24px;
+  margin-bottom: 12px;
   border-radius: 50%;
   background-color: ${(props) => (props.isCurrentPage ? '#CA0000' : '#666666')};
   cursor: pointer;
+
+  ${Media.upToTablet`
+    margin: 12px;
+  `}
 `;

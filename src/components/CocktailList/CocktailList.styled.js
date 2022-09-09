@@ -13,11 +13,6 @@ export const Wrapper = styled.ul`
     text-decoration: none;
   }
 
-  ${Media.upToLarge`
-    max-width: 60rem;
-    margin: 0 auto;
-  `}
-
   ${Media.upToLaptop`
     gap: 3rem;
   `}

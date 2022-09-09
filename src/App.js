@@ -28,7 +28,7 @@ const Background = styled.div`
 
 const Wrapper = styled.div`
   width: 80%;
-  max-width: 1100px;
+  max-width: 60rem;
   margin: 0 auto;
   padding: 80px 0;
 
