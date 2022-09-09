@@ -16,6 +16,16 @@ EZ Cocktails is a responsive website where you can search for your favourite coc
 
 ## Running the Project
 
+### Live version
+
+https://ez-cocktails-prod.netlify.app/
+
+### Running the project locally
+
+1. Clone this project locally.
+2. Run `npm install` in your bash / command line to install all dependencies.
+3. Run `npm start` in your bash / command line to start app in your local host.
+
 ## Dependencies
 
 ## Contributors
