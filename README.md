@@ -4,7 +4,8 @@ Chingu Voyage-40 (geckos-team-20)
 
 ## Overview
 
-EZ Cocktails is a responsive website where you can search for your favourite cocktails recipies.
+EZ Cocktails is a responsive website where you can search for your favourite cocktails recipies. The website read cocktails stores in
+[https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
 
 ## Features
 
@@ -26,7 +27,12 @@ https://ez-cocktails-prod.netlify.app/
 2. Run `npm install` in your bash / command line to install all dependencies.
 3. Run `npm start` in your bash / command line to start app in your local host.
 
-## Dependencies
+## Technoclogies and Dependencies
+
+1. [https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
+2. React
+3. React Router
+4. Styled Components
 
 ## Contributors
 
