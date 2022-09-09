@@ -8,6 +8,12 @@ EZ Cocktails is a responsive website where you can search for your favourite coc
 
 ## Features
 
+- Search cocktails by cocktail name or ingredient.
+- Filter search results by category, alcoholic content and glass type.
+- View a multi page list of search results.
+- Select and view the ingredients and recipie for a cocktail returned in the search results.
+- Use the website on any sized device from phone up to a large monitor.
+
 ## Running the Project
 
 ## Dependencies
