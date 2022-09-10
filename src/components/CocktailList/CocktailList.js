@@ -91,12 +91,12 @@ const CocktailList = () => {
   return (
     <>
       {status === LOADING && <Spinner />}
-      {status === SUCCESS && haveDrinks && searchTerm && (
+      {status === SUCCESS && !!haveDrinks && !!searchTerm && (
         <ShowingResults>
           Showing {haveDrinks} of {totalDrinks} results for "{searchTerm}"...
         </ShowingResults>
       )}
-      {status === SUCCESS && haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
+      {status === SUCCESS && !!haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
       {status === SUCCESS && drinks.length > cocktailsPerPage && (
         <Pagination
           chunkedCocktails={chunkedCocktails}
