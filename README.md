@@ -4,12 +4,11 @@
 
 ## Overview
 
-EZ Cocktails is a responsive website where you can search for your favourite cocktails recipies. The website read cocktails stores in
-[https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
+EZ Cocktails is a responsive website where you can search for your favourite cocktails recipies. The website retreives cocktail data supplied by [https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
 
 ## Features
 
-- Search cocktails by cocktail name or ingredient.
+- Search cocktails by cocktail name and/or ingredient.
 - Filter search results by category, alcoholic content and glass type.
 - View a multi page list of search results.
 - Select and view the ingredients and recipie for a cocktail returned in the search results.
@@ -27,7 +26,7 @@ https://ez-cocktails-prod.netlify.app/
 2. Run `npm install` in your bash / command line to install all dependencies.
 3. Run `npm start` in your bash / command line to start app in your local host.
 
-## Technoclogies and Dependencies
+## Technologies and Dependencies
 
 1. [https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
 2. React
