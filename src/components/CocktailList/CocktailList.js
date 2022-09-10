@@ -86,14 +86,14 @@ const CocktailList = () => {
     setCurrentPage(pageNum);
   }
 
-  console.log(cocktails);
-
   return (
     <>
       {status === LOADING && <Spinner />}
-      {status === SUCCESS && !!haveDrinks && !!searchTerm && (
+      {status === SUCCESS && !!haveDrinks && (
         <ShowingResults>
-          Showing {haveDrinks} of {totalDrinks} results for "{searchTerm}"...
+          {`Showing ${haveDrinks} of ${totalDrinks} ${
+            searchTerm ? `results for "${searchTerm}"...` : 'random cocktails'
+          }`}
         </ShowingResults>
       )}
       {status === SUCCESS && !!haveDrinks && <Wrapper>{cocktailList}</Wrapper>}

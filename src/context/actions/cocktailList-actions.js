@@ -59,7 +59,6 @@ export default function CocktailListContextProvider({ children }) {
       const drinks = [...drinks_name, ...drinks_ingr_full];
 
       setAllCocktails(drinks);
-      console.log(searchTerm);
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
         payload: {
