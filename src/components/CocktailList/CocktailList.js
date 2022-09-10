@@ -11,6 +11,7 @@ import { CONTEXT_STATUS } from '../../context/constants';
 import Spinner from '../UI/Spinner/Spinner';
 import { InfoMessage, ErrorMessage } from '../MessageState/MessageState';
 import Pagination from '../UI/Pagination/Pagination';
+import ResultSummary from './ResultSummary';
 
 const CocktailList = () => {
   const { cocktails, getRandomCocktails, currentListPage, setCurrentListPage } =
@@ -20,7 +21,7 @@ const CocktailList = () => {
   const firstRender = useRef(true);
   const cocktailsPerPage = 9;
 
-  const { status, error, drinks } = cocktails;
+  const { status, error, drinks, totalDrinks, searchTerm } = cocktails;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
 
   const haveDrinks = drinks?.length;
@@ -86,7 +87,14 @@ const CocktailList = () => {
   return (
     <>
       {status === LOADING && <Spinner />}
-      {status === SUCCESS && haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
+      {status === SUCCESS && !!haveDrinks && (
+        <ResultSummary
+          searchTerm={searchTerm}
+          filteredNum={haveDrinks}
+          totalNum={totalDrinks}
+        />
+      )}
+      {status === SUCCESS && !!haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
       {status === SUCCESS && drinks.length > cocktailsPerPage && (
         <Pagination
           chunkedCocktails={chunkedCocktails}
