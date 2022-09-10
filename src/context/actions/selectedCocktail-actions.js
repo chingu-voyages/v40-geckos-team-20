@@ -50,11 +50,11 @@ export default function SelectedCocktailContextProvider({ children }) {
   }, []);
 
   // CLEAR COCKTAIL
-  const clearSelectedCocktail = async () => {
+  const clearSelectedCocktail = useCallback(async () => {
     selectedCocktailDispatcher({
       type: SELCOCKTAIL_ACTIONS.CLEAR,
     });
-  };
+  }, []);
 
   return (
     <SelectedCocktailContext.Provider

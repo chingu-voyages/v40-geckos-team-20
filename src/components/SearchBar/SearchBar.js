@@ -1,7 +1,8 @@
-import './SearchBar.css';
 import React, { useState } from 'react';
 import { useCocktailListContext } from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
+import { Button } from '../UI/Button.styled';
+import { SearchBarWrapper } from './SearchBar.styled';
 
 const SearchBar = () => {
   const [message, setMessage] = useState('');
@@ -27,22 +28,18 @@ const SearchBar = () => {
   };
 
   return (
-    <div className='SearchBar'>
+    <SearchBarWrapper>
       <input
         onChange={(event) => handleChange(event)}
         placeholder='Search for a cocktail...'
-        id='search-bar'
         onKeyDown={handleKeyPress}
         value={message}
+        autoFocus
       />
-      <button
-        disabled={disableSearch}
-        className='search-btn'
-        onClick={() => handleSubmit(message)}
-      >
+      <Button disabled={disableSearch} onClick={() => handleSubmit(message)}>
         Search
-      </button>
-    </div>
+      </Button>
+    </SearchBarWrapper>
   );
 };
 

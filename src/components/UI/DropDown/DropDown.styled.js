@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { ButtonStyles } from '../Button.styled';
 import { css } from 'styled-components/macro';
 
 const flipSvg = css`
@@ -31,21 +32,7 @@ export const DropDownButton = styled.button`
   ${({ open }) => open && flipSvg}
 
   /* inherited styles */
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  font-weight: bold;
-  &:disabled {
-    background-color: var(--primary-disabled);
-  }
-  &:not(:disabled) {
-    cursor: pointer;
-  }
-  &:hover:not(:disabled) {
-    background-color: var(--primary-color-light);
-  }
+  ${ButtonStyles}
 `;
 
 export const DropDownItems = styled.div`
