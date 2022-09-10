@@ -39,5 +39,5 @@ https://ez-cocktails-prod.netlify.app/
 This project was completed as part of the [Chingu](https://www.chingu.io/) Voyage 40 by geckos-team-20:
 
 [Vitesh Bava](https://www.linkedin.com/in/viteshbava/)  
-Paulette Zaldivar Flores  
-Hyemi Son
+[Paulette Zaldivar Flores](https://github.com/paulette-zaldivar-flores)  
+[Hyemi Son](https://github.com/hmshp)
