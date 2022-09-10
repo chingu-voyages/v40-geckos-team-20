@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { useCocktailListContext } from "../../context/use-context";
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useCocktailListContext } from '../../context/use-context';
 import {
   Wrapper,
   Cocktail,
   CocktailImage,
   CocktailName,
   ShowingResults,
-} from "./CocktailList.styled";
-import { CONTEXT_STATUS } from "../../context/constants";
-import Spinner from "../UI/Spinner/Spinner";
-import { InfoMessage, ErrorMessage } from "../MessageState/MessageState";
-import Pagination from "../UI/Pagination/Pagination";
+} from './CocktailList.styled';
+import { CONTEXT_STATUS } from '../../context/constants';
+import Spinner from '../UI/Spinner/Spinner';
+import { InfoMessage, ErrorMessage } from '../MessageState/MessageState';
+import Pagination from '../UI/Pagination/Pagination';
 
 const CocktailList = () => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
@@ -86,10 +86,12 @@ const CocktailList = () => {
     setCurrentPage(pageNum);
   }
 
+  console.log(cocktails);
+
   return (
     <>
       {status === LOADING && <Spinner />}
-      {status === SUCCESS && haveDrinks && (
+      {status === SUCCESS && haveDrinks && searchTerm && (
         <ShowingResults>
           Showing {haveDrinks} results for "{searchTerm}"...
         </ShowingResults>
@@ -104,12 +106,12 @@ const CocktailList = () => {
       )}
       {status === SUCCESS && !haveDrinks && (
         <InfoMessage
-          title="No cocktails to display"
-          message="Please try searching again, or adjust the filters you may have selected."
+          title='No cocktails to display'
+          message='Please try searching again, or adjust the filters you may have selected.'
         />
       )}
       {status === ERROR && (
-        <ErrorMessage title="Error loading cocktails" message={error.message} />
+        <ErrorMessage title='Error loading cocktails' message={error.message} />
       )}
     </>
   );
