@@ -6,12 +6,12 @@ import {
   Cocktail,
   CocktailImage,
   CocktailName,
-  ShowingResults,
 } from './CocktailList.styled';
 import { CONTEXT_STATUS } from '../../context/constants';
 import Spinner from '../UI/Spinner/Spinner';
 import { InfoMessage, ErrorMessage } from '../MessageState/MessageState';
 import Pagination from '../UI/Pagination/Pagination';
+import ResultSummary from './ResultSummary';
 
 const CocktailList = () => {
   const { cocktails, getRandomCocktails } = useCocktailListContext();
@@ -90,11 +90,11 @@ const CocktailList = () => {
     <>
       {status === LOADING && <Spinner />}
       {status === SUCCESS && !!haveDrinks && (
-        <ShowingResults>
-          {`Showing ${haveDrinks} of ${totalDrinks} ${
-            searchTerm ? `results for "${searchTerm}"...` : 'random cocktails'
-          }`}
-        </ShowingResults>
+        <ResultSummary
+          searchTerm={searchTerm}
+          filteredNum={haveDrinks}
+          totalNum={totalDrinks}
+        />
       )}
       {status === SUCCESS && !!haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
       {status === SUCCESS && drinks.length > cocktailsPerPage && (

@@ -80,10 +80,3 @@ export const Cocktail = styled.li`
 
   transition: transform 0.1s ease-in-out;
 `;
-
-export const ShowingResults = styled.p`
-  color: white;
-  font-size: 18px;
-  margin-bottom: 10px;
-  font-weight: bold;
-`;
