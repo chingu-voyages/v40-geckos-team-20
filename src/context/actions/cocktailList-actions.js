@@ -13,6 +13,7 @@ export const CocktailListContext = createContext();
 export const CTLIST_INITIAL = {
   status: CONTEXT_STATUS.IDLE,
   drinks: null,
+  totalDrinks: null,
   filtered: null,
   searchTerm: null,
   error: null,
@@ -61,7 +62,12 @@ export default function CocktailListContextProvider({ children }) {
       console.log(searchTerm);
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: { drinks, searchTerm, filtered: false },
+        payload: {
+          drinks,
+          totalDrinks: drinks.length,
+          searchTerm,
+          filtered: false,
+        },
       });
     } catch (error) {
       console.error(error);
@@ -102,7 +108,7 @@ export default function CocktailListContextProvider({ children }) {
 
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: { drinks, filtered: false },
+        payload: { drinks, totalDrinks: drinks.length, filtered: false },
       });
     } catch (error) {
       console.error(error);

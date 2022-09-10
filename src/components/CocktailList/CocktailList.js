@@ -21,7 +21,7 @@ const CocktailList = () => {
   const firstRender = useRef(true);
   const cocktailsPerPage = 9;
 
-  const { status, error, drinks, searchTerm } = cocktails;
+  const { status, error, drinks, totalDrinks, searchTerm } = cocktails;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
 
   const haveDrinks = drinks?.length;
@@ -93,7 +93,7 @@ const CocktailList = () => {
       {status === LOADING && <Spinner />}
       {status === SUCCESS && haveDrinks && searchTerm && (
         <ShowingResults>
-          Showing {haveDrinks} results for "{searchTerm}"...
+          Showing {haveDrinks} of {totalDrinks} results for "{searchTerm}"...
         </ShowingResults>
       )}
       {status === SUCCESS && haveDrinks && <Wrapper>{cocktailList}</Wrapper>}
