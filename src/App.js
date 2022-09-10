@@ -15,6 +15,7 @@ import { QuestionMessage } from './components/MessageState/MessageState';
 import ScrollToTop from './utils/ScrollToTop';
 import { useFiltersContext } from './context/use-context';
 import Media from './styles/Media';
+import Footer from './components/Footer/Footer';
 
 // import TestContextCocktailList from './components/_TestComponents/TestContextCocktailList';
 // import TestContextSelectedCocktail from './components/_TestComponents/TestContextSelectedCocktail';
@@ -30,10 +31,11 @@ const Wrapper = styled.div`
   width: 80%;
   max-width: 60rem;
   margin: 0 auto;
-  padding: 80px 0;
+  padding-top: 80px;
+  padding-bottom: 28px;
 
   ${Media.upToTablet`
-    padding: 40px 0;
+    padding-top: 40px;
   
   `}
 `;
@@ -68,6 +70,7 @@ function App() {
           {/* <TestContextFilters /> */}
           {/* <TestContextCocktailList /> */}
           {/* <TestContextSelectedCocktail /> */}
+          <Footer />
         </Wrapper>
         <GlobalStyles />
       </Background>
