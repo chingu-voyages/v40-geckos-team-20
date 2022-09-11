@@ -4,7 +4,7 @@
 
 ## Overview
 
-EZ Cocktails is a responsive website where you can search for your favourite cocktails recipies. The website retrieves cocktail data supplied by [https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
+EZ Cocktails is a responsive website where you can search for your favourite cocktails recipes. The website retrieves cocktail data supplied by [https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
 
 ## Features
 
