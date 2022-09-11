@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { useCocktailListContext } from '../../context/use-context';
+import {
+  useCocktailListContext,
+  useFiltersContext,
+} from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
 import { Button } from '../UI/Button.styled';
 import { SearchBarWrapper } from './SearchBar.styled';
@@ -7,6 +10,7 @@ import { SearchBarWrapper } from './SearchBar.styled';
 const SearchBar = () => {
   const [message, setMessage] = useState('');
   const { cocktails, searchCocktails } = useCocktailListContext();
+  const { clearSelectedFilters } = useFiltersContext();
 
   const { status } = cocktails;
   const { LOADING } = CONTEXT_STATUS;
@@ -18,6 +22,7 @@ const SearchBar = () => {
 
   const handleSubmit = (searchTerm) => {
     searchCocktails(searchTerm);
+    clearSelectedFilters();
     setMessage('');
   };
 
