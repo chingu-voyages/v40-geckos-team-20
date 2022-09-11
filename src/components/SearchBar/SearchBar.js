@@ -27,9 +27,7 @@ const SearchBar = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.keyCode === 13) {
-      handleSubmit(message);
-    }
+    if (e.keyCode === 13 && message !== '') handleSubmit(message);
   };
 
   return (
