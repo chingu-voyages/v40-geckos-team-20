@@ -13,6 +13,7 @@ export const CocktailListContext = createContext();
 export const CTLIST_INITIAL = {
   status: CONTEXT_STATUS.IDLE,
   drinks: null,
+  totalDrinks: null,
   filtered: null,
   searchTerm: null,
   error: null,
@@ -24,6 +25,7 @@ export default function CocktailListContextProvider({ children }) {
     CTLIST_INITIAL
   );
   const [allCocktails, setAllCocktails] = useState(null);
+  const [currentListPage, setCurrentListPage] = useState(1);
 
   // SEARCH COCKTAILS
   const searchCocktails = async (searchTerm) => {
@@ -31,6 +33,8 @@ export default function CocktailListContextProvider({ children }) {
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.LOADING,
       });
+
+      setCurrentListPage(1);
 
       // search for cocktails by cocktail name
       const data_name = await searchByName(searchTerm);
@@ -60,7 +64,12 @@ export default function CocktailListContextProvider({ children }) {
       setAllCocktails(drinks);
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: { drinks, searchTerm, filtered: false },
+        payload: {
+          drinks,
+          totalDrinks: drinks.length,
+          searchTerm,
+          filtered: false,
+        },
       });
     } catch (error) {
       console.error(error);
@@ -91,6 +100,9 @@ export default function CocktailListContextProvider({ children }) {
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.LOADING,
       });
+
+      setCurrentListPage(1);
+
       const promises = [...Array(amount)].map(async () => {
         const data = await getRandomCocktail();
         return data.drinks[0];
@@ -101,7 +113,7 @@ export default function CocktailListContextProvider({ children }) {
 
       cocktailListDispatcher({
         type: CTLIST_ACTIONS.UPDATE_LIST,
-        payload: { drinks, filtered: false },
+        payload: { drinks, totalDrinks: drinks.length, filtered: false },
       });
     } catch (error) {
       console.error(error);
@@ -130,6 +142,8 @@ export default function CocktailListContextProvider({ children }) {
         });
         return;
       }
+
+      setCurrentListPage(1);
 
       const passArrayFilter = (testItem, itemArray) => {
         if (!itemArray) return true;
@@ -163,6 +177,7 @@ export default function CocktailListContextProvider({ children }) {
       type: CTLIST_ACTIONS.CLEAR_LIST,
     });
     setAllCocktails(null);
+    setCurrentListPage(1);
   };
 
   return (
@@ -173,6 +188,8 @@ export default function CocktailListContextProvider({ children }) {
         getRandomCocktails,
         filterCocktails,
         clearCocktails,
+        currentListPage,
+        setCurrentListPage,
       }}
     >
       {children}

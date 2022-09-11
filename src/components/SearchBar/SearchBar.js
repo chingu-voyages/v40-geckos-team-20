@@ -1,11 +1,16 @@
-import './SearchBar.css';
 import React, { useState } from 'react';
-import { useCocktailListContext } from '../../context/use-context';
+import {
+  useCocktailListContext,
+  useFiltersContext,
+} from '../../context/use-context';
 import { CONTEXT_STATUS } from '../../context/constants';
+import { Button } from '../UI/Button.styled';
+import { SearchBarWrapper } from './SearchBar.styled';
 
 const SearchBar = () => {
   const [message, setMessage] = useState('');
   const { cocktails, searchCocktails } = useCocktailListContext();
+  const { clearSelectedFilters } = useFiltersContext();
 
   const { status } = cocktails;
   const { LOADING } = CONTEXT_STATUS;
@@ -17,6 +22,7 @@ const SearchBar = () => {
 
   const handleSubmit = (searchTerm) => {
     searchCocktails(searchTerm);
+    clearSelectedFilters();
     setMessage('');
   };
 
@@ -27,22 +33,18 @@ const SearchBar = () => {
   };
 
   return (
-    <div className='SearchBar'>
+    <SearchBarWrapper>
       <input
         onChange={(event) => handleChange(event)}
         placeholder='Search for a cocktail...'
-        id='search-bar'
         onKeyDown={handleKeyPress}
         value={message}
+        autoFocus={window.screen.width > 768}
       />
-      <button
-        disabled={disableSearch}
-        className='search-btn'
-        onClick={() => handleSubmit(message)}
-      >
+      <Button disabled={disableSearch} onClick={() => handleSubmit(message)}>
         Search
-      </button>
-    </div>
+      </Button>
+    </SearchBarWrapper>
   );
 };
 

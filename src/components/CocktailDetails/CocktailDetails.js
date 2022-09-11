@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useSelectedCocktailContext } from "../../context/use-context";
-import { CONTEXT_STATUS } from "../../context/constants";
-import Spinner from "../UI/Spinner/Spinner";
-import { ErrorMessage } from "../MessageState/MessageState";
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useSelectedCocktailContext } from '../../context/use-context';
+import { CONTEXT_STATUS } from '../../context/constants';
+import Spinner from '../UI/Spinner/Spinner';
+import { ErrorMessage } from '../MessageState/MessageState';
 import {
   Wrapper,
   Header,
@@ -18,11 +18,11 @@ import {
   RecipeTitle,
   RecipeContent,
   RecipeItem,
-} from "./CocktailDetails.styled";
-import useSetDocumentTitle from "../../hooks/use-setDocumentTitle";
+} from './CocktailDetails.styled';
+import useSetDocumentTitle from '../../hooks/use-setDocumentTitle';
 
 const CocktailDetails = () => {
-  const { selectedCocktail, updateSelectedCocktail } =
+  const { selectedCocktail, updateSelectedCocktail, clearSelectedCocktail } =
     useSelectedCocktailContext();
   const { data, status, error } = selectedCocktail;
   const { IDLE, LOADING, SUCCESS, ERROR } = CONTEXT_STATUS;
@@ -30,7 +30,8 @@ const CocktailDetails = () => {
 
   useEffect(() => {
     updateSelectedCocktail(id);
-  }, [id]);
+    return clearSelectedCocktail;
+  }, [id, updateSelectedCocktail, clearSelectedCocktail]);
 
   let ingredientsUI;
   let recipesUI;
@@ -47,19 +48,29 @@ const CocktailDetails = () => {
     const ingredients = [];
 
     for (let i = 1; i <= 15; i++) {
-      const propertyName = `strIngredient${i}`;
-      data[propertyName] && ingredients.push(data[propertyName]);
+      const IngredientPropName = `strIngredient${i}`;
+      const MeasurePropName = `strMeasure${i}`;
+      data[IngredientPropName] &&
+        ingredients.push({
+          strIngredient: data[IngredientPropName],
+          strMeasure: data[MeasurePropName] || '',
+        });
     }
 
     const ingredientsUI = ingredients.map((ingredient, i) => {
-      return <IngredientsItem key={i}>{ingredient}</IngredientsItem>;
+      return (
+        <IngredientsItem key={i}>
+          {ingredient.strIngredient}
+          {ingredient.strMeasure && ` (${ingredient.strMeasure.trim()})`}
+        </IngredientsItem>
+      );
     });
 
     return ingredientsUI;
   }
 
   function createRecipesUI() {
-    const recipes = data.strInstructions.split(". ");
+    const recipes = data.strInstructions.split('. ');
     const recipesUI = recipes.map((recipe, i) => {
       return <RecipeItem key={i}>{recipe}</RecipeItem>;
     });
@@ -92,7 +103,7 @@ const CocktailDetails = () => {
         </Wrapper>
       )}
       {status === ERROR && (
-        <ErrorMessage title="Error loading cocktails" message={error.message} />
+        <ErrorMessage title='Error loading cocktails' message={error.message} />
       )}
     </>
   );
